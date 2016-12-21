@@ -1,0 +1,1 @@
+update [dbo].[registracia] set prisli = 0

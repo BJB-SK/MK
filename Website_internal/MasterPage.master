@@ -1,0 +1,26 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>MK 2017</title>
+    <link rel="stylesheet" type="text/css" href="/CSS/Local.css"/>
+    <script type="text/javascript" src="/scripts/jquery-3.1.1.min.js"></script> 
+    <asp:ContentPlaceHolder id="Head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager runat="server" ID="ScriptManager1"/>
+        <div id="navigationMenuWrapper" style="text-align: center">    
+            <div id="yourdiv" style="display: inline-block;">
+                <asp:HyperLink runat="server" ID="lnkList" Text="Zoznam" NavigateUrl="~/List.aspx" />&nbsp;
+                <asp:HyperLink runat="server" ID="lnkRegisterGroup" Text="Skupinová registrácia" NavigateUrl="~/default.aspx" />&nbsp;
+                <asp:HyperLink runat="server" ID="lnkRegisterSingle" Text="Registrácia 1 účastníka" NavigateUrl="~/Register.aspx" />&nbsp;
+                <asp:HyperLink runat="server" ID="lnkReport" Text="Súhrny" NavigateUrl="~/Report.aspx" />&nbsp;
+            </div>
+        </div>
+        <asp:ContentPlaceHolder id="Body" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>
