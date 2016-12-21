@@ -40,52 +40,52 @@
 <asp:Content ID="ContentBody" ContentPlaceHolderID="Body" Runat="Server">
 
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-          </button>
-          <a href="https://www.facebook.com/events/933096596790303" target="_blank" class="social fa fa-facebook fa-3x wow bounceIn" data-wow-delay=".1s"></a>
-              <span></span>
-          </a>
-          <a href="https://www.youtube.com/channel/UCDIZcaRg3nfl7aD9slJObTg" target="_blank" class="social fa fa-youtube-play fa-3x wow bounceIn" data-wow-delay=".1s"></a>
-              <span></span>
-          </a>
-      </div>
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="https://www.facebook.com/events/933096596790303" target="_blank" class="social fa fa-facebook fa-3x wow bounceIn" data-wow-delay=".1s"></a>
+                <span></span>
+            </a>
+            <a href="https://www.youtube.com/channel/UCDIZcaRg3nfl7aD9slJObTg" target="_blank" class="social fa fa-youtube-play fa-3x wow bounceIn" data-wow-delay=".1s"></a>
+                <span></span>
+            </a>
+        </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right">
-              <li>
-                  <a class="page-scroll" href="#about">O Konfere</a>
-              </li>
-              <li>
-                  <a class="page-scroll" href="#form">Registrácia</a>
-              </li>
-              <li>
-                  <a class="page-scroll" href="#program">Program</a>
-              </li>
-              <li>
-                  <a class="page-scroll" href="#sponsoring">Sponzoring</a>
-              </li>
-              <li>
-                  <a class="page-scroll" href="#volunteering">Dobrovoľníctvo</a>
-              </li>
-              <li>
-                  <a class="page-scroll" href="#contact">Kontakt</a>
-              </li>
-              <!-- <li>
-                  <a class="page-scroll" href="program.html">Program</a>
-              </li> -->
-          </ul>
-      </div>
-      <!-- /.navbar-collapse -->
-  </div>
-  <!-- /.container-fluid -->
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="page-scroll" href="#about">O Konfere</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#program">Program</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#form">Registrácia</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#sponsoring">Sponzoring</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#volunteering">Dobrovoľníctvo</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#contact">Kontakt</a>
+                </li>
+                <!-- <li>
+                    <a class="page-scroll" href="program.html">Program</a>
+                </li> -->
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
 </nav>
 
 <header>
@@ -182,15 +182,74 @@
 </section>
 
 <section id="program" class="bg-dark">
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 text-center">
-      <h2 class="section-heading">Program</h2>
-      <hr class="dark">
-      <p>Aj túto konferu máme pre teba pripravený super program! Jednotlivé témy a workshopy budeme pridávať <a href="https://www.facebook.com/events/933096596790303" target="_blank" class="social">sem (<span class="social fa fa-facebook"></span>)</a>, tak pozorne sleduj naše príspevky.</p>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 class="section-heading">Program</h2>
+        <hr class="dark">
+        <p>Aj túto konferu máme pre teba pripravený super program! Hlavné témy si môžeš pozrieť nižšie, ďalšie info budeme pridávať <a href="https://www.facebook.com/events/933096596790303" target="_blank" class="social">sem (<span class="social fa fa-facebook"></span>)</a>, tak pozorne sleduj naše príspevky.</p>
+
+        <br />
+        <h3>Rečníci</h3>
+        <hr class="dark">
+
+        <div class="text-with-image pic-left col-xs-12">
+        <img src="img/program/slacho.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
+          <div class="col-sm-9 col-xs-12"><p>
+            Samo Lacho / piatok večer<br />
+            <br />
+            Cirkev je krásna Kristova nevesta – tak ju predstavuje Písmo a Boh tak naozaj vidí.  What? Veď sa len nepretvarujme: Čo sa vám vybaví, keď premýšľate o Cirkvi. Buďme úprimní. Väčšina z nás, si najskôr nepredstaví krásu nevestu. Vybaví sa nám konkrétny kostol, rozhádaní členovia, ktorý sa nevedia pozdraviť, komunistický kňaz, alebo nejaký škandál z telky. Cirkev nie je niečo, na čo by sme boli obzvlášť hrdí. Ale možno by sa to všetko zmenilo, keby sme sa na Cirkev pozreli z Božieho pohľadu. A čo ak je možné sa do Cirkvi v takomto stave úprimne zamilovať a tešiť sa z nej?
+
+            <br /><br />
+            O Samovi:
+            Študoval ekonómiu, teológiu a sociálnu prácu a viac ako 25 rokov pracuje s mládežou v cirkvi a mimo nej. Okrem lokálnej mládežníckej práce v miestnych zboroch sa podieľal na zakladaní a/alebo rozvoji viacerých celoslovenských mládežníckych projektov (ACET, SIEŤ, Tréningové centrum Kompas, CampFest, KPM, Cesta muža) a v súčasnosti sa okrem iného venuje práci s dorastom. S manželkou Žankou a tromi dospievajúcimi synmi býva v Bratislave a na plný úväzok pracuje v zbore BJB Viera.
+          </div>
+        </div>
+
+        <div class="text-with-image pic-left col-xs-12">
+        <img src="img/program/buhrin.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
+          <div class="col-sm-9 col-xs-12"><p>
+            Ben Uhrin / sobota ráno<br />
+            <br />
+            Ježiš založil Cirkev ktorá sa rozšírila do celého sveta. Sú v nej kresťania zo všetkých kontinentov, všetkých generácií aj rás aj typov osobností. Platí v Cirkvi, že "one size fits all" (jedna veľkosť pasuje všetkým)? A čo ak ti Cirkev nepasuje a nehodíš sa do nej? Čo sa v Cirkvi musí diať, aby bola Cirkvou Kristovou a čo sa musí meniť, aby bola Cirkvou živou, aktuálnou  a efektívnou? Cirkev Kristova, aj moja.
+
+            <br /><br />
+            O Benovi:
+            Aktivista, extrovert, priateľ a líder.  Zakladateľ Slovenského evanjelikálneho inštitútu a vedúci Tímu odboru mládeže BJB. Je kazateľom v BB a jeho túžbou je vidieť živú cirkev ako sa angažuje v kultúre a prináša Kristov pohľad verne a relevantne. Vie pekne spievať a vie byť aj celkom vtipný. Heni majú štyri deti.
+          </div>
+        </div>
+
+        <div class="text-with-image pic-left col-xs-12">
+        <img src="img/program/jmahrik.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
+          <div class="col-sm-9 col-xs-12"><p>
+            Janči Máhrik / sobota večer<br />
+            <br />
+            “Verím v Boha, ale v cirkev nie!” Koľkokrát si už počul/a túto vetu alebo jej obdobu? Ja veľa krát. Naozaj je to tak? Dá sa veriť v Biblikého Boha a cieľavedome nebyť súčasťou cirkvi? Áno, s cirkvou je to častokrát zložité. Dá sa však byť prijatý Kristom a pritom neprijať cirkev?
+
+            <br /><br />
+            O Jančim:
+            Janči má úžasnú manželku a dve podarené deti. Jednou z jeho vášní je hudba, už roky hráva s kapelou noXcuse. ​Druhou z jeho vášní sú mladí ľudia. ​Viac ako 12 rokov prac​oval​ s mládežou na lokálnej, národnej a medzinárodnej úrovni. Momentálne ​zakladá nov​ý​ zbor​ CB​​ „Za kostolom“​ v Žiline (SR) a je členom tímu PLANt.sk, ktorý podporuje zakladanie nových zborov na Slovensku.
+          </div>
+        </div>
+
+        <div class="text-with-image pic-left col-xs-12">
+        <img src="img/program/rnagypal.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
+          <div class="col-sm-9 col-xs-12"><p>
+            Rišo Nagypál / nedeľa ráno<br />
+            <br />
+            Bol si pozvaný do mesta na vrchu. Do mesta, ktoré nemôže byť skryté. Do mesta, ktorého ulice niekedy pripomínajú vznešený New York a niekedy africkú biedu. Každý kresťan tu býva. Nie je to hotel, ale domov. Bývajú tu skúsení starci aj nadšení mladíci, umelci aj filozofi, murári aj politici. Každý má svoje poslanie. Každý dostal obdarovanie svojou troškou mesto budovať a každý si vyberá mieru svojho zapojenia a aktívity. Toto mesto nie je dokonalé. Miestami pripomína skôr nemocnicu v ktorej nikto nie je úplne zdravý. Avšak všetkých občanov spája jedno – láska ku kráľovi, ktorý mesto založil. Túžba poznať ho je to, čo spája jednoduchých aj zložitých, starých aj mladých. Bol si pozvaný do mesta na vrchu.
+
+            <br /><br />
+            O Rišovi:
+            Absolovent teologických štúdií, tvorivý apologéta. Hlboká a krehká duša s telom hráča Ringo aj cajona. Počas školy založil stránku Animans.sk, rád by na ňu prispieval viac, ale ešte stále hľadá, kde presne je jeho miesto. To mu pomáha hľadať aj manželka Tánička.
+          </div>
+        </div>
+
+        <br />
+
+      </div>
     </div>
   </div>
-</div>
 </section>
 
 <section id="form">
