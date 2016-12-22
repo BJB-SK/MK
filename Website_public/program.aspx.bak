@@ -9,10 +9,10 @@
     <meta name="description" content="">
     <meta name="author" content="BJB Slovensko">
 
-    <meta property="og:image" content="http://mk.baptist.sk/img/header.png" />
-    <meta property="og:description" content="Mládežnícka konferencia 2017 (24.-26.2.2017, BB). Nadupaný víkend plný zaujímavých tém, seminárov, chvál, vzácnych hostí a ďalších skvelých vecí. Neváhaj a zaregistruj sa čím skôr. Tešíme sa na Teba!" />
+    <meta property="og:image" content="http://mladez.baptist.sk/mk16/img/mk2016.png" />
+    <meta property="og:description" content="Mládežnícka konferencia 2016 (19.-21.2.2016, BB). Nadupaný víkend plný zaujímavých tém, seminárov, chvál, vzácnych hostí a ďalších skvelých vecí. Neváhaj a zaregistruj sa čím skôr. Tešíme sa na Teba!" />
 
-    <title>MK2017</title>
+    <title>MK2016</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -27,6 +27,8 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/main.css" type="text/css">
+
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -50,7 +52,7 @@
         <br />
 
 
-        <p class="text-faded text-center"><a href="/" class="btn  page-scroll">
+        <p class="text-faded text-center"><a href="/default.aspx" class="btn  page-scroll">
           <i class="fa fa-arrow-circle-o-left wow bounceIn text-primary"></i>
           Späť na stránku
         </a></p>
