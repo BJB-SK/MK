@@ -13,6 +13,7 @@ public partial class Sports : System.Web.UI.Page
             ddlSport.Items.Add(new ListItem("Volejbal", "2"));
             ddlSport.Items.Add(new ListItem("Floorbal", "3"));
         }
+        txtCaptcha.SetPlaceHolder("Toto pole nechajte prázdne (naozaj)");
     }
 
     protected void btnRegister_Click(object sender, EventArgs e)
@@ -29,9 +30,7 @@ public partial class Sports : System.Web.UI.Page
         }
         
         lblCaptchaError.Text = "";
-        //var reCorrect = new Regex(@"90", RegexOptions.IgnoreCase);
-        //if(!reCorrect.IsMatch(txtCaptcha.Text.Trim()))
-        if(txtCaptcha.Text.Trim() != "90")
+        if(txtCaptcha.Text != "")
         {
             valid = false;
             lblCaptchaError.Text = "To nevyzerá správne.";

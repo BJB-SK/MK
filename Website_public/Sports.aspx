@@ -79,11 +79,10 @@
                     </td>
                 </tr>
 
-                <tr>
+                <tr style="display:none">
                     <td>Kontrolná<br />otázka</td>
                     <td>
-                        Normálny futbalový zápas trvá koľko minút?<br />
-                        <asp:TextBox runat="server" ID="txtCaptcha" Width="100px" AutoPostBack="true"/><br />
+                        <asp:TextBox runat="server" ID="txtCaptcha" Width="300px" AutoPostBack="true"/><br />
                         <asp:Label runat="server" ID="lblCaptchaError" CssClass="error"/>
                     </td>
                 </tr>
