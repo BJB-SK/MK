@@ -107,6 +107,17 @@
                 <td>Tričko</td>
                 <td colspan="2">
                     <asp:DropDownList runat="server" ID="ddlTricko" AutoPostBack="true" />
+                    <ajax:HoverMenuExtender runat="server" ID="hme1"
+                        TargetControlID="ddlTricko"
+                        PopupControlID="pnlTricko"
+                        HoverCssClass="popupHover"
+                        PopupPosition="Right"
+                        OffsetX="0"
+                        OffsetY="-120"
+                        PopDelay="50" />
+                    <asp:Panel runat="server" ID="pnlTricko">
+                        <asp:Image runat="server" ID="imgTricko" ImageUrl="~/img/tricko.png"/>
+                    </asp:Panel>
                 </td>
                 <td>
                     <asp:Label runat="server" ID="lblCenaTricko" />
