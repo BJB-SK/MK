@@ -9,7 +9,10 @@
 <asp:Content runat="server" ID="ContentRegistrationBody" ContentPlaceHolderID="RegistrationBody">
     <form id="form1" runat="server">
         <asp:ScriptManager runat="server" ID="ScriptManager" />
-        <div>
+        <asp:Panel runat="server" ID="pnlRegistrationDone" CssClass="text-center">
+            <p>Online registrácia sa skončila, môžete sa zaregistrovať na mieste počas konania konferencie.</p>
+        </asp:Panel>
+        <asp:Panel runat="server" ID="pnlRegistration">
     <asp:UpdatePanel runat="server" ID="upRegistration">
         <ContentTemplate>
             <asp:UpdateProgress runat="server" ID="UpdateProgress1" AssociatedUpdatePanelID="upRegistration" DisplayAfter="0">
@@ -146,6 +149,6 @@
             <asp:Label ID="lblResult" runat="server" CssClass="error"/>
         </ContentTemplate>
     </asp:UpdatePanel>
-                     </div>
+        </asp:Panel>
     </form>
 </asp:Content>

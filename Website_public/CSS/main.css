@@ -382,6 +382,10 @@ header {
   #program .pic-right img {
     float: right; }
 
+#groovehub-banner {
+  background-image: url("../img/groovehub-banner.jpg");
+  min-height: 40%; }
+
 .portfolio-box.speaker-box {
   max-width: none; }
 

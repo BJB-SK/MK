@@ -204,6 +204,30 @@
           </div>
         </div>
 
+        <div class="text-with-image pic-left col-xs-12">
+          <img src="img/seminars/speakers/manonym.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
+          <div class="col-sm-9 col-xs-12">
+            <p>
+              <span class="seminar-title">Misionálna cirkev</span><br />
+              Viktória Šoltésová<br />
+              <br />
+              Témou môjho seminára je misia Kristovej cirkvi v súčasnosti. Miestny zbor je v kľúčový v pochopení misijnej identity cirkvi. Nové pochopenie misie v lokálnej cirkvi nemá viesť jednoducho ku novému misijnému programu, jedná sa o hlboké porozumenie cirkvi ako misie. Nový model misionálnej ekleziológie v jej praktickom fungovaní je taktiež jasne reflektovaný v najnovšom misijnom dokumente Spoločne k životu. Misionálna cirkev nie je model, štandardizovaný program alebo stratégia, ktorá môže byť použitá v lokálnej cirkvi s vopred stanoveným výsledkom. Nie je to predpísaný súbor vecí, ktoré je potrebné urobiť, alebo vízia pre cirkev ako by mala vyzerať, ale skôr určitý pohľad na teologickú identitu cirkvi. Nakoniec budeme diskutovať o misijných programoch a stratégiách v miestnych cirkevných zboroch evanjelikálnych cirkví na Slovensku a v Čechách.
+            <p>
+          </div>
+        </div>
+
+        <div class="text-with-image pic-left col-xs-12">
+          <img src="img/seminars/speakers/manonym.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
+          <div class="col-sm-9 col-xs-12">
+            <p>
+              <span class="seminar-title">Panikááááá!!!! Chystáme svadbu</span><br />
+              Azorovci<br />
+              <br />
+              Workshop o tom, ako sa pripraviť na svadbu .... bez stresu.
+            <p>
+          </div>
+        </div>
+
         <p><br /><br /><br /></p>
 
         <p class="text-faded"><a href="/" class="btn btn-primary wow page-scroll">Späť na stránku</a></p>

@@ -45,6 +45,10 @@ public partial class Register : Page
     {
         _sluziaci = Request.QueryString[UrlKeySluziaci] == "true";
 
+        var endOfRegistration = new DateTime(2017, 2, 15);
+        pnlRegistrationDone.Visible = (DateTime.Now > endOfRegistration) && !_sluziaci;
+        pnlRegistration.Visible = (DateTime.Now <= endOfRegistration) || _sluziaci;
+
         if (!IsPostBack)
         {
             _dropDownData = Database.GetPageLoadInfo();

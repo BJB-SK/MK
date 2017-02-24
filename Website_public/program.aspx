@@ -56,7 +56,7 @@
 
         <div id="schedule-days" class="clearfix">
           
-          <div class="section col-xs-12" date="02.19.2016">
+          <div class="section col-xs-12" date="02.24.2017">
             <h3>Piatok</h3>
 
               
@@ -102,15 +102,15 @@
                 <div class="col-xs-5 col-md-5 col-lg-4 time">
                   <span>
                     
-                      19:05 - 21:00
+                      19:00 - 21:00
                     
                   </span>
                 </div>
                 <div class="col-xs-7 col-md-7 col-lg-8 title">
                   <span>Hlavný Program 1</span><br />
-                  <span class="subtitle"><small>Chvály BA Viera, téma S. Lacho</small></span>
+                  <span class="subtitle"><small>Chvály Revúca + Lučenec, téma S. Lacho</small></span>
 
-                  <div start="19:05" end="21:00" class="slots">
+                  <div start="19:00" end="21:00" class="slots">
                     
                   </div>
                 </div>
@@ -140,25 +140,6 @@
                 <div class="col-xs-5 col-md-5 col-lg-4 time">
                   <span>
                     
-                      22:00
-                    
-                  </span>
-                </div>
-                <div class="col-xs-7 col-md-7 col-lg-8 title">
-                  <span>Koncert HERO</span><br />
-                  <span class="subtitle"><small></small></span>
-
-                  <div start="22:00" end="" class="slots">
-                    
-                  </div>
-                </div>
-
-              </div>
-              
-              <div class="slot even clearfix ">
-                <div class="col-xs-5 col-md-5 col-lg-4 time">
-                  <span>
-                    
                       22:00 - 23:00
                     
                   </span>
@@ -170,15 +151,15 @@
                   <div start="22:00" end="23:00" class="slots">
                     
                       <div class="item">
-                        <span class="seminar-title">- Panelová Diskusia Politika</span>
+                        <span class="seminar-title">- Panikááááá!!!! Chystáme svadbu</span>
                         <br />
-                        <span class="seminar-speaker"><small>Ján Szöllos, Marek Krajčí, Peter Azor</small></span>
+                        <span class="seminar-speaker"><small>Azorovci</small></span>
                       </div>
                     
                       <div class="item">
-                        <span class="seminar-title">- Inšpirácia Biblie</span>
+                        <span class="seminar-title">- Peniaze - prekliatie alebo požehnanie</span>
                         <br />
-                        <span class="seminar-speaker"><small>Martin Tobák</small></span>
+                        <span class="seminar-speaker"><small>Mgr. Miloš Masarik, Phd.</small></span>
                       </div>
                     
                   </div>
@@ -186,11 +167,11 @@
 
               </div>
               
-              <div class="slot odd clearfix ">
+              <div class="slot even clearfix ">
                 <div class="col-xs-5 col-md-5 col-lg-4 time">
                   <span>
                     
-                      22:00 - 24:00
+                      22:00 - 01:00
                     
                   </span>
                 </div>
@@ -198,7 +179,7 @@
                   <span>Športy, DEPO, bufet, kaviareň</span><br />
                   <span class="subtitle"><small></small></span>
 
-                  <div start="22:00" end="24:00" class="slots">
+                  <div start="22:00" end="01:00" class="slots">
                     
                   </div>
                 </div>
@@ -207,11 +188,11 @@
               
             </div>
           
-          <div class="section col-xs-12" date="02.20.2016">
+          <div class="section col-xs-12" date="02.25.2017">
             <h3>Sobota</h3>
 
               
-              <div class="slot even clearfix ">
+              <div class="slot odd clearfix ">
                 <div class="col-xs-5 col-md-5 col-lg-4 time">
                   <span>
                     
@@ -230,38 +211,19 @@
 
               </div>
               
-              <div class="slot odd clearfix ">
-                <div class="col-xs-5 col-md-5 col-lg-4 time">
-                  <span>
-                    
-                      08:40 - 09:00
-                    
-                  </span>
-                </div>
-                <div class="col-xs-7 col-md-7 col-lg-8 title">
-                  <span>Rozcvička na bránicu</span><br />
-                  <span class="subtitle"><small></small></span>
-
-                  <div start="08:40" end="09:00" class="slots">
-                    
-                  </div>
-                </div>
-
-              </div>
-              
               <div class="slot even clearfix  bold dark ">
                 <div class="col-xs-5 col-md-5 col-lg-4 time">
                   <span>
                     
-                      09:05 - 10:35
+                      09:00 - 10:35
                     
                   </span>
                 </div>
                 <div class="col-xs-7 col-md-7 col-lg-8 title">
                   <span>Hlavný Program 2</span><br />
-                  <span class="subtitle"><small>Chvály BB, téma S. Lacho</small></span>
+                  <span class="subtitle"><small>Chvály BB, téma B. Uhrin</small></span>
 
-                  <div start="09:05" end="10:35" class="slots">
+                  <div start="09:00" end="10:35" class="slots">
                     
                   </div>
                 </div>
@@ -283,39 +245,51 @@
                   <div start="10:45" end="12:00" class="slots">
                     
                       <div class="item">
-                        <span class="seminar-title">- Inšpirácia Biblie</span>
+                        <span class="seminar-title">- Islám jako výzva pro křesťany</span>
                         <br />
-                        <span class="seminar-speaker"><small>Martin Tobák</small></span>
+                        <span class="seminar-speaker"><small>doc.Pavel Hošek, Th.D.</small></span>
                       </div>
                     
                       <div class="item">
-                        <span class="seminar-title">- Deduktívne štúdium Biblie</span>
+                        <span class="seminar-title">- Okultizmus</span>
                         <br />
-                        <span class="seminar-speaker"><small>Pavel Hanes</small></span>
+                        <span class="seminar-speaker"><small>Vlado Boško</small></span>
                       </div>
                     
                       <div class="item">
-                        <span class="seminar-title">- Osobnosť človeka a duchovný život</span>
+                        <span class="seminar-title">- Ako neuviaznuť v sociálnej sieti</span>
                         <br />
-                        <span class="seminar-speaker"><small>Marek Macák</small></span>
+                        <span class="seminar-speaker"><small>Igor Čonka</small></span>
                       </div>
                     
                       <div class="item">
-                        <span class="seminar-title">- Evanjelizácia & Získavanie Veriacich: Povolanie kresťanov alebo Prežitok minulosti</span>
+                        <span class="seminar-title">- Reformácia – čo je dobre o nej vedieť</span>
                         <br />
-                        <span class="seminar-speaker"><small>Peter Makovíni</small></span>
+                        <span class="seminar-speaker"><small>doc. ThDr. Pavel Hanes, PhD.</small></span>
                       </div>
                     
                       <div class="item">
-                        <span class="seminar-title">- Vstal Ježiš z mŕtvych?</span>
+                        <span class="seminar-title">- Radosť v čistote</span>
                         <br />
-                        <span class="seminar-speaker"><small>Richard Nagypal</small></span>
+                        <span class="seminar-speaker"><small>Timo Hanes</small></span>
                       </div>
                     
                       <div class="item">
-                        <span class="seminar-title">- Čo to máš v ruke?</span>
+                        <span class="seminar-title">- Jedni PRE druhých</span>
                         <br />
-                        <span class="seminar-speaker"><small>Pali Mrština</small></span>
+                        <span class="seminar-speaker"><small>Pavol Mrština</small></span>
+                      </div>
+                    
+                      <div class="item">
+                        <span class="seminar-title">- Žena podľa Božieho srdca?</span>
+                        <br />
+                        <span class="seminar-speaker"><small>Katka Azorová</small></span>
+                      </div>
+                    
+                      <div class="item">
+                        <span class="seminar-title">- Hledání Boží vůle</span>
+                        <br />
+                        <span class="seminar-speaker"><small>Jan Jackanič</small></span>
                       </div>
                     
                   </div>
@@ -346,15 +320,15 @@
                 <div class="col-xs-5 col-md-5 col-lg-4 time">
                   <span>
                     
-                      14:00 - 18:00
+                      13:30 - 15:00
                     
                   </span>
                 </div>
                 <div class="col-xs-7 col-md-7 col-lg-8 title">
-                  <span>Športy, modlitebná miestnosť, predaj kníh, DEPO, kaviareň, bufet</span><br />
+                  <span>Kvíz - Daro Kráľ</span><br />
                   <span class="subtitle"><small></small></span>
 
-                  <div start="14:00" end="18:00" class="slots">
+                  <div start="13:30" end="15:00" class="slots">
                     
                   </div>
                 </div>
@@ -365,7 +339,7 @@
                 <div class="col-xs-5 col-md-5 col-lg-4 time">
                   <span>
                     
-                      14:00 - 15:30
+                      15:00 - 16:20
                     
                   </span>
                 </div>
@@ -373,30 +347,30 @@
                   <span>Semináre:</span><br />
                   <span class="subtitle"><small></small></span>
 
-                  <div start="14:00" end="15:30" class="slots">
+                  <div start="15:00" end="16:20" class="slots">
                     
                       <div class="item">
-                        <span class="seminar-title">- Vstal Ježiš z mŕtvych?</span>
+                        <span class="seminar-title">- Islám jako výzva pro křesťany</span>
                         <br />
-                        <span class="seminar-speaker"><small>Richard Nagypal</small></span>
+                        <span class="seminar-speaker"><small>doc.Pavel Hošek, Th.D.</small></span>
                       </div>
                     
                       <div class="item">
-                        <span class="seminar-title">- Čo to máš v ruke?</span>
+                        <span class="seminar-title">- Ako neuviaznuť v sociálnej sieti</span>
                         <br />
-                        <span class="seminar-speaker"><small>Pali Mrština</small></span>
+                        <span class="seminar-speaker"><small>Igor Čonka</small></span>
                       </div>
                     
                       <div class="item">
-                        <span class="seminar-title">- Moje reakcie na stres</span>
+                        <span class="seminar-title">- Anjeli a démoni</span>
                         <br />
-                        <span class="seminar-speaker"><small>Marek Sonoga</small></span>
+                        <span class="seminar-speaker"><small>Vlado Boško</small></span>
                       </div>
                     
                       <div class="item">
-                        <span class="seminar-title">- Testosterón + estrogén = ♥</span>
+                        <span class="seminar-title">- Misionálna cirkev</span>
                         <br />
-                        <span class="seminar-speaker"><small>Kveťo & Eva Boltižiarovci</small></span>
+                        <span class="seminar-speaker"><small>Viktória Šoltésová</small></span>
                       </div>
                     
                   </div>
@@ -408,26 +382,7 @@
                 <div class="col-xs-5 col-md-5 col-lg-4 time">
                   <span>
                     
-                      16:00 - 17:00
-                    
-                  </span>
-                </div>
-                <div class="col-xs-7 col-md-7 col-lg-8 title">
-                  <span>5 proti 5</span><br />
-                  <span class="subtitle"><small></small></span>
-
-                  <div start="16:00" end="17:00" class="slots">
-                    
-                  </div>
-                </div>
-
-              </div>
-              
-              <div class="slot even clearfix ">
-                <div class="col-xs-5 col-md-5 col-lg-4 time">
-                  <span>
-                    
-                      16:00 - 17:30
+                      16:30 - 18:00
                     
                   </span>
                 </div>
@@ -435,36 +390,18 @@
                   <span>Semináre:</span><br />
                   <span class="subtitle"><small></small></span>
 
-                  <div start="16:00" end="17:30" class="slots">
+                  <div start="16:30" end="18:00" class="slots">
                     
                       <div class="item">
-                        <span class="seminar-title">- Viera a duševné zdravie</span>
+                        <span class="seminar-title">- Quo vadis Slovenský baptizmus?</span>
                         <br />
-                        <span class="seminar-speaker"><small>Michal Patarák</small></span>
+                        <span class="seminar-speaker"><small>D. Kraljik, J. Jackanič, T. Valchar</small></span>
                       </div>
                     
                       <div class="item">
-                        <span class="seminar-title">- Má niekto právo byť mojou autoritou?</span>
+                        <span class="seminar-title">- Nasledovať a viesť</span>
                         <br />
-                        <span class="seminar-speaker"><small>Danka Hanesová</small></span>
-                      </div>
-                    
-                      <div class="item">
-                        <span class="seminar-title">- Poznaj, Miluj, Ži</span>
-                        <br />
-                        <span class="seminar-speaker"><small>Katka Azorová</small></span>
-                      </div>
-                    
-                      <div class="item">
-                        <span class="seminar-title">- Žiadostivo nepozrieš</span>
-                        <br />
-                        <span class="seminar-speaker"><small>Jozef Jaroščiak</small></span>
-                      </div>
-                    
-                      <div class="item">
-                        <span class="seminar-title">- Svedectvá</span>
-                        <br />
-                        <span class="seminar-speaker"><small></small></span>
+                        <span class="seminar-speaker"><small>Peter Makovíni</small></span>
                       </div>
                     
                   </div>
@@ -472,7 +409,7 @@
 
               </div>
               
-              <div class="slot odd clearfix ">
+              <div class="slot even clearfix ">
                 <div class="col-xs-5 col-md-5 col-lg-4 time">
                   <span>
                     
@@ -491,7 +428,7 @@
 
               </div>
               
-              <div class="slot even clearfix  bold dark ">
+              <div class="slot odd clearfix  bold dark ">
                 <div class="col-xs-5 col-md-5 col-lg-4 time">
                   <span>
                     
@@ -501,28 +438,9 @@
                 </div>
                 <div class="col-xs-7 col-md-7 col-lg-8 title">
                   <span>Hlavný Program 3</span><br />
-                  <span class="subtitle"><small>Chvály Hurbanovo, téma B. Uhrin</small></span>
+                  <span class="subtitle"><small>Chvály Košice, téma J. Máhrik</small></span>
 
                   <div start="19:15" end="21:30" class="slots">
-                    
-                  </div>
-                </div>
-
-              </div>
-              
-              <div class="slot odd clearfix ">
-                <div class="col-xs-5 col-md-5 col-lg-4 time">
-                  <span>
-                    
-                      21:45
-                    
-                  </span>
-                </div>
-                <div class="col-xs-7 col-md-7 col-lg-8 title">
-                  <span>Druhá večera</span><br />
-                  <span class="subtitle"><small></small></span>
-
-                  <div start="21:45" end="" class="slots">
                     
                   </div>
                 </div>
@@ -533,15 +451,15 @@
                 <div class="col-xs-5 col-md-5 col-lg-4 time">
                   <span>
                     
-                      22:15 - 23:30
+                      22:00
                     
                   </span>
                 </div>
                 <div class="col-xs-7 col-md-7 col-lg-8 title">
-                  <span>Muzikál, Doba ľadová v tvojom srdci</span><br />
+                  <span>Druhá večera</span><br />
                   <span class="subtitle"><small></small></span>
 
-                  <div start="22:15" end="23:30" class="slots">
+                  <div start="22:00" end="" class="slots">
                     
                   </div>
                 </div>
@@ -552,21 +470,15 @@
                 <div class="col-xs-5 col-md-5 col-lg-4 time">
                   <span>
                     
-                      22:00 - 23:00
+                      22:15 - 23:30
                     
                   </span>
                 </div>
                 <div class="col-xs-7 col-md-7 col-lg-8 title">
-                  <span>Semináre:</span><br />
+                  <span>GrooveHub koncert</span><br />
                   <span class="subtitle"><small></small></span>
 
-                  <div start="22:00" end="23:00" class="slots">
-                    
-                      <div class="item">
-                        <span class="seminar-title">- Panelová Diskusia Psyche</span>
-                        <br />
-                        <span class="seminar-speaker"><small>Marek Macák, Michal Patarák, Ben Uhrin</small></span>
-                      </div>
+                  <div start="22:15" end="23:30" class="slots">
                     
                   </div>
                 </div>
@@ -594,7 +506,7 @@
               
             </div>
           
-          <div class="section col-xs-12" date="02.21.2016">
+          <div class="section col-xs-12" date="02.26.2017">
             <h3>Nedeľa</h3>
 
               
@@ -627,7 +539,7 @@
                 </div>
                 <div class="col-xs-7 col-md-7 col-lg-8 title">
                   <span>Hlavný Program 4</span><br />
-                  <span class="subtitle"><small>Chvály BA Palisády, téma P. Hanes</small></span>
+                  <span class="subtitle"><small>Chvály BA Palisády, téma R. Nagypál</small></span>
 
                   <div start="09:00" end="11:50" class="slots">
                     
@@ -662,7 +574,7 @@
       </div>
     </div>
 
-    <div class="row schedule-static">
+    <!-- <div class="row schedule-static">
       <div class="col-xs-12">
         <div id="schedule-static" class="clearfix">
           
@@ -818,7 +730,7 @@
         </div>
 
       </div>
-    </div>
+    </div> -->
 
   </div>
 </section>

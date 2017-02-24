@@ -91,8 +91,8 @@
 
   <header>
     <div class="header-content">
-        <div class="header-content-inner">
-        </div>
+        <!-- <div class="header-content-inner"> -->
+        <!-- </div> -->
     </div>
 </header>
 
@@ -102,10 +102,11 @@
             <div class="col-lg-8 col-lg-offset-2 text-center">
                 <!-- <h2 class="section-heading">MK 2017</h2> -->
                 <!-- <hr class="light"> -->
-                <!-- <div class="video-container">
-                    <iframe width="800" src="https://www.youtube.com/embed/PJNxW4SizTI" frameborder="0" allowfullscreen></iframe>
-                </div> -->
-                <!-- <br /><br /><br /> -->
+                <div class="video-container">
+                    <iframe width="800" src="http://stream.nasleduj.sk" frameborder="0" allowfullscreen></iframe>
+                </div>
+
+                <br /><br /><br />
                 <p class="text-faded">Dnes je ten deň.
                 <br /><br />
                 Srdce mi bije, ako by som práve zabehla sto metrov. Napriek tomu stojím bez pohnutia.
@@ -192,6 +193,7 @@
         <br />
         <p class="text-faded"><a href="/seminare.aspx" class="btn btn-primary btn-xl wow tada page-scroll">Semináre</a></p>
         <br />
+        <p class="text-faded"><a href="/program.aspx" class="btn btn-primary btn-xl wow tada page-scroll">Rozpis Programu</a></p>
 
         <br />
         <h3>Rečníci</h3>
@@ -273,6 +275,13 @@
         </div>
     </div>
 </section>
+
+<a href="https://www.youtube.com/user/GrooveHubOnline" target="_blank">
+<div id="groovehub-banner" class="banner">
+  <div class="text-bottom">
+  </div>
+</div>
+</a>
 
   <section id="sponsoring" class="bg-dark">
   <div class="container">
