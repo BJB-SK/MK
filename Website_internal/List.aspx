@@ -71,11 +71,13 @@
                     <%# Eval(TableColumns.Tricko) %>
                 </ItemTemplate>
             </asp:TemplateField>
+            <%--
             <asp:TemplateField HeaderText="Visačka" SortExpression="Id">
                 <ItemTemplate>
                     <%# Eval(TableColumns.Id) %>
                 </ItemTemplate>
             </asp:TemplateField>
+            --%>
             <asp:TemplateField HeaderText="Preplatok" SortExpression="Preplatok">
                 <ItemTemplate>
                     <asp:Label ID="lblSuma" runat="server" 

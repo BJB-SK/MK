@@ -65,7 +65,7 @@ public partial class Register : Page
             rblMena.SelectedValue = "1";
         }
         txtEmail.SetPlaceHolder("Email o platbe poslať na...");
-        txtCaptcha.SetPlaceHolder("V amerických voľbách (by) som (bol/a) volil/a...");
+        txtCaptcha.SetPlaceHolder("Toto pole nechajte prázdne (naozaj)");
         btnAddAtSign.OnClientClick = string.Format("$('#{0}').val($('#{0}').val() + '@');return false;", txtEmail.ClientID);
         btnAddGmail.OnClientClick = string.Format("$('#{0}').val($('#{0}').val() + '@gmail.com');return false;", txtEmail.ClientID);
     }
@@ -233,8 +233,7 @@ public partial class Register : Page
         var payerEmail = _data.Count > 1 ? txtEmail.Text.Trim().ToLower() : _data[0].Email.Trim().ToLower();
 
         txtCaptcha.CssClass = "";
-        var reCorrect = new Regex(@"(hillary|clinton|donald|trump|Johnson|Stein|McMullin|Castle)", RegexOptions.IgnoreCase);
-        if(!reCorrect.IsMatch(txtCaptcha.Text.Trim()))
+        if(txtCaptcha.Text != "")
         {
             valid = false;
             txtCaptcha.CssClass = "errorBorder";

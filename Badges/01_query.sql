@@ -3,8 +3,9 @@ select
     coalesce(z.[name], [InyZbor]),
     [PiatokVecera],[PiatokVecera2],
     [SobotaRanajky],[SobotaObed],[SobotaVecera],[SobotaVecera2],
-    [NedelaRanajky],[NedelaObed]
+    [NedelaRanajky],[NedelaObed],
+    coalesce([idTricko], 0)
 from [dbo].[registracia] r
 left join [dbo].[zbor] z on z.[id] = r.[IdZbor]
 --where [id] > 386
-order by r.[Id] asc;
+order by r.[Priezvisko] asc, r.[Meno] asc;

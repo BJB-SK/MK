@@ -7,4 +7,5 @@
     public const float Tricko = 4.5f;
     public const float Internat1 = 10;
     public const float Internat2 = 7;
+    public const float LenDnes = 6;
 }

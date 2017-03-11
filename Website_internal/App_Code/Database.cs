@@ -362,6 +362,8 @@ public static class Database
                         data.Naklady = (float)reader.GetDecimal(i++);
                         data.Dar = (float)reader.GetDecimal(i++);
                         data.Preplatok = (float)reader.GetDecimal(i++);
+                        data.RegistracnyPoplatok = (float)reader.GetDecimal(i++);
+                        data.RegistracnyOverride = reader.GetFloatNull(i++);
                     }
                     reader.NextResult();
 
@@ -404,6 +406,7 @@ public static class Database
                     command.AddParameterInt("@idDobrovolnik", data.IdDobrovolnik);
                     command.AddParameterString("@poznamka", data.Poznamka);
                     command.AddParameterFloat("@donation", data.Dar);
+                    command.AddParameterFloat("@registracny", data.RegistrationOverride);
                     command.AddOutputParameterInt("@newId");
 
                     command.ExecuteNonQuery();
@@ -451,6 +454,7 @@ public static class Database
                     command.AddParameterInt("@idSluziaci", data.IdSluziaci);
                     command.AddParameterInt("@idDobrovolnik", data.IdDobrovolnik);
                     command.AddParameterString("@poznamka", data.Poznamka);
+                    command.AddParameterFloat("@registracny", data.RegistracnyOverride);
 
                     command.ExecuteNonQuery();
                 }

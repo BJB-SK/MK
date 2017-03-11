@@ -107,6 +107,13 @@
                             <td><asp:TextBox runat="server" ID="txtDar" Width="100px" AutoPostBack="true" CssClass="negative" /></td>
                         </tr>
                         <tr>
+                            <td>Override</td>
+                            <td>
+                                <asp:TextBox runat="server" ID="txtRegistracnyOverride" Width="100px" AutoPostBack="true" CssClass="negative" />
+                                <asp:Button runat="server" ID="btnLenDnes" Text="Len dnes" />
+                            </td>
+                        </tr>
+                        <tr>
                             <td>Spolu</td>
                             <td><asp:Label runat="server" ID="lblTotalCost" CssClass="negative bigFont" /></td>
                         </tr>

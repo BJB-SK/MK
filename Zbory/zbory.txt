@@ -1,27 +1,35 @@
 Aš
 Banská Bystrica
+Banská Bystrica - AC
 Banská Bystrica - CB
+Banská Bystrica - ONN
 Banská Štiavnica
 Bardejov - ECAV
 Bernolákovo
 Blansko
-Bratislava - IBCB
-Bratislava City Church (AC)
 Bratislava - CB
-Bratislava I. - Palisády
-Bratislava II. - Podunajské Biskupice
-Bratislava III. - Viera
+Bratislava - Dúbravka ECAV
+Bratislava - Exit
+Bratislava - IBCB
+Bratislava - Palisády
+Bratislava - Podunajské Biskupice
+Bratislava - Proclaimers Church
+Bratislava - Reformovaní
 Bratislava - UPeCe
+Bratislava - Viera
+Bratislava City Church (AC)
 Brniště
 Brno
 Brno - neslyšící
 Broumov
+České Budějovice
 Cheb I.
 Cheb II.
-Cvikov
-České Budějovice
 Čjinové
+Cvikov
+Dánsko
 Děčín
+Hermanovce n.T. - CB
 Hurbanovo
 Jablonec nad Nisou
 Jelšava
@@ -40,8 +48,10 @@ Lovosice
 Lučenec
 Miloslavov
 Nesvady
+Nitra - AC
+Nové Zámky - AC
 Nové Zámky - Radostná správa
-Odense (Dánsko)
+Odense, Dánsko
 Olomouc
 Ostrava
 Panické Dravce
@@ -56,27 +66,29 @@ Praha 4 - Na Topolce
 Praha 6 - ŠVCC
 Prešov - ECAV
 Příbor
+Púchov - AC
+Revúca
 Revúcka Lehota
 Ružomberok
 Sokolov
 Srbsko
-Suchdol nad Odrou
-Svatá Helena (RO)
-Svätý Peter
 Štôla
+Suchdol nad Odrou
 Šumperk
 Šumperk - Kostel jinak
+Svatá Helena, Rumunsko
+Svätý Peter
 Tekovské Lužany
-Teplice
 Teplá
+Teplice
+Tisovec - ECAV
+Torun, Poľsko
+Třinec - CB Lištná
+Třinec - CB Lyžbice
 Uherské Hradiště
 Vavrišovo
 Vikýřovice
 Vsetín
 Vysoké Mýto
-Zlín
 Žatec
-ECAV Bratislava Dúbravka
-ECAV Tisovec
-Proclaimers Church Bratislava
-Torun, Poľsko
+Zlín

@@ -27,6 +27,7 @@ public class NewRegistration
     public int? IdDobrovolnik;
     public string Poznamka;
     public float Dar;
+    public float? RegistrationOverride;
 
     public float GetRegistrationFee(List<PoplatokInfo> poplatky)
     {
@@ -44,7 +45,7 @@ public class NewRegistration
 
     public float GetCost(List<SluziaciInfo> sluziaci, List<PoplatokInfo> poplatky)
     {
-        float registracny = GetRegistrationFee(poplatky);
+        float registracny = RegistrationOverride ?? GetRegistrationFee(poplatky);
 
         float strava = 0;
         if (PiatokVecera) strava += Prices.Vecera;
@@ -66,7 +67,7 @@ public class NewRegistration
         {
             var sluziaci2 = sluziaci.First(x => x.Id == IdSluziaci);
             if (sluziaci2.FreeFood) strava = 0;
-            if (sluziaci2.FreeRegistration) registracny = 0;
+            if (sluziaci2.FreeRegistration && RegistrationOverride == null) registracny = 0;
             if (sluziaci2.FreeDorm) ubytovanie = 0;
         }
         return registracny + strava + ubytovanie + Dar;

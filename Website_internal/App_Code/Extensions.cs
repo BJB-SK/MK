@@ -50,7 +50,7 @@ public static class Extensions
 
     public static void AddParameterFloat(this SqlCommand command, string name, float? value)
     {
-        var parameter = command.Parameters.AddWithValue(name, value);
+        var parameter = command.Parameters.AddWithValue(name, (object)value ?? DBNull.Value);
         parameter.SqlDbType = SqlDbType.Decimal;
     }
 

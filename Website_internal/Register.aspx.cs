@@ -38,6 +38,7 @@ public partial class Register : Page
             Common.FillInternat(ddlUbytovaniePiatokSobota);
             Common.FillInternat(ddlUbytovanieSobotaNedela);
         }
+        btnLenDnes.OnClientClick = string.Format("$('#{0}').val('{1}');return false;", txtRegistracnyOverride.ClientID, Prices.LenDnes);
     }
 
     protected void btnSave_Click(object sender, EventArgs e)
@@ -82,6 +83,12 @@ public partial class Register : Page
             }
         }
 
+        float? registrationOverride = null;
+        float tmp;
+        if (!string.IsNullOrWhiteSpace(txtRegistracnyOverride.Text) &&
+            float.TryParse(txtRegistracnyOverride.Text, out tmp))
+            registrationOverride = tmp;
+
         var errors = new List<string>();
         //if (string.IsNullOrWhiteSpace(txtMeno.Text)) errors.Add(Common.ChybaMeno);
         //if (string.IsNullOrWhiteSpace(txtPriezvisko.Text)) errors.Add(Common.ChybaPriezvisko);
@@ -124,7 +131,8 @@ public partial class Register : Page
                 IdUbytovanieSobotaNedela = idUbytovanieSobotaNedela ?? 0,
                 NedelaRanajky = chbNedelaRanajky.Checked,
                 NedelaObed = chbNedelaObed.Checked,
-                Dar = sponzorskyDar
+                Dar = sponzorskyDar,
+                RegistrationOverride = registrationOverride
             };
             lblTotalCost.Text = Currency(data.GetCost(_dropDownData.Sluziaci, _dropDownData.Poplatky));
 

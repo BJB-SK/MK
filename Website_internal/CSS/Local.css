@@ -12,13 +12,17 @@
 	font-family: "purista";
 	src: url('/fonts/PuristaMedium.otf') format("opentype");
 }
+@font-face{
+	font-family: "Merriweather";
+	src: url('/fonts/MerriweatherSans-Regular.otf') format("opentype");
+}
 html {
-    font-family: purista;
-    font-size: 14px;
+    font-family: Merriweather, purista;
+    font-size: 16px;
     /* color: rgba(255, 255, 255, 0.7); */
 }
 input[type=submit], input[type=text], select {
-    font-family: purista, Helvetica, sans-serif; /* purista; */
+    font-family: Merriweather, purista, Helvetica, sans-serif; /* purista; */
     /* font-size: 1.17em; */
 }
 .bigFont {
@@ -59,7 +63,7 @@ input[type=checkbox] + label {
 } 
 input[type=checkbox]:checked + label {
     color: #fff;
-    background: #00f;
+    background: rgb(186, 158, 71);
     border-radius: 5px;
 }
 input[type=radio] {
@@ -74,7 +78,7 @@ input[type=radio] + label {
 } 
 input[type=radio]:checked + label {
     color: #fff;
-    background: #00f;
+    background: rgb(186, 158, 71);
     border-radius: 5px;
 }
 .multiColumnContainer {
@@ -110,7 +114,7 @@ input[type=radio]:checked + label {
     vertical-align : top
 }
 .normalText {
-    font-family: purista;
-    font-size: 14px;
+    font-family: Merriweather, purista;
+    font-size: 16px;
     color: #000;
 }

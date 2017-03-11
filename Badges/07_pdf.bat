@@ -38,7 +38,7 @@ while($i < @ids)
         push @front, sprintf("Result\\%s_front.png", get_id($i));
         $i++;
     }
-    print "montage " . join(' ', @front) . " -tile ${mx}x${my} -geometry +0+0 -quality 80 -rotate 90 Result\\set_${p2}_front.jpg\n";
+    print "montage " . join(' ', @front) . " -tile ${mx}x${my} -border 1x1 -geometry +0+0 Result\\set_${p2}_front.png\n"; # -rotate 90  -quality 80 
     # back
     my @back;
     for(my $y = 0; $y < $my; $y++)
@@ -49,17 +49,20 @@ while($i < @ids)
             push @back, sprintf("Result\\%s_back.png", get_id($k));
         }
     }
-    print "montage " . join(' ', @back) . " -tile ${mx}x${my} -border 4x4 -bordercolor white -geometry 1234x1742+4+4 -quality 80 -rotate -90 Result\\set_${p2}_back.jpg\n";
+    #4961 x 7016 px
+    print "montage " . join(' ', @back) . " -tile ${mx}x${my} -border 1x1 -geometry +0+0 Result\\set_${p2}_back.png\n"; # -rotate -90  -quality 80  -geometry 1234x1742+4+4
+    #-bordercolor white
+    # 
     
-    push @pages, "Result\\set_${p2}_front.jpg", "Result\\set_${p2}_back.jpg";
+    push @pages, "Result\\set_${p2}_front.png", "Result\\set_${p2}_back.png";
     $p++;
-    if(($p % 1005) == 0)
+    if(($p % 1000) == 0)
     {
-        print "$convert " . join(' ', @pages) . sprintf(" PDF\\output_%02d.pdf\n", $s++);
+        print "$convert -density 600 " . join(' ', @pages) . sprintf(" PDF\\output_%02d.pdf\n", $s++);
         @pages = ();
     }
 }
-print "$convert " . join(' ', @pages) . sprintf(" PDF\\output_%02d.pdf\n", $s++);
+print "$convert -density 600 " . join(' ', @pages) . sprintf(" PDF\\output_%02d.pdf\n", $s++);
 
 sub get_id
 {

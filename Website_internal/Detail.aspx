@@ -118,6 +118,17 @@
                             <td><asp:Label runat="server" ID="lblRegistrationDate" /></td>
                         </tr>
                         <tr>
+                            <td>Registračný</td>
+                            <td><asp:Label runat="server" ID="lblRegistracnyPoplatok" /></td>
+                        </tr>
+                        <tr>
+                            <td>Override</td>
+                            <td>
+                                <asp:TextBox runat="server" ID="txtRegistracnyOverride" Width="50px" AutoPostBack="false"/>
+                                <asp:Button runat="server" ID="btnLenDnes" Text="Len dnes" />
+                            </td>
+                        </tr>
+                        <tr>
                             <td>Platba prišla</td>
                             <td><asp:Label runat="server" ID="lblPaymentDate" /></td>
                         </tr>

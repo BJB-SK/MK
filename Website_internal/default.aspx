@@ -118,7 +118,7 @@
                                 </td>
                             </tr>
 
-                            <tr>
+                            <tr style="display:none">
                                 <td>
                                     Kontrolná otázka
                                 </td>

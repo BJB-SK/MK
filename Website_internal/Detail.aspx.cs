@@ -55,6 +55,7 @@ public partial class Detail : Page
             LoadData();
         }
         lblSuccess.Text = "";
+        btnLenDnes.OnClientClick = string.Format("$('#{0}').val('{1}');return false;", txtRegistracnyOverride.ClientID, Prices.LenDnes);
     }
 
     private void LoadData()
@@ -152,6 +153,11 @@ public partial class Detail : Page
             lblError.Text = string.Join("<br/>", errors);
             return null;
         }
+        float? registrationOverride = null;
+        float tmp;
+        if (!string.IsNullOrWhiteSpace(txtRegistracnyOverride.Text) &&
+            float.TryParse(txtRegistracnyOverride.Text, out tmp))
+            registrationOverride = tmp;
 
         return new DetailData
         {
@@ -177,7 +183,8 @@ public partial class Detail : Page
             SobotaVecera2 = chbSobotaVecera2.Checked,
             IdUbytovanieSobotaNedela = idUbytovanieSobotaNedela ?? 0,
             NedelaRanajky = chbNedelaRanajky.Checked,
-            NedelaObed = chbNedelaObed.Checked
+            NedelaObed = chbNedelaObed.Checked,
+            RegistracnyOverride = registrationOverride
         };
     }
 
@@ -222,6 +229,8 @@ public partial class Detail : Page
         btnZaplatiliSme.Visible = surplus;
         btnPrisli.Visible = !data.DtPrisli.HasValue;
         txtAmount.Text = Currency(Math.Abs(data.Preplatok));
+        lblRegistracnyPoplatok.Text = data.RegistraciaZadarmo ? "Zadarmo" : Currency(data.RegistracnyPoplatok);
+        txtRegistracnyOverride.Text = data.RegistracnyOverride == null ? "" : string.Format("{0:0.00}", data.RegistracnyOverride);
 
         lblTitle.Text = data.Meno + " " + data.Priezvisko;
 

@@ -38,6 +38,8 @@ public class DetailData
     public float Zaplatili;
     public float Dar;
     public float Preplatok;
+    public float RegistracnyPoplatok;
+    public float? RegistracnyOverride;
 
     public List<IdName> Group;
 }
