@@ -27,18 +27,21 @@ insert into [dbo].[email]
     ([address],[subject],[body],[retries],[success],[result],[dtLastAttempt])
 select
     [Email], 
-    N'Spätná väzba ku MK017', 
-    N'<b>Milá/ý ' + [Meno] + ' ' + [Priezvisko] + N',</b>' +
+    N'Sp[ě/ä]tná v[a/ä]zba ku MK018', 
+    N'<b>Mil[á/ý/ej] ' + [Meno] + ' ' + [Priezvisko] + N',</b>' +
     N'<br/><br/>' +
-    N'ďakujeme Ti za účasť na Mládežníckej konferencii 2017!!' +
+    N'[dě/ďa]kujeme Ti za účas[t/ť] na Mládežníck[é/ej] konferenc[i/ii] 2018!!!' +
     N'<br/><br/>' +
-    N'Ak máš čas a chuť, prosím pomôž nám tým, že vyplníš <b><a href="https://docs.google.com/forms/d/e/1FAIpQLSe6bUNdI46vcSyFNqv8Pd382vCLLPabSYMTc5tO2TgC0enWLw/viewform">túto anketu</a></b>.' +
+    N'Padlo [hodně/veľa] konferových rekord[ů/ov].' +
+    N'<br/><br/>' +
+    N'[Jestli/Ak] máš čas a chuť, prosím pom[ů/ô]ž nám t[í/ý]m, že vyplníš <b><a href="https://docs.google.com/forms/d/e/1FAIpQLSe6bUNdI46vcSyFNqv8Pd382vCLLPabSYMTc5tO2TgC0enWLw/viewform">[tuhle/túto] anketu</a></b>.' +
     N'<br/><br/>' +
     N'Díky!' +
     N'<br/>' +
-    N'Organizačný tím MK'
+    N'Organizačn[í/ý] tím MK'
     ,
     5,0,'',getutcdate()
 from [dbo].[registracia] 
-where [dtPrisli] is not null and [Email] <> '' -- and email = 'jaroban@yahoo.com';
+where [dtPrisli] is not null and [Email] <> '' and email = 'jaroban@yahoo.com';
 -- and [Email] = 'jaroban@yahoo.com';
+

@@ -1,6 +1,7 @@
 declare @email nvarchar(max);
 
-set @email = 'jaroban@yahoo.com';
+
+set @email = 'dummy@dummy.com';
 
 --select *
 delete
