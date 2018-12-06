@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -219,7 +219,7 @@ Seminár je určený najmä pre vedúcich, ale aj pre všetkých ostatných, kto
   </div>
 </section>
 
-  <section id="contact">
+<section id="contact">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 text-center">
@@ -229,27 +229,27 @@ Seminár je určený najmä pre vedúcich, ale aj pre všetkých ostatných, kto
                 <br />
                 <br />
             </div>
-        <div class="col-lg-4 text-center">
-          <i class="fa fa-phone fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-          <br /><br />
-          Martin Tobák 0917 349 474 <br />
-          Zoli Kakaš 0907 731 428
-        </div>
+            <div class="col-lg-4 text-center">
+                <i class="fa fa-phone fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                <br /><br />
+                Martin Tobák 0917 349 474 <br />
+                Zoli Kakaš 0907 731 428
+            </div>
 
-        <div class="col-lg-4 text-center email">
-            <a href="mailto:mladeznicka.konfera@gmail.com">
-            <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                <p><br />mladeznicka.konfera@gmail.com</p>
-            </a>
-        </div>
+            <div class="col-lg-4 text-center email">
+                <a href="mailto:mladeznicka.konfera@gmail.com">
+                    <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                    <p><br />mladeznicka.konfera@gmail.com</p>
+                </a>
+            </div>
 
-        <div class="col-lg-4 text-center facebook">
-            <a target="_blank" href="https://www.facebook.com/events/993799814144903">
-            <i class="fa fa-facebook fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                <p><br />https://www.facebook.com/events/993799814144903</p>
-            </a>
+            <div class="col-lg-4 text-center facebook">
+                <a target="_blank" href="https://www.facebook.com/events/993799814144903">
+                    <i class="fa fa-facebook fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                    <p><br />https://www.facebook.com/events/993799814144903</p>
+                </a>
+            </div>
         </div>
-
     </div>
 </section>
 

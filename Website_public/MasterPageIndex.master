@@ -1,18 +1,17 @@
-<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageIndex.master.cs" Inherits="MasterPageIndex" %>
-<!DOCTYPE html>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageIndex.master.cs" Inherits="MasterPageIndex" %>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head runat="server">
     <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Mládežnícka konferencia 2019 (22.-24.02 2019, BB). Nadupaný víkend plný zaujímavých tém, seminárov, chvál, vzácnych hostí a ďalších skvelých vecí. Neváhaj a zaregistruj sa čím skôr. Tešíme sa na Teba!">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Mládežnícka konferencia 2019 (22.-24.02 2019, BB). Nadupaný víkend plný zaujímavých tém, seminárov, chvál, vzácnych hostí a ďalších skvelých vecí. Neváhaj a zaregistruj sa čím skôr. Tešíme sa na Teba!">
 
-<meta property="og:image" content="https://res.cloudinary.com/m1n0/image/upload/v1543962047/mk-2019-banner_mdgnn5.png" />
-<meta property="og:description" content="Mládežnícka konferencia 2019 (22.-24.02 2019, BB). Nadupaný víkend plný zaujímavých tém, seminárov, chvál, vzácnych hostí a ďalších skvelých vecí. Neváhaj a zaregistruj sa čím skôr. Tešíme sa na Teba!" />
+    <meta property="og:image" content="https://res.cloudinary.com/m1n0/image/upload/v1543962047/mk-2019-banner_mdgnn5.png" />
+    <meta property="og:description" content="Mládežnícka konferencia 2019 (22.-24.02 2019, BB). Nadupaný víkend plný zaujímavých tém, seminárov, chvál, vzácnych hostí a ďalších skvelých vecí. Neváhaj a zaregistruj sa čím skôr. Tešíme sa na Teba!" />
 
-<meta name="author" content="BJB Slovensko">
-<title>MK2019</title>
-
+    <meta name="author" content="BJB Slovensko">
+    <title>MK2019</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -34,7 +33,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <asp:ContentPlaceHolder id="RegistrationHead" runat="server"></asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder runat="server" ID="RegistrationHead"></asp:ContentPlaceHolder>
 </head>
 
 
@@ -49,10 +48,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="https://www.facebook.com/events/993799814144903" target="_blank" class="social fa fa-facebook fa-3x wow bounceIn" data-wow-delay=".1s"></a>
+            <a href="https://www.facebook.com/events/993799814144903" target="_blank" class="social fa fa-facebook fa-3x wow bounceIn" data-wow-delay=".1s">
                 <span></span>
             </a>
-            <a href="https://www.youtube.com/channel/UCDIZcaRg3nfl7aD9slJObTg" target="_blank" class="social fa fa-youtube-play fa-3x wow bounceIn" data-wow-delay=".1s"></a>
+            <a href="https://www.youtube.com/channel/UCDIZcaRg3nfl7aD9slJObTg" target="_blank" class="social fa fa-youtube-play fa-3x wow bounceIn" data-wow-delay=".1s">
                 <span></span>
             </a>
         </div>
@@ -149,8 +148,8 @@
                       <strong>6€</strong> do 25.12 <small>(vrátane)</small><br>
                       <strong>9€</strong> do 20.01 <small>(vrátane)</small><br>
                       <strong>12€</strong> do 14.02 <small>(vrátane)</small><br>
-                      <strong>5€</strong> na mieste <small>(piatok)</small><br/ >
-                      <strong>10€</strong> na mieste <small>(sobota)</small><br/ >
+                      <strong>5€</strong> na mieste <small>(piatok)</small><br/>
+                      <strong>10€</strong> na mieste <small>(sobota)</small><br/>
                     </p>
                 </div>
             </div>
@@ -280,7 +279,7 @@ A čo odmena za nasledovanie? Budem lepší človek? Pôjdem do neba? Budem mať
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <asp:ContentPlaceHolder id="RegistrationBody" runat="server"></asp:ContentPlaceHolder>
+                <asp:ContentPlaceHolder runat="server" ID="RegistrationBody"></asp:ContentPlaceHolder>
             </div>
         </div>
     </div>
@@ -429,7 +428,7 @@ A čo odmena za nasledovanie? Budem lepší človek? Pôjdem do neba? Budem mať
         <br /><br />
         Ďakujeme, že ste sa rozhodli slúžiť na MK 2019 ako dobrovoľníci.
         <br /><br />
-        <q>Čokoľvek ste urobili jednému z týchto mojich, mne ste urobili.</q> <strong>Matúš 25:40</strong
+            <q>Čokoľvek ste urobili jednému z týchto mojich, mne ste urobili.</q> <strong>Matúš 25:40</strong>
         <br /><br />
         </p>
       </div>
@@ -447,27 +446,27 @@ A čo odmena za nasledovanie? Budem lepší človek? Pôjdem do neba? Budem mať
                 <br />
                 <br />
             </div>
-        <div class="col-lg-4 text-center">
-          <i class="fa fa-phone fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-          <br /><br />
-          Martin Tobák 0917 349 474 <br />
-          Zoli Kakaš 0907 731 428
-        </div>
+            <div class="col-lg-4 text-center">
+                <i class="fa fa-phone fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                <br /><br />
+                Martin Tobák 0917 349 474 <br />
+                Zoli Kakaš 0907 731 428
+            </div>
 
-        <div class="col-lg-4 text-center email">
-            <a href="mailto:mladeznicka.konfera@gmail.com">
-            <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                <p><br />mladeznicka.konfera@gmail.com</p>
-            </a>
-        </div>
+            <div class="col-lg-4 text-center email">
+                <a href="mailto:mladeznicka.konfera@gmail.com">
+                    <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                    <p><br />mladeznicka.konfera@gmail.com</p>
+                </a>
+            </div>
 
-        <div class="col-lg-4 text-center facebook">
-            <a target="_blank" href="https://www.facebook.com/events/993799814144903">
-            <i class="fa fa-facebook fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                <p><br />https://www.facebook.com/events/993799814144903</p>
-            </a>
+            <div class="col-lg-4 text-center facebook">
+                <a target="_blank" href="https://www.facebook.com/events/993799814144903">
+                    <i class="fa fa-facebook fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                    <p><br />https://www.facebook.com/events/993799814144903</p>
+                </a>
+            </div>
         </div>
-
     </div>
 </section>
 

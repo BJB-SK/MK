@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPageIndex.master" AutoEventWireup="true" CodeFile="default.aspx.cs" Inherits="Register" %>
-<%@ Register TagPrefix="uc" TagName="RegistrationInfo" Src="~/Controls/RegistrationInfo.ascx" %>
+<%@ Reference Control="~/Controls/RegistrationInfo.ascx" %>
 
 <asp:Content runat="server" ID="ContentRegistrationHead" ContentPlaceHolderID="RegistrationHead">
     <link href="/css/Public.css" rel="stylesheet" type="text/css" />
@@ -125,14 +125,14 @@
                                         </td>
                                     </tr>
 
-                                    <tr runat="server" id="trPayerEmail">
+                                    <tr runat="server" id="trPayerEmail" class="rows-2 centered">
                                         <td>
                                             Email o platbe poslať na
                                         </td>
                                         <td>
                                             <asp:TextBox runat="server" ID="txtEmail" Width="300px" AutoPostBack="true"/><br />
-                                            <asp:Button runat="server" ID="btnAddAtSign" Text="@" AutoPostBack="false" />
-                                            <asp:Button runat="server" ID="btnAddGmail" Text="@gmail.com" AutoPostBack="false" />
+                                            <!-- <asp:Button runat="server" ID="btnAddAtSign" Text="@" AutoPostBack="false" />
+                                            <asp:Button runat="server" ID="btnAddGmail" Text="@gmail.com" AutoPostBack="false" /> -->
                                         </td>
                                     </tr>
 
@@ -148,15 +148,29 @@
                                     <tr>
                                         <td colspan="2">
                                             <h3>GDPR</h3>
-Vaše osobné údaje (ktoré ste zadali v tomto formulári + údaje o platbe) potrebujeme uložiť až po dobu konania konferencie.<br />
-Po ukončení konferencie Vám pošleme mail s odkazom na dotazník kde nám môžete dať spätnú väzbu.<br />
-Potom všetky údaje čo najrýchlejšie zmažeme.<br />
-Nemusíte uviesť svoje skutočné meno / priezvisko (potrebujeme Vás len nejako identifikovať na registrácii),<br />
-ale mail musí sedieť (pošleme Vám tam informácie o platbe).<br />
-Telefónne číslo potrebujeme len u dobrovoľníkov, aby sme ich vedeli kontaktovať.<br />
-Telefónne čísla dobrovoľníkov dostanú vedúci služieb na ktoré sa prihlásili.<br />
-Ak chcete vedieť aké údaje o Vás máme alebo požiadať o ich zmazanie, 
-prosím napíšte mail na <a href="mailto:mladeznickakonfera@gmail.com">mladeznickakonfera@gmail.com</a><br />
+                                            <ul>
+<li>
+    Vaše osobné údaje (ktoré ste zadali v tomto formulári + údaje o platbe) potrebujeme uložiť až po dobu konania konferencie.
+</li>
+<li>
+    Po ukončení konferencie Vám pošleme mail s odkazom na dotazník kde nám môžete dať spätnú väzbu.
+</li>
+<li>
+    Potom všetky údaje čo najrýchlejšie zmažeme.
+</li>
+<li>
+    Nemusíte uviesť svoje skutočné meno / priezvisko (potrebujeme Vás len nejako identifikovať na registrácii),
+    ale mail musí sedieť (pošleme Vám tam informácie o platbe).
+</li>
+<li>
+    Telefónne číslo potrebujeme len u dobrovoľníkov, aby sme ich vedeli kontaktovať.
+    Telefónne čísla dobrovoľníkov dostanú vedúci služieb na ktoré sa prihlásili.
+</li>
+<li>
+    Ak chcete vedieť aké údaje o Vás máme alebo požiadať o ich zmazanie, 
+    prosím napíšte mail na <a href="mailto:mladeznickakonfera@gmail.com">mladeznickakonfera@gmail.com</a>
+</li>
+                                            </ul>
                                             <br />
                                             <asp:CheckBox runat="server" ID="chbGdprConsent" Text="Súhlasím" CssClass="gdpr" />
                                             <asp:Label runat="server" ID="lblGdprMissing" CssClass="error" Text="<< Prosím prečítajte si GDPR info a zaškrtnite súhlas" />
