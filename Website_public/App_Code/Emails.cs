@@ -4,24 +4,24 @@ using System.Linq;
 public static class Emails
 {
     public const string RegistrationSubject = 
-        "Registrácia na Mládežnícku konferenciu 2017";
+        "Registrácia na Mládežnícku konferenciu 2019";
 
     public const string MailHeader = 
-        "<b>Mládežnícka konferencia 2017</b><br/>" +
-        "24. - 26. február 2017<br/>";
+        "<b>Mládežnícka konferencia 2019</b><br/>" +
+        "22. - 24. február 2019<br/>";
 
     public const string SportRegistration =
         "<br/>Registrácia volejbalového alebo futbalového teamu je v samostatnej prihláške - <a href=" +
-        "\"http://mk.baptist.sk/Sports.aspx\">klikni sem</a> (max. do 15.2.2017!!!)<br/>";
+        "\"http://mk.baptist.sk/Sports.aspx\">klikni sem</a> (max. do 18.2.2019!!!)<br/>";
 
     public const string MailFooter1 =
         "<br/><b>Informácie ohľadom registrácie:</b> mladeznicka.konfera@gmail.com<br/>" +
         "Všeobecne informácie:<br/>" +
         "<a href=\"http://mk.baptist.sk\">mk.baptist.sk</a>, <a href=\"mailto:mladez@baptist.sk\">mladez@baptist.sk</a>, " +
-        "Beno Uhrin 0905 595087, Zoli Kakaš 0907 731428<br/>";
+        "Martin Tobák 0917349474<br/>";
         
     public const string MailFooter2 = "<br/>Na požehnaný čas aj s tebou sa teší";
-    public const string MailFooter3 = "<br/>Organizačný team MK2017";
+    public const string MailFooter3 = "<br/>Organizačný team MK2019";
 
     public static string GetParticipantInfo(RegistrationEntry data)
     {
@@ -29,11 +29,12 @@ public static class Emails
         var strava = GetStrava(data);
         return
             string.Format("<br/>Milá/milý {0} {1},<br/>", data.Meno, data.Priezvisko) +
-            "vítame Ťa medzi prihlásenými účastníkmi Mládežníckej konferencie BJB 2017.<br/>" +
+            "vítame Ťa medzi prihlásenými účastníkmi Mládežníckej konferencie BJB 2019.<br/>" +
             "<br/><b>Máš objednané:</b><br/>" +
             (ubytovanie.Count > 0 ? "<b>Ubytovanie:</b> " + string.Join(", ", ubytovanie) + " - k ubytovaniu je potrebný vlastný spacák a karimatka<br/>" : "") +
             (strava.Count > 0 ? "<b>Strava:</b> " + string.Join(", ", strava) + "<br/>" : "") +
-            (data.IdTricko > 0 ? "<b>Tričko:</b> " + data.Tricko + "<br/>" : "") +
+            (data.IdTricko > 0 ? "<b>Tričko:</b> " + data.Tricko + ", " + data.FarbaTricka + "<br/>" : "") +
+            (data.IdMikina > 0 ? "<b>Mikina:</b> " + data.Mikina + ", " + data.FarbaMikiny + "<br/>" : "") +
             (data.IdSluziaci == 1 ? 
                 "V registračnom formulári si zaškrtol/zaškrtla, že si ochotný/ochotná slúžiť a byť k dispozícii pre rôzne úlohy počas celého " +
                 "času trvania konferencie. Ohľadom možnosti služby Ťa budeme kontaktovať.<br/>" : "");
@@ -82,7 +83,7 @@ public static class Emails
             GetParticipantInfo(data) +
             "<br/>Tvoja celková čiastka za konferenciu je <b>v hodnote " + currency.FormatMoney(toPay) + "</b>, táto čiastka obsahuje konferenčný poplatok " +
             "a pripočítaný je aj tvoj sponzorský príspevok, ak si ho zvolil(a).<br/> POZOR!  Registračný poplatok závisí od dátumu zaplatenia (datum odoslania penazí z účtu), nie od dátumu registrácie. " +
-            "Registácia, ktorá nebude zaplatená do 15.2.2017 bude zrušená. <br/>" +
+            "Registácia, ktorá nebude zaplatená do 14.2.2019 bude zrušená. <br/>" +
             GetPaymentInfo(data, toPay, currency) +
             SportRegistration +
             MailFooter1 +

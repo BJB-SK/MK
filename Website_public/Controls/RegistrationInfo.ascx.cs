@@ -19,7 +19,7 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
         txtMeno.SetPlaceHolder("Meno (na visačku)");
         txtPriezvisko.SetPlaceHolder("Priezvisko (na visačku)");
         txtEmail.SetPlaceHolder("Email (povinné)");
-        txtTelefon.SetPlaceHolder("Telefón (nepovinné)");
+        txtTelefon.SetPlaceHolder("Telefón (povinné)");
         txtZbor.SetPlaceHolder("Zbor (ak nie je v zozname)");
         txtPoznamka.SetPlaceHolder("Poznámka pre organizátorov");
 
@@ -73,14 +73,14 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
             errors.Add(Common.ChybaEmail);
             txtEmail.CssClass = "errorBorder";
         }
-        /*
-        lblTelefonError.Text = "";
-        if (!Common.ValidatePhoneNumber(txtTelefon.Text.Trim()))
+
+        txtTelefon.CssClass = "";
+        if (pnlTelefon.Visible && !Common.ValidatePhoneNumber(txtTelefon.Text.Trim()))
         {
             errors.Add(Common.ChybaTelefon);
-            lblTelefonError.Text = Common.ChybaTelefon;
+            txtTelefon.CssClass = "errorBorder";
         }
-
+        /*
         lblZborError.Text = "";
         if (ddlZbor.SelectedValue == "0" ||
             (ddlZbor.SelectedValue == "-1" && string.IsNullOrWhiteSpace(txtZbor.Text)))
@@ -88,7 +88,7 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
             errors.Add(Common.ChybaZbor);
             lblZborError.Text = Common.ChybaZbor;
         }
-         */
+        */
         return errors;
     }
 
@@ -115,6 +115,19 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
         set
         {
             ddlTricko.SelectedValue = value.ToString();
+        }
+    }
+
+    public int IdMikina
+    {
+        get
+        {
+            int idMikina = 0;
+            return int.TryParse(ddlMikina.SelectedValue, out idMikina) ? idMikina : 0;
+        }
+        set
+        {
+            ddlMikina.SelectedValue = value.ToString();
         }
     }
 
@@ -160,11 +173,13 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
                 InyZbor = txtZbor.Text.Trim(),
                 PiatokVecera = chbPiatokVecera.Checked,
                 PiatokVecera2 = chbPiatokVecera2.Checked,
+                UbytovaniePiatokSobota = chbUbytovaniePiatokSobota.Checked || chbTichaTriedaPiatokSobota.Checked,
                 TichaTriedaPiatokSobota = chbTichaTriedaPiatokSobota.Checked,
                 SobotaRanajky = chbSobotaRanajky.Checked,
                 SobotaObed = chbSobotaObed.Checked,
                 SobotaVecera = chbSobotaVecera.Checked,
                 SobotaVecera2 = chbSobotaVecera2.Checked,
+                UbytovanieSobotaNedela = chbUbytovanieSobotaNedela.Checked || chbTichaTriedaSobotaNedela.Checked,
                 TichaTriedaSobotaNedela = chbTichaTriedaSobotaNedela.Checked,
                 NedelaRanajky = chbNedelaRanajky.Checked,
                 NedelaObed = chbNedelaObed.Checked,
@@ -172,6 +187,12 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
                 PingPong = chbPingPong.Checked,
                 IdTricko = IdTricko,
                 Tricko = ddlTricko.SelectedItem == null ? "" : ddlTricko.SelectedItem.Text,
+                IdFarbaTricka = rblTricko.SelectedIndex,
+                FarbaTricka = rblTricko.SelectedValue,
+                IdMikina = IdMikina,
+                Mikina = ddlMikina.SelectedItem == null ? "" : ddlMikina.SelectedItem.Text,
+                IdFarbaMikiny = rblMikina.SelectedIndex,
+                FarbaMikiny = rblMikina.SelectedValue,
                 IdSluziaci = IdSluziaci,
                 IdDobrovolnik = IdDobrovolnik,
                 Poznamka = txtPoznamka.Text.Trim(),
@@ -188,17 +209,22 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
             txtZbor.Text = value.InyZbor;
             chbPiatokVecera.Checked = value.PiatokVecera;
             chbPiatokVecera2.Checked = value.PiatokVecera2;
+            chbUbytovaniePiatokSobota.Checked = value.UbytovaniePiatokSobota;
             chbTichaTriedaPiatokSobota.Checked = value.TichaTriedaPiatokSobota;
             chbSobotaRanajky.Checked = value.SobotaRanajky;
             chbSobotaObed.Checked = value.SobotaObed;
             chbSobotaVecera.Checked = value.SobotaVecera;
             chbSobotaVecera2.Checked = value.SobotaVecera2;
+            chbUbytovanieSobotaNedela.Checked = value.UbytovanieSobotaNedela;
             chbTichaTriedaSobotaNedela.Checked = value.TichaTriedaSobotaNedela;
             chbNedelaRanajky.Checked = value.NedelaRanajky;
             chbNedelaObed.Checked = value.NedelaObed;
             chbSach.Checked = value.Sach;
             chbPingPong.Checked = value.PingPong;
             IdTricko = value.IdTricko;
+            rblTricko.SelectedIndex = value.IdFarbaTricka;
+            IdMikina = value.IdMikina;
+            rblMikina.SelectedIndex = value.IdFarbaMikiny;
             IdSluziaci = value.IdSluziaci;
             IdDobrovolnik = value.IdDobrovolnik;
             txtPoznamka.Text = value.Poznamka;
@@ -222,7 +248,8 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
         _poplatky = data.Poplatky;
         _showPrivateSluziaci = sluziaci;
         Common.FillSluziaci(ddlSluziaci, data.Sluziaci, sluziaci);
-        Common.FillTeeShirts(ddlTricko, data.Tricka);
+        Common.FillTeeShirts(ddlTricko, data.Tricka, false);
+        Common.FillTeeShirts(ddlMikina, data.Tricka, true);
         Common.FillChurches(ddlZbor, data.Zbory);
         Common.FillDobrovolnici(ddlDobrovolnik, data.Dobrovolnici);
     }
@@ -239,12 +266,14 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
         var obed = "Obed";
         var vecera = "Večera";
         var vecera2 = "Bageta";
-        var tichaTrieda = "Tichá trieda";
+        var ubytovanie = "Ubytovanie";
+        var tichaTrieda = "v tichej triede";
         var data = Data;
         var toolTipRanajky = Currency.FormatMoney(sluziaci.FreeFood ? 0 : Prices.Ranajky);
         var toolTipObed = Currency.FormatMoney(sluziaci.FreeFood ? 0 : Prices.Obed);
         var toolTipVecera = Currency.FormatMoney(sluziaci.FreeFood ? 0 : Prices.Vecera);
         var toolTipVecera2 = Currency.FormatMoney(sluziaci.FreeFood ? 0 : Prices.Vecera2);
+        var toolUbytovanie = Currency.FormatMoney(sluziaci.FreeDorm ? 0 : Prices.Ubytovanie);
 
         chbSobotaRanajky.Text = ranajky;
         chbNedelaRanajky.Text = ranajky;
@@ -270,17 +299,24 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
         chbSobotaVecera2.ToolTip = toolTipVecera2;
         lblCenaVecera2.Text = Currency.FormatMoney(sluziaci.FreeFood ? 0 : data.Vecere2 * Prices.Vecera2);
 
+        chbUbytovaniePiatokSobota.Text = ubytovanie;
+        chbUbytovanieSobotaNedela.Text = ubytovanie;
+        chbUbytovaniePiatokSobota.ToolTip = toolUbytovanie;
+        chbUbytovanieSobotaNedela.ToolTip = toolUbytovanie;
+
         chbTichaTriedaPiatokSobota.Text = tichaTrieda;
         chbTichaTriedaSobotaNedela.Text = tichaTrieda;
 
         lblCenaTricko.Text = Currency.FormatMoney(sluziaci.FreeTeeShirt || IdTricko == 0 ? 0 : Prices.Tricko);
+        lblCenaMikina.Text = Currency.FormatMoney(sluziaci.FreeMikina || IdMikina == 0 ? 0 : Prices.Mikina);
         lblRegistracnyPoplatok.Text = Currency.FormatMoney(sluziaci.FreeRegistration ? 0 : data.GetRegistrationFee(_poplatky));
+        lblCenaUbytovanie.Text = Currency.FormatMoney(sluziaci.FreeDorm ? 0 : data.GetLodgingFee());
         lblTotalCost.Text = Currency.FormatMoney(data.GetCost(_sluziaci, _poplatky));
 
         if (!CheckBoxesPostBack)
         {
-            var piatok = new List<CheckBox> { chbPiatokVecera, chbPiatokVecera2 };
-            var sobota = new List<CheckBox> { chbSobotaRanajky, chbSobotaObed, chbSobotaVecera, chbSobotaVecera2 };
+            var piatok = new List<CheckBox> { chbPiatokVecera, chbPiatokVecera2, chbUbytovaniePiatokSobota };
+            var sobota = new List<CheckBox> { chbSobotaRanajky, chbSobotaObed, chbSobotaVecera, chbSobotaVecera2, chbUbytovanieSobotaNedela };
             var nedela = new List<CheckBox> { chbNedelaRanajky, chbNedelaObed };
 
             var vsetko = new List<CheckBox>();
@@ -302,6 +338,10 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
         }
 
         ddlDobrovolnik.Visible = ddlSluziaci.SelectedValue == "1";  // hardcoded value for dobrovolnik
+        pnlTelefon.Visible = ddlSluziaci.SelectedValue != "0";
+
+        rblTricko.Visible = ddlTricko.SelectedValue != "0";
+        rblMikina.Visible = ddlMikina.SelectedValue != "0";
 
         base.OnPreRender(e);
     }
@@ -322,6 +362,7 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
         {
             chbPiatokVecera.Checked = value;
             chbPiatokVecera2.Checked = value;
+            chbUbytovaniePiatokSobota.Checked = value;
         }
     }
 
@@ -333,6 +374,7 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
             chbSobotaObed.Checked = value;
             chbSobotaVecera.Checked = value;
             chbSobotaVecera2.Checked = value;
+            chbUbytovanieSobotaNedela.Checked = value;
         }
     }
 

@@ -20,9 +20,17 @@ html {
 input[type=submit], input[type=text], select {
     font-family: Merriweather;
     /* font-size: 1.17em; */
+    max-width: 225px;
 }
+
+@media (min-width: 500px) {
+    input[type=submit], input[type=text], select {
+        max-width: none;
+    }
+}
+
 #form td, #form th {
-    padding: 1px 4px;
+    padding: 1px 2px;
 }
 
 input[type=submit] {
@@ -51,15 +59,39 @@ input[type=checkbox] {
     visibility: hidden;
     opacity: 0;
 }
-input[type=checkbox] + label {
-    color: #555;
-    padding: 1px 3px;
-} 
-input[type=checkbox]:checked + label {
-    color: #fff;
-    background: rgb(186, 158, 71);
-    border-radius: 5px;
+
+.gdpr input[type=checkbox] {
+    position: relative;
+    visibility: visible;
+    opacity: 1;
+    margin: 8px;
 }
+
+#registration input[type=checkbox] + label {
+    color: rgb(180, 180, 180);
+    padding: 4px 2px;
+    background: rgb(230, 230, 230);
+    border-radius: 2px;
+    width: 100%;
+    font-size: 12px;
+}
+
+@media (min-width: 500px) {
+    #registration input[type=checkbox] + label {
+        padding: 4px 8px;
+        font-size: 14px;
+    }
+}
+
+#registration .sports input[type=checkbox] + label {
+    width: auto;
+}
+
+#registration input[type=checkbox]:checked + label {
+    background: rgb(254, 211, 0);
+    color: #555;
+}
+
 input[type=radio] {
     position: absolute;
     visibility: hidden;
@@ -69,12 +101,17 @@ input[type=radio] + label {
     color: #555;
     padding: 2px 6px;
     margin: 4px;
-} 
-input[type=radio]:checked + label {
-    color: #fff;
-    background: rgb(186, 158, 71);
-    border-radius: 5px;
 }
+input[type=radio]:checked + label {
+    background: rgb(254, 211, 0);
+    border-radius: 2px;
+    padding: 8px 10px;
+}
+
+.imgSelector input[type=radio] + label {
+    padding: 4px;
+}
+
 .multiColumnContainer {
     -webkit-column-width: 200px; /* Chrome, Safari, Opera */
     column-width: 200px;
@@ -111,4 +148,121 @@ input[type=radio]:checked + label {
     font-family: Merriweather, purista;
     font-size: 14px;
     color: rgba(0, 0, 0, 0.7);
+}
+
+/* Form */
+.ajax__tab_header {
+    width: 100% !important;
+    text-align: center !important;
+    background-image: none !important;
+    border-bottom: 2px solid rgb(180, 180, 180);
+}
+.ajax__tab_body {
+    border: none !important;
+}
+.ajax__tab .ajax__tab_outer,
+.ajax__tab .ajax__tab_inner,
+.ajax__tab .ajax__tab_tab {
+    border: none !important;
+    background: none !important;
+}
+
+.ajax__tab {
+    height: auto !important;
+    display: inline-block !important;
+    float: none !important;
+}
+
+.ajax__tab .ajax__tab_outer {
+    background-color: rgb(180, 180, 180) !important;
+    border-radius: 4px 4px 0 0;
+    border: 1px solid rgb(180, 180, 180) !important;
+    height: auto !important;
+    margin: 0 3px !important;
+    padding: 10px 10px 2px 10px !important;
+}
+.ajax__tab_active .ajax__tab_outer {
+    background-color: rgb(57, 57, 57) !important;
+}
+
+.ajax__tab .ajax__tab_outer a span {
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.2em;
+}
+
+#form1 table {
+    margin: 0 auto;
+    border-color: rgb(220, 220, 220);
+}
+
+#form1 {
+    text-align: center;
+}
+
+#form1 input[type=submit] {
+    border-bottom: 1px solid rgb(180, 180, 180) !important;
+    background: rgb(220, 220, 220) !important;
+    border-radius: 2px;
+    color: rgb(60, 60, 60);
+    padding: 4px 8px;
+}
+
+#button-bar {
+    margin-top: 25px;
+}
+
+table#registration {
+    float: left;
+}
+
+table#registration .daysHeader td span {
+    background: rgb(200, 200, 200);
+    font-weight: 800;
+    width: 100%;
+    display: inline-block;
+    padding: 4px 2px;
+    border-radius: 2px;
+    width: 100%;
+    font-size: 12px;
+}
+
+@media (min-width: 500px) {
+    table#registration .daysHeader td span {
+        padding: 4px 8px;
+        font-size: 14px;
+    }
+}
+
+table#registration .daysHeader td:first-child,
+table#registration .daysHeader td:last-child {
+    background: #fff;
+}
+
+table #registration label {
+    font-weight: 400;
+}
+
+#RegistrationBody_tabContainer {
+    clear: both;
+}
+
+@media (min-width: 768px) {
+    table.currencySwitcher {
+        float: right;
+    }
+}
+
+#form .rows-2.centered td {
+    width: 50%;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+#form .rows-2.centered td:first-child {
+    text-align: right;
+}
+
+#form .rows-2.centered td:last-child {
+    text-align: left;
 }

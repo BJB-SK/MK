@@ -2,17 +2,16 @@
 <html lang="en">
 
 <head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Mládežnícka konferencia 2019 (22.-24.02 2019, BB). Nadupaný víkend plný zaujímavých tém, seminárov, chvál, vzácnych hostí a ďalších skvelých vecí. Neváhaj a zaregistruj sa čím skôr. Tešíme sa na Teba!">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="BJB Slovensko">
+<meta property="og:image" content="https://res.cloudinary.com/m1n0/image/upload/v1543962047/mk-2019-banner_mdgnn5.png" />
+<meta property="og:description" content="Mládežnícka konferencia 2019 (22.-24.02 2019, BB). Nadupaný víkend plný zaujímavých tém, seminárov, chvál, vzácnych hostí a ďalších skvelých vecí. Neváhaj a zaregistruj sa čím skôr. Tešíme sa na Teba!" />
 
-    <meta property="og:image" content="http://mk.baptist.sk/img/header.png" />
-    <meta property="og:description" content="Mládežnícka konferencia 2017 (24.-26.2.2017, BB). Nadupaný víkend plný zaujímavých tém, seminárov, chvál, vzácnych hostí a ďalších skvelých vecí. Neváhaj a zaregistruj sa čím skôr. Tešíme sa na Teba!" />
+<meta name="author" content="BJB Slovensko">
+<title>MK2019</title>
 
-    <title>MK2017</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -46,187 +45,170 @@
         <h3>Semináre</h3>
         <hr class="dark">
 
-        <div class="text-with-image pic-left col-xs-12">
-          <img src="img/seminars/speakers/thanes.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
-          <div class="col-sm-9 col-xs-12">
-            <p>
-              <span class="seminar-title">Radosť v čistote</span><br />
-              Timo Hanes<br />
-              <br />
-              Božie volanie k čistote a posväteniu je pre nás často také, ako keď rodičia prikážu deťom jesť zeleninu. Vnímame to skoro ako za trest, zatiaľ čo hriech a nečistota nám pripadajú lákavé, sladké, príťažlivé. Pravda je však taká, že Boh nás volá k posväteniu a čistote okrem iného aj preto, že takýto život je oveľa krajší, záživnejší a lepší pre nás. Potrebujeme sa však prestať sústreďovať na to, čo nám Boh zakazuje a začať objavovať, ako nám práve život v čistote otvára cestu k tým najsladším veciam, ktoré má Boh pre nás pripravené. Na tomto seminári sa budeme najviac sústreďovať na radosť z čistoty vo vzťahoch a v sexualite, ale pokúsime sa to vidieť v trochu širších súvislostiach.
-              <br /><br />
-              O autorovi: Má 30 rokov a 5 rokov slúži ako kazateľ BJB v zbore Revúcka Lehota. Pôsobí ako duchovný vedúci spevokolu JAS.
-            <p>
-          </div>
-        </div>
+        
+          <div class="text-with-image pic-left col-xs-12">
+            <img src="img/program/dkraljik.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
+            <div class="col-sm-9 col-xs-12">
+              <p>
+                <span class="seminar-title">Prečo čítať Starú Zmluvu</span><br />
+                Darko Kraljik<br />
+              </p>
+              <p>Niektoré výskumy o čítaní Biblie u kresťanov ukazujú, že čítanie SZ tvorí asi 10%. Keďže je ale známe, že zo SZ sú Kresťanom najobľúbenejšími knihami Žalmy a Príslovia, tak ak tieto dve knihy vyradíme z týchto štatistík, tak vychádza, že Kresťania čítajú asi 5% zo SZ. Táto štatistika zdá sa vychádza z myslenia, že my sme ľudom Novej zmluvy a preto Starú zmluvu ani nepotrebujeme. Je to ale veľké nedorozumenie a veľký omyl. Bibliu, Božie slovo môžeme vnímať ako nádhernú a vzácnu knihu, ktorá obsahuje 66. kapitol. Bez prvých 39. SZ-ných, nie je možné správne porozumieť ostatným 27. NZ-ným.
 
-        <div class="text-with-image pic-left col-xs-12">
-          <img src="img/seminars/speakers/manonym.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
-          <div class="col-sm-9 col-xs-12">
-            <p>
-              <span class="seminar-title">Ako neuviaznuť v sociálnej sieti</span><br />
-              Igor Čonka<br />
-              <br />
-              Sociálne siete pomaly umierajú a my sme si na ne sotva stihli zvyknúť.  Aké sú nepoznané zákonitosti a čo sme sa za niekoľko rokov mohli naučiť? Ako sociálne siete ovplyvnili náš pohľad na svet okolo nás?
-            <p>
+<br />Biblia je ako „puzzle“. Bez 39. SZ-ných kúskov, neposkladáme celý obraz. Tieto príklady poukazujú na dôležitosť čítania a študovania SZ. Celé Písmo je totiž Bohom vdýchnuté a je potrebné a užitočné pre nás 2Tim 3,16. Na tomto seminári poukážeme na niektoré kľúčové pravdy, ktoré odhaľujú potrebu čítania a študovania Písma Starej zmluvy.
+<br /><br />
+Teším sa na vás.
+Darko Kraljik
+</p>
+              
+                <p>O autorovi: Som Darko Kraljik a od 1999 roku som kazateľom BJB v SR (v súčasnosti som kazateľom v BJB Bernolákovo). V roku 1999 som ukončil Magisterské štúdium v oblasti NZ teológie na KTK v B. Bystrici a v roku 2007 som ukončil doktorské štúdium taktiež v oblasti NZ teológie a biblického myslenia (filozofie). Okrem toho pôsobím ako externý učiteľ na niekoľkých teologických školách najmä v oblasti induktívneho štúdia Biblie ako člen biblického inštitútu Precept Ministries International, Chattanooga TN.</p>
+              
+            <!-- <p> -->
+            </div>
           </div>
-        </div>
+        
+          <div class="text-with-image pic-left col-xs-12">
+            <img src="img/program/dhanesova.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
+            <div class="col-sm-9 col-xs-12">
+              <p>
+                <span class="seminar-title">Miesto a postavenie ženy v cirkvi</span><br />
+                Danka Hanesová<br />
+              </p>
+              <p>Na seminári sa spolu porozprávame o spektre názorov na to, čo hovorí Biblia o postavená žien v cirkvi. Pokúsime sa pozrieť, v čom môže byť zásadný problém tejto otázky, ako aj viacerých spolusúvisiach moderných otázok, najmä o postoji k Písmu.
+</p>
+              
+            <!-- <p> -->
+            </div>
+          </div>
+        
+          <div class="text-with-image pic-left col-xs-12">
+            <img src="img/program/phanes.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
+            <div class="col-sm-9 col-xs-12">
+              <p>
+                <span class="seminar-title">Radosť a šťastie v živote kresťana</span><br />
+                Pavel Hanes<br />
+              </p>
+              <p>Normálny život kresťana je charakterizovaný trvalou radosťou, ktorá nie vždy súvisí s tým, čo súčasník nazýva "šťastím". Seminár poukáže na (1) biblické pojmy radosti, (2) kresťanský zdroj radosti a (3) význam radosti v každodennom živote nasledovania Krista.
+</p>
+              
+            <!-- <p> -->
+            </div>
+          </div>
+        
+          <div class="text-with-image pic-left col-xs-12">
+            <img src="img/program/mtitera.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
+            <div class="col-sm-9 col-xs-12">
+              <p>
+                <span class="seminar-title">Boží love</span><br />
+                Marek Titera<br />
+              </p>
+              <p>Jako Boží děti jsme byli povoláni ke svobodě a toto pozvání se týká i financí. Množství biblického materiálu na téma peníze/majetek naznačuje, že cesta k finanční svobodě není snadná. Nezbytným předpokladem prožívání finanční svobody je známost biblické moudrosti, ať už jde o pracovní morálku, spoření, spotřebu, dluhy, nebo dávání. Co s ní uděláme je na nás. V semináři si představíme základní východiska pro život, v němž love nejsou překážkou zakoušení Boží lav a možný zdroj frustrace se stává požehnáním.
+</p>
+              
+            <!-- <p> -->
+            </div>
+          </div>
+        
+          <div class="text-with-image pic-left col-xs-12">
+            <img src="img/program/dmichalec.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
+            <div class="col-sm-9 col-xs-12">
+              <p>
+                <span class="seminar-title">Príťažlivý ​kostol​</span><br />
+                Dodo Michalec<br />
+              </p>
+              <p>Ako budovať zbor, do ktorého chodia radi aj ľudia, ktorí cirkev nemusia?<br />
+Môže byť zbor príťažlivý a zároveň zdravý?<br />
+Teologicky OK a kultúrne relevantný?<br />
+Prečo Ježiš priťahoval hriešnikov, ale my (cirkev) - Jeho telo, ich pritiahnuť nevieme?
+</p>
+              
+            <!-- <p> -->
+            </div>
+          </div>
+        
+          <div class="text-with-image pic-left col-xs-12">
+            <img src="img/program/dpiksa.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
+            <div class="col-sm-9 col-xs-12">
+              <p>
+                <span class="seminar-title">Kresťan medzi neveriacimi kamošmi</span><br />
+                David Piksa<br />
+              </p>
+              <p>Jak se má chovat křesťan mezi nevěřícími, aby získal nevěřící kamarády pro Ježíše a sám nebyl získán
+nevěřícími pro svět? „Hle, já vás posílám jako ovce mezi vlky.“ (Mt 10:16) Ježíš po nás nechce,
+abychom víru v Něho skrývali. Naopak nám ukazuje vhodné způsoby, jak lidem svědčit o našem Bohu.
+<br /><br />
+V semináři se dotkneme dvou způsobů: Jak svědčit slovem? Jak svědčit skutkem? Nebude to o teorii,
+spíše uvedu konkrétní příklady a rady pro naše každodenní evangelizace.
+</p>
+              
+            <!-- <p> -->
+            </div>
+          </div>
+        
+          <div class="text-with-image pic-left col-xs-12">
+            <img src="img/program/mmacak.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
+            <div class="col-sm-9 col-xs-12">
+              <p>
+                <span class="seminar-title">Výzva pornografie</span><br />
+                Marek Macák<br />
+              </p>
+              <p>Výzva pornografie - pornografie ve své sučasné formě je výzvou pro církev i pro společnost. Velmi často ji sledují jak veřící tak nevěřící lidé, a oba světy si konečně začaly uvědomovat, že je potřeba tuto otázku jasně pojemnovat a začít řešit praktické dopady užívání porna a života ve světě, kde je pornografie tak snadno dostupná. Jde jen pouze nějakou "neřest", anebo je ve hře něco více? V semináři se podíváme na psychologické, biologické a duchovní aspekty pornografie i na možnosti jejího řešení.
+</p>
+              
+            <!-- <p> -->
+            </div>
+          </div>
+        
+          <div class="text-with-image pic-left col-xs-12">
+            <img src="img/program/manonym.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
+            <div class="col-sm-9 col-xs-12">
+              <p>
+                <span class="seminar-title">Nemám čas</span><br />
+                Pavel Coufal<br />
+              </p>
+              <p>Každý týden mám tolik možností, co bych mohl dělat! Život je skvělý a je to docela legrace. Kde ale mám brát na všechno čas? Mládež, kamarádi, občas po mně něco chce škola (nebo zaměstnavatel), nebo i rodiče doma… nebo lidi ve sboru… a Bůh??
 
-        <div class="text-with-image pic-left col-xs-12">
-          <img src="img/seminars/speakers/manonym.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
-          <div class="col-sm-9 col-xs-12">
-            <p>
-              <span class="seminar-title">I. Okultizmus<br/>II. Anjeli a démoni</span><br /><small>(2 semináre)</small><br />
-              Vlado Boško<br />
-              <br />
-              Žijeme v období kedy okolo nás výrazne narastá záujem o duchovný svet, o svet anjelov, démonov nadprirodzených javov, skúsenosti a schopností. Ľudia ale väčšinou nehľadajú odpovede v kresťanskej viere či Písme ale lákajú ich iné náboženstvá, ezoterika, okultizmus, ufológia a pod.
-              V prvom seminári sa pokúsim načrtnúť odpovede na to, čo je to okultizmus, čo všetko patrí do jeho sféry, kde všade sa s ním môžeme stretnúť, aké nebezpečie so sebou prináša. Záver bude venovaný tomu, čo môžeme urobiť, keď sme sa dostali do jeho vplyvu,
-              prípadne ako môžeme pomôcť niekomu inému, kto sa dostal pod jeho zničujúci vplyv.
-              <br /><br />
-              O autorovi: Od januára 2016 som druhý kazateľ v Bjb Banska Bystrica, predtým som 8 rokov
-              pracoval v odbore pastorácie a poradenstva. Som ženatý a mám dve deti, Filipa a Noemi. S manželkou Katkou bývame na Sliači.
-              Zaujíma ma príroda a umenie, najmä hudba.
-            <p>
+Pojďme spolu přemýšlet o tom, kde vzít čas na to, co má skutečně smysl a hodnotu. Jak do svého života dostat to, co by tam mělo být?
+</p>
+              
+                <p>O autorovi: Pavel Coufal, předseda Výkonného výboru BJB v ČR, kazatel brněnského baptistického sboru, (stále zamilovaný) manžel a táta dvou kluků (to je výzva)</p>
+              
+            <!-- <p> -->
+            </div>
           </div>
-        </div>
-
-        <div class="text-with-image pic-left col-xs-12">
-          <img src="img/seminars/speakers/jjackanic.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
-          <div class="col-sm-9 col-xs-12">
-            <p>
-              <span class="seminar-title">Hledání Boží vůle</span><br />
-              Jan Jackanič<br />
-              <br />
-              Hledání Boží vůle?<br />
-              Častokrát se v našich životech ptáme, co je Boží vůlí v našich životech. Koho si máme vzít, kde máme bydlet, na jakou školu se přihlásit? Jenže jak se v těchto situacích rozhodovat? Existuje pro každého jen jedno správné řešení a nebo si ho můžeme vybrat? A pokud ano, jak a podle koho?
-              <br /><br />
-              O autorovi: Je vedoucím Odboru mládeže a místopředsedou VV BJB. V rámci své služby v církvi je zapojen do činnosti Evangelikálního teologického semináře v Praze. Rád se zapojuje do aktivit, které propojují křesťany ve spolupráci v České republice. Narodil se v Praze, žije v Praze a zřejmě v Praze i zemře :-)
-            <p>
+        
+          <div class="text-with-image pic-left col-xs-12">
+            <img src="img/program/manonym.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
+            <div class="col-sm-9 col-xs-12">
+              <p>
+                <span class="seminar-title">Skončila sa reformácia? (Panelová diskusia)</span><br />
+                Radek Kolařík, Darko Kraljik, Jan Jackanič, Ben Uhrin<br />
+              </p>
+              <p>Ecclesia reformata et semper reformanda (Cirkev reformovaná a stále obnovujúca sa). Čo sa stalo 31.10.1517? A aké to má dôsledky na nás? Čo znamenala Ježišova modlitba za jednotu a akú reformáciu potrebuje naša cirkev dnes? Príďte si vypočuť a samy sa pýtať.
+<br /><br />
+Moderuje Richard Nagypal
+</p>
+              
+            <!-- <p> -->
+            </div>
           </div>
-        </div>
-
-        <div class="text-with-image pic-left col-xs-12">
-          <img src="img/seminars/speakers/manonym.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
-          <div class="col-sm-9 col-xs-12">
-            <p>
-              <span class="seminar-title">Jedni PRE druhých</span><br />
-              Pavol Mrština<br />
-              <br />
-              V cirkvi to občas býva ako vo svete - jedni PROTI druhým, jedni BEZ druhých, či jedni NA ÚKOR druhých. Spoločne nájdeme v Biblii a vlastných skúsenostiach impulzy ako byť požehnaní(m) - jedni PRE druhých.
-              <br /><br />
-              O autorovi: Vedúci popradskej mládeže, ktorý sa snaží byť spolu s manželkou a rodinou k dispozícii PRE Krista a PRE druhých aj napriek tomu, že to občas PREpískneme.
-            <p>
+        
+          <div class="text-with-image pic-left col-xs-12">
+            <img src="img/program/manonym.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
+            <div class="col-sm-9 col-xs-12">
+              <p>
+                <span class="seminar-title">Ako slúžiť tzv. iGENERATION?</span><br />
+                TCK tím<br />
+              </p>
+              <p>Je naozaj rozdiel v tom ako veci vníma a spracováva terajšia mládež? Ak áno, čo pre to môžeme urobiť, aby sme ich zasiahli a získali pre Krista? Akým spôsobom môžeme spoznať viac ich svet? Prečo by sa vôbec náš spôsob služby mal prispôsobovať iGENERÁCII?
+<br /><br />
+Seminár je určený najmä pre vedúcich, ale aj pre všetkých ostatných, ktorí by sa chceli dozvedieť viac o danej téme.
+</p>
+              
+            <!-- <p> -->
+            </div>
           </div>
-        </div>
-
-        <div class="text-with-image pic-left col-xs-12">
-          <img src="img/seminars/speakers/kazorova.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
-          <div class="col-sm-9 col-xs-12">
-            <p>
-              <span class="seminar-title">Žena podľa Božieho srdca?</span><br />
-              Katka Azorová<br />
-              <br />
-              Feministka za šporákom alebo Hľadanie odpovede na otázku Aká má byť žena podľa Božieho srdca?
-              Spoločné štúdium a diskusia ako chápať a prakticky žiť v 21. storočí slová zapísané v Titovi 2:3-5.
-            <p>
-          </div>
-        </div>
-
-        <div class="text-with-image pic-left col-xs-12">
-          <img src="img/seminars/speakers/pmakovini.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
-          <div class="col-sm-9 col-xs-12">
-            <p>
-              <span class="seminar-title">Nasledovať a viesť</span><br />
-              Peter Makovíni<br />
-              <br />
-              Koho nasleduješ a koho vedieš? Každý je zozadu lídrom a spredu ovečkou. Pavol smelo oznámil Korinťanom: „Napodobňujte ma, ako ja napodobňujem Krista!” Na tomto seminári bude Peter zdieľať svoju cestu nasledovania a vedenia spolu s niekoľkými užitočnými modelmi, ktoré budeš môcť aplikovať do svojho života, svojej služby a svojho zboru.
-              <br /><br />
-              O autorovi: "Milujem ako Boh mení životy, keď sa Mu otvoríme. Je to súčasťou môjho povolania byť zapojený do tohoto procesu, počúvať a hovoriť o témach, ktoré sú pre ľudí kľúčové a kráčať s nimi po tej ceste, kde môžu prežívať ten potenciál, ktorý Boh vložil do každého jedného človeka. Popri teológii mám vášeň aj pre filozofiu a apologetiku.”
-              <br />
-              Peter sa narodil a vyrastal v Bratislave, kde bol zapojený do miestneho baptistického zboru. Študoval bakalára teológie a nedávno dokončil magistra informačnej architektúry na Aalborg univerzite v Dánsku. Počas štúdia slúžil ako vedúci mládeže v baptistickom zbore v meste Odense (Dánsko) a od leta pracuje ako učiteľ na biblickej škole v Mariageri (Dánsko).
-            <p>
-          </div>
-        </div>
-
-        <div class="text-with-image pic-left col-xs-12">
-          <img src="img/seminars/speakers/phosek.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
-          <div class="col-sm-9 col-xs-12">
-            <p>
-              <span class="seminar-title">Islám jako výzva pro křesťany</span><br />
-              doc.Pavel Hošek, Th.D.<br />
-              <br />
-              Islám je dnes jedním z nejožehavějších témat, nejen mezi křesťany. Není
-              divu, o islámu slyšíme prakticky denně, a většinou ve velmi znepokojivých
-              souvislostech. Kvůli islámu se křesťané mezi sebou přou a hádají, někdy na
-              sebe dokonce křičí. Je na čase začít se vážně ptát, jak to vlastně Bůh s
-              tím islámem myslí. A jak to myslí s Evropou. A jak to myslí s námi
-              křesťany.
-            <p>
-          </div>
-        </div>
-
-        <div class="text-with-image pic-left col-xs-12">
-          <img src="img/seminars/speakers/mmasarik.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
-          <div class="col-sm-9 col-xs-12">
-            <p>
-              <span class="seminar-title">Peniaze - prekliatie alebo požehnanie</span><br />
-              Mgr. Miloš Masarik, Phd.<br />
-              <br />
-               Čo urobí kresťan s 1000000 Eur? A čo pre 1000000 Eur? Čo urobí kresťan s 500 Eur mesačne? Čo pre 500 Eur mesačne?
-               <br /><br />
-               O autorovi: Mladý, pekný, zadaný ...
-            <p>
-          </div>
-        </div>
-
-        <div class="text-with-image pic-left col-xs-12">
-          <img src="img/seminars/speakers/phanes.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
-          <div class="col-sm-9 col-xs-12">
-            <p>
-              <span class="seminar-title">Reformácia – čo je dobre o nej vedieť</span><br />
-              doc. ThDr. Pavel Hanes, PhD.<br />
-              <br />
-              Udalosti spred pol tisícročia dramaticky ilustrujú duchovný boj v jeho historickej a osobnej rovine.
-              Umožňujú lepšie porozumieť súčasnej politickej ako aj cirkevnej realite a osvetľujú základné princípy viery v Kristovo evanjelium.
-            <p>
-          </div>
-        </div>
-
-        <div class="text-with-image pic-left col-xs-12">
-          <img src="img/seminars/speakers/panel.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
-          <div class="col-sm-9 col-xs-12">
-            <p>
-              <span class="seminar-title">Quo vadis Slovenský baptizmus?</span><br />
-              D. Kraljik, J. Jackanič, T. Valchar<br />
-              <br />
-              Panelová diskusia, moderátor: B. Uhrin
-            <p>
-          </div>
-        </div>
-
-        <div class="text-with-image pic-left col-xs-12">
-          <img src="img/seminars/speakers/manonym.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
-          <div class="col-sm-9 col-xs-12">
-            <p>
-              <span class="seminar-title">Misionálna cirkev</span><br />
-              Viktória Šoltésová<br />
-              <br />
-              Témou môjho seminára je misia Kristovej cirkvi v súčasnosti. Miestny zbor je v kľúčový v pochopení misijnej identity cirkvi. Nové pochopenie misie v lokálnej cirkvi nemá viesť jednoducho ku novému misijnému programu, jedná sa o hlboké porozumenie cirkvi ako misie. Nový model misionálnej ekleziológie v jej praktickom fungovaní je taktiež jasne reflektovaný v najnovšom misijnom dokumente Spoločne k životu. Misionálna cirkev nie je model, štandardizovaný program alebo stratégia, ktorá môže byť použitá v lokálnej cirkvi s vopred stanoveným výsledkom. Nie je to predpísaný súbor vecí, ktoré je potrebné urobiť, alebo vízia pre cirkev ako by mala vyzerať, ale skôr určitý pohľad na teologickú identitu cirkvi. Nakoniec budeme diskutovať o misijných programoch a stratégiách v miestnych cirkevných zboroch evanjelikálnych cirkví na Slovensku a v Čechách.
-            <p>
-          </div>
-        </div>
-
-        <div class="text-with-image pic-left col-xs-12">
-          <img src="img/seminars/speakers/manonym.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
-          <div class="col-sm-9 col-xs-12">
-            <p>
-              <span class="seminar-title">Panikááááá!!!! Chystáme svadbu</span><br />
-              Azorovci<br />
-              <br />
-              Workshop o tom, ako sa pripraviť na svadbu .... bez stresu.
-            <p>
-          </div>
-        </div>
+        
 
         <p><br /><br /><br /></p>
 
@@ -250,7 +232,7 @@
         <div class="col-lg-4 text-center">
           <i class="fa fa-phone fa-3x wow bounceIn" data-wow-delay=".1s"></i>
           <br /><br />
-          Beno Uhrin 0905 595 087 <br />
+          Martin Tobák 0917 349 474 <br />
           Zoli Kakaš 0907 731 428
         </div>
 
@@ -262,9 +244,9 @@
         </div>
 
         <div class="col-lg-4 text-center facebook">
-            <a target="_blank" href="https://www.facebook.com/events/933096596790303">
+            <a target="_blank" href="https://www.facebook.com/events/993799814144903">
             <i class="fa fa-facebook fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                <p><br />https://www.facebook.com/events/933096596790303</p>
+                <p><br />https://www.facebook.com/events/993799814144903</p>
             </a>
         </div>
 
@@ -274,7 +256,7 @@
   <section class="no-padding" id="map">
     <div class="container-fluid">
       <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3707.896492439544!2d19.144714807984236!3d48.7440539321777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4715161ca6735387%3A0xb5c725c088afbce2!2zR3ltbsOheml1bSBBbmRyZWphIFNsw6Fka292acSNYQ!5e0!3m2!1sen!2sus!4v1449858805510" width="800" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2631.002364184644!2d19.14531585166833!3d48.743651616630366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4715161ca6735387%3A0xb5c725c088afbce2!2sGymnasium+Andreja+Sl%C3%A1dkovi%C4%8Da!5e0!3m2!1sen!2ssk!4v1544013346146" width="800" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
       </div>
     </div>
 </section>

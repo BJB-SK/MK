@@ -88,9 +88,14 @@ public static class Extensions
         return result;
     }
 
-    public static System.Web.UI.WebControls.ListItem[] ToListItems<T>(this IEnumerable<T> data) where T : IIdName
+    public static ListItem[] ToListItems<T>(this IEnumerable<T> data) where T : IIdName
     {
-        return data.Select(x => new System.Web.UI.WebControls.ListItem { Value = x.Id.ToString(), Text = x.Name }).ToArray();
+        return data.Select(x => new ListItem { Value = x.Id.ToString(), Text = x.Name }).ToArray();
+    }
+
+    public static ListItem[] ToListItems<T>(this IEnumerable<T> data, bool feminine) where T : IIdName
+    {
+        return data.Select(x => new ListItem { Value = x.Id.ToString(), Text = feminine ? x.Name.Replace("e", "a") : x.Name }).ToArray();
     }
 
     public static List<IdNameToolTip> GetListOfIdNameToolTips(this SqlDataReader reader)

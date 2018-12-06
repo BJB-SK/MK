@@ -11,6 +11,7 @@ public class Common
     public const string ChybaMeno = "Prosím zadaj meno";
     public const string ChybaPriezvisko = "Prosím vyplň priezvisko";
     public const string ChybaEmail = "Prosím vyplň email";
+    public const string ChybaTelefon = "Prosím vyplň telefón";
     public const string ChybaZbor = "Žiaden zbor";
     public const string ChybaSponzorskyDar = "Prosím zadajte číslo";
     public const string ChybaPreplacame = "Prosím zadajte preplatenú sumu ako číslo";
@@ -46,11 +47,11 @@ public class Common
         return "Unknown IP address";
     }
 
-    public static void FillTeeShirts(DropDownList ddlTricko, List<IdName> data)
+    public static void FillTeeShirts(DropDownList ddlTricko, List<IdName> data, bool feminine)
     {
         ddlTricko.Items.Clear();
         ddlTricko.Items.Add(new ListItem("Žiadne", "0"));
-        ddlTricko.Items.AddRange(data.ToListItems());
+        ddlTricko.Items.AddRange(data.ToListItems(feminine));
     }
 
     public static void FillTeeShirts(RadioButtonList rblTricko, List<IdName> data)

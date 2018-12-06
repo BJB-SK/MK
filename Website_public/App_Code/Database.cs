@@ -74,10 +74,11 @@ public static class Database
                             ToolTip = reader.GetStringNull(2),
                             FreeRegistration = reader.GetBoolean(3),
                             FreeTeeShirt = reader.GetBoolean(4),
-                            FreeFood = reader.GetBoolean(5),
-                            FreeDorm = reader.GetBoolean(6),
-                            Allowed = reader.GetBoolean(7),
-                            IsPublic = reader.GetBoolean(8)
+                            FreeMikina = reader.GetBoolean(5),
+                            FreeFood = reader.GetBoolean(6),
+                            FreeDorm = reader.GetBoolean(7),
+                            Allowed = reader.GetBoolean(8),
+                            IsPublic = reader.GetBoolean(9)
                         });
                     }
                     reader.NextResult();
@@ -112,9 +113,9 @@ public static class Database
         {
             using (var connection = CreateConnection())
             {
-                using (var command = CreateCommand(connection, "AddUsers"))
+                using (var command = CreateCommand(connection, "AddUsers4"))
                 {
-                    command.AddParameterUserDefined("@users", "dbo.ListOfUsers", RegistrationEntry.GetDataTable(data));
+                    command.AddParameterUserDefined("@users", "dbo.ListOfUsers4", RegistrationEntry.GetDataTable(data));
                     command.AddParameterUserDefined("@emails", "dbo.ListOfEmails", Email.GetDataTable(emails));
                     command.AddParameterString("@payerEmail", payerEmail);
                     command.AddParameterFloat("@donation", donation);
