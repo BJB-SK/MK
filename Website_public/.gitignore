@@ -1,0 +1,4 @@
+/Bin/
+/Scripts/
+/aspnet_client/
+*.gitignore

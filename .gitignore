@@ -1,0 +1,7 @@
+packages/AjaxControlToolkit.16.1.1.0/AjaxControlToolkit.16.1.1.0.nupkg
+packages/AjaxControlToolkit.16.1.1.0/lib/net40/AjaxControlToolkit.dll
+packages/AjaxControlToolkit.16.1.1.0/readme.txt
+packages/jQuery.3.1.1/Tools/install.ps1
+/packages/
+/.vs/
+*.gitignore
