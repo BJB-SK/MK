@@ -187,6 +187,7 @@ public static class Database
         var result = new SummaryData
         {
             Tricka = new List<TeeShirtInfo>(),
+            Mikiny = new List<TeeShirtInfo>(),
             Sluziaci = new List<NameCount>(),
             Dobrovolnici = new List<NameCount>(),
             Poznamky = new List<NoteInfo>(),
@@ -234,36 +235,8 @@ public static class Database
                     }
                     reader.NextResult();
 
-                    int totalOrdered = 0;
-                    while (reader.Read())
-                    {
-                        var ordered = reader.GetInt32(1);
-                        result.Tricka.Add(new TeeShirtInfo
-                        {
-                            Name = reader.GetString(0),
-                            Ordered = ordered
-                        });
-                        totalOrdered += ordered;
-                    }
-                    reader.NextResult();
-
-                    int totalPaid = 0;
-                    while (reader.Read())
-                    {
-                        var name = reader.GetString(0);
-                        var paid = reader.GetInt32(1);
-                        var tee = result.Tricka.First(x => x.Name == name);
-                        if (tee != null) tee.Paid = paid;
-                        totalPaid += paid;
-                    }
-                    reader.NextResult();
-
-                    result.Tricka.Add(new TeeShirtInfo
-                    {
-                        Name = "Spolu",
-                        Ordered = totalOrdered,
-                        Paid = totalPaid
-                    });
+                    result.Tricka = ReadTricka(reader);
+                    result.Mikiny = ReadTricka(reader);
 
                     if (reader.Read()) result.ExpectingEur = reader.GetFloatNull(0) ?? 0;
                     reader.NextResult();
@@ -293,7 +266,7 @@ public static class Database
 
                     while (reader.Read())
                     {
-                        result.Poznamky.Add(new NoteInfo { Name = reader.GetString(0), Note = reader.GetString(1) });
+                        result.Poznamky.Add(new NoteInfo { Note = reader.GetString(0) });
                     }
                     reader.NextResult();
 
@@ -310,5 +283,44 @@ public static class Database
         }
         return result;
     }
+
+    public static List<TeeShirtInfo> ReadTricka(SqlDataReader reader)
+    {
+        var result = new List<TeeShirtInfo>();
+
+        int totalOrdered = 0;
+        while (reader.Read())
+        {
+            var ordered = reader.GetInt32(1);
+            result.Add(new TeeShirtInfo
+            {
+                Name = reader.GetString(0),
+                Ordered = ordered
+            });
+            totalOrdered += ordered;
+        }
+        reader.NextResult();
+
+        int totalPaid = 0;
+        while (reader.Read())
+        {
+            var name = reader.GetString(0);
+            var paid = reader.GetInt32(1);
+            var tee = result.First(x => x.Name == name);
+            if (tee != null) tee.Paid = paid;
+            totalPaid += paid;
+        }
+        reader.NextResult();
+
+        result.Add(new TeeShirtInfo
+        {
+            Name = "Spolu",
+            Ordered = totalOrdered,
+            Paid = totalPaid
+        });
+
+        return result;
+    }
+
     #endregion
 }
