@@ -3,7 +3,7 @@
 
 <asp:Content runat="server" ID="ContentRegistrationHead" ContentPlaceHolderID="RegistrationHead">
     <link href="/css/Public.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="/scripts/jquery-3.1.1.min.js"></script> 
+    <script type="text/javascript" src="/scripts/jquery-3.3.1.min.js"></script> 
 </asp:Content>
 
 <asp:Content runat="server" ID="ContentRegistrationBody" ContentPlaceHolderID="RegistrationBody">

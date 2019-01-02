@@ -4,7 +4,7 @@
 <head runat="server">
     <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'/>
     <link href="/CSS/Public.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="/scripts/jquery-3.1.1.min.js"></script> 
+    <script type="text/javascript" src="/scripts/jquery-3.3.1.min.js"></script> 
     <asp:ContentPlaceHolder id="Head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
