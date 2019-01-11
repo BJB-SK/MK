@@ -10,7 +10,7 @@
 <meta property="og:description" content="Mládežnícka konferencia 2019 (22.-24.02 2019, BB). Nadupaný víkend plný zaujímavých tém, seminárov, chvál, vzácnych hostí a ďalších skvelých vecí. Neváhaj a zaregistruj sa čím skôr. Tešíme sa na Teba!" />
 
 <meta name="author" content="BJB Slovensko">
-<title>MK2019</title>
+<title>MK 019</title>
 
 
     <!-- Bootstrap Core CSS -->
