@@ -256,6 +256,9 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
 
     protected override void OnPreRender(EventArgs e)
     {
+        trTricko.Visible = Config.CanOrderTeeShirtOrHoodie;
+        trMikina.Visible = Config.CanOrderTeeShirtOrHoodie;
+
         var sluziaci = new SluziaciInfo();
         if (IdSluziaci != 0 && _sluziaci.Any(x => x.Id == IdSluziaci))
         {

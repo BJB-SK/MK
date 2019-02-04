@@ -133,7 +133,7 @@
                     <asp:CheckBox runat="server" ID="chbPingPong" Text="Ping pong"/>
                 </td>
             </tr>
-            <tr class="imgSelector">
+            <tr runat="server" ID="trTricko" class="imgSelector">
                 <td>Tričko</td>
                 <td colspan="3">
                     <asp:DropDownList runat="server" ID="ddlTricko" AutoPostBack="true" />
@@ -156,7 +156,7 @@
                     <asp:Label runat="server" ID="lblCenaTricko" />
                 </td>
             </tr>
-            <tr class="imgSelector">
+            <tr runat="server" ID="trMikina" class="imgSelector">
                 <td>Mikina</td>
                 <td colspan="3">
                     <asp:DropDownList runat="server" ID="ddlMikina" AutoPostBack="true" />
