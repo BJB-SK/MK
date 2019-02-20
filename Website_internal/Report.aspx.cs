@@ -57,6 +57,9 @@ public partial class Report : System.Web.UI.Page
         gridTShirts.DataSource = data.Tricka;
         gridTShirts.DataBind();
 
+        gridHoodies.DataSource = data.Mikiny;
+        gridHoodies.DataBind();
+
         gridDobrovolnici.DataSource = data.Dobrovolnici;
         gridDobrovolnici.DataBind();
 

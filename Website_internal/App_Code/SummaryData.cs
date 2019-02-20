@@ -41,6 +41,7 @@ public class SummaryData
     public float MoneyFromPeople;
 
     public List<TeeShirtInfo> Tricka;
+    public List<TeeShirtInfo> Mikiny;
     public List<NameCount> Sluziaci;
     public List<NameCount> Dobrovolnici;
     public List<NoteInfo> Poznamky;

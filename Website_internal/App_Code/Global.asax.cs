@@ -14,7 +14,7 @@ public class Global: System.Web.HttpApplication
         ScriptManager.ScriptResourceMapping.AddDefinition("jquery",
              new ScriptResourceDefinition
              {
-                 Path = "~/Scripts/jquery-3.1.1.min.js"
+                 Path = "~/Scripts/jquery-3.3.1.min.js"
              }
         );
     }

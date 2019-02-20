@@ -24,6 +24,7 @@ public class DetailData
     public bool Sach;
     public bool PingPong;
     public int? IdTricko;
+    public int? IdMikina;
     public int? IdSluziaci;
     public int? IdDobrovolnik;
     public string Poznamka;
@@ -32,6 +33,7 @@ public class DetailData
     public bool RegistraciaZadarmo;
     public bool JedloZadarmo;
     public bool TrickoZadarmo;
+    public bool MikinaZadarmo;
     public DateTime? DtPlatba;
     public DateTime? DtPrisli;
     public float Naklady;

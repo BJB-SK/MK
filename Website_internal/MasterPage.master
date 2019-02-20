@@ -4,7 +4,7 @@
 <head runat="server">
     <title>MK 2017</title>
     <link rel="stylesheet" type="text/css" href="/CSS/Local.css"/>
-    <script type="text/javascript" src="/scripts/jquery-3.1.1.min.js"></script> 
+    <script type="text/javascript" src="/scripts/jquery-3.3.1.min.js"></script> 
     <asp:ContentPlaceHolder id="Head" runat="server">
     </asp:ContentPlaceHolder>
 </head>

@@ -132,6 +132,28 @@
             <br />
         </div>
         <div class="multiColumnBlock">
+            <asp:GridView ID="gridHoodies" runat="server" AutoGenerateColumns="false">
+                <Columns>
+                    <asp:TemplateField HeaderText="Mikina">
+                        <ItemTemplate>
+                            <%# Eval("Name") %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Reg">
+                        <ItemTemplate>
+                            <%# Eval("Ordered") %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Zap">
+                        <ItemTemplate>
+                            <%# Eval("Paid") %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+            <br />
+        </div>
+        <div class="multiColumnBlock">
             <asp:GridView ID="gridSluziaci" runat="server" AutoGenerateColumns="false">
                 <Columns>
                     <asp:TemplateField HeaderText="Slúžiaci">
@@ -185,11 +207,6 @@
     </div>
     <asp:GridView ID="gridPoznamky" runat="server" AutoGenerateColumns="false">
         <Columns>
-            <asp:TemplateField HeaderText="Meno">
-                <ItemTemplate>
-                    <%# Eval("Name") %>
-                </ItemTemplate>
-            </asp:TemplateField>
             <asp:TemplateField HeaderText="Poznámka">
                 <ItemTemplate>
                     <%# Eval("Note") %>

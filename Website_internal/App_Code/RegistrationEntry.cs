@@ -28,11 +28,13 @@ public class RegistrationEntry
     public string InyZbor { get; set; }
     public bool PiatokVecera { get; set; }
     public bool PiatokVecera2 { get; set; }
+    public bool UbytovaniePiatokSobota { get; set; }
     public bool TichaTriedaPiatokSobota { get; set; }
     public bool SobotaRanajky { get; set; }
     public bool SobotaObed { get; set; }
     public bool SobotaVecera { get; set; }
     public bool SobotaVecera2 { get; set; }
+    public bool UbytovanieSobotaNedela { get; set; }
     public bool TichaTriedaSobotaNedela { get; set; }
     public bool NedelaRanajky { get; set; }
     public bool NedelaObed { get; set; }
@@ -44,6 +46,12 @@ public class RegistrationEntry
     public bool PingPong { get; set; }
     public int IdTricko { get; set; }
     public string Tricko { get; set; }
+    public int IdFarbaTricka { get; set; }
+    public string FarbaTricka { get; set; }
+    public int IdMikina { get; set; }
+    public string Mikina { get; set; }
+    public int IdFarbaMikiny { get; set; }
+    public string FarbaMikiny { get; set; }
     public int IdSluziaci { get; set; }
     public int IdDobrovolnik { get; set; }
     public string Poznamka { get; set; }
@@ -70,10 +78,20 @@ public class RegistrationEntry
         return registracny;
     }
 
+    public float GetLodgingFee()
+    {
+        float ubytovanie = 0;
+        if (UbytovaniePiatokSobota) ubytovanie += Prices.Ubytovanie;
+        if (UbytovanieSobotaNedela) ubytovanie += Prices.Ubytovanie;
+        return ubytovanie;
+    }
+
     public float GetCost(List<SluziaciInfo> sluziaci, List<PoplatokInfo> poplatky)
     {
         float registracny = GetRegistrationFee(poplatky);
         float tricko = IdTricko != 0 ? Prices.Tricko : 0;
+        float mikina = IdMikina != 0 ? Prices.Mikina : 0;
+        float ubytovanie = GetLodgingFee();
         float strava = 0;
         if (PiatokVecera) strava += Prices.Vecera;
         if (PiatokVecera2) strava += Prices.Vecera2;
@@ -90,8 +108,10 @@ public class RegistrationEntry
             if (sluziaci2.FreeFood) strava = 0;
             if (sluziaci2.FreeRegistration) registracny = 0;
             if (sluziaci2.FreeTeeShirt) tricko = 0;
+            if (sluziaci2.FreeMikina) mikina = 0;
+            if (sluziaci2.FreeDorm) ubytovanie = 0;
         }
-        return registracny + strava + tricko;
+        return registracny + strava + tricko + mikina + ubytovanie;
     }
 
     public string Title
@@ -117,18 +137,21 @@ public class RegistrationEntry
         var colIdZbor = new DataColumn("IdZbor", typeof(int));
         var colInyZbor = new DataColumn("InyZbor", typeof(string));
         var colPiatokVecera = new DataColumn("PiatokVecera", typeof(bool));
-        var colPiatokVecera2 = new DataColumn("PiatokVecera2", typeof(bool));
-        var colTichaTriedaPiatokSobota = new DataColumn("TichaTriedaPiatokSobota", typeof(bool));
+        var colPiatokVecera2 = new DataColumn("PiatokVecera2", typeof(int));
+        var colUbytovaniePiatokSobota = new DataColumn("UbytovaniePiatokSobota", typeof(int));
         var colSobotaRanajky = new DataColumn("SobotaRanajky", typeof(bool));
         var colSobotaObed = new DataColumn("SobotaObed", typeof(bool));
         var colSobotaVecera = new DataColumn("SobotaVecera", typeof(bool));
-        var colSobotaVecera2 = new DataColumn("SobotaVecera2", typeof(bool));
-        var colTichaTriedaSobotaNedela = new DataColumn("TichaTriedaSobotaNedela", typeof(bool));
+        var colSobotaVecera2 = new DataColumn("SobotaVecera2", typeof(int));
+        var colUbytovanieSobotaNedela = new DataColumn("UbytovanieSobotaNedela", typeof(int));
         var colNedelaRanajky = new DataColumn("NedelaRanajky", typeof(bool));
         var colNedelaObed = new DataColumn("NedelaObed", typeof(bool));
         var colSach = new DataColumn("Sach", typeof(bool));
         var colPingPong = new DataColumn("PingPong", typeof(bool));
         var colIdTricko = new DataColumn("IdTricko", typeof(int));
+        var colIdFarbaTricka = new DataColumn("IdFarbaTricka", typeof(int));
+        var colIdMikina = new DataColumn("IdMikina", typeof(int));
+        var colIdFarbaMikiny = new DataColumn("IdFarbaMikiny", typeof(int));
         var colPoznamka = new DataColumn("Poznamka", typeof(string));
         var colIdSluziaci = new DataColumn("IdSluziaci", typeof(int));
         var colIdDobrovolnik = new DataColumn("IdDobrovolnik", typeof(int));
@@ -141,17 +164,20 @@ public class RegistrationEntry
         dt.Columns.Add(colInyZbor);
         dt.Columns.Add(colPiatokVecera);
         dt.Columns.Add(colPiatokVecera2);
-        dt.Columns.Add(colTichaTriedaPiatokSobota);
+        dt.Columns.Add(colUbytovaniePiatokSobota);
         dt.Columns.Add(colSobotaRanajky);
         dt.Columns.Add(colSobotaObed);
         dt.Columns.Add(colSobotaVecera);
         dt.Columns.Add(colSobotaVecera2);
-        dt.Columns.Add(colTichaTriedaSobotaNedela);
+        dt.Columns.Add(colUbytovanieSobotaNedela);
         dt.Columns.Add(colNedelaRanajky);
         dt.Columns.Add(colNedelaObed);
         dt.Columns.Add(colSach);
         dt.Columns.Add(colPingPong);
         dt.Columns.Add(colIdTricko);
+        dt.Columns.Add(colIdFarbaTricka);
+        dt.Columns.Add(colIdMikina);
+        dt.Columns.Add(colIdFarbaMikiny);
         dt.Columns.Add(colPoznamka);
         dt.Columns.Add(colIdSluziaci);
         dt.Columns.Add(colIdDobrovolnik);
@@ -167,18 +193,21 @@ public class RegistrationEntry
             row[colIdZbor] = entry.IdZbor > 0 ? entry.IdZbor : (object)DBNull.Value;
             row[colInyZbor] = entry.InyZbor;
             row[colPiatokVecera] = entry.PiatokVecera;
-            row[colPiatokVecera2] = entry.PiatokVecera2;
-            row[colTichaTriedaPiatokSobota] = entry.TichaTriedaPiatokSobota;
+            row[colPiatokVecera2] = entry.PiatokVecera2 ? 1 : 0;
+            row[colUbytovaniePiatokSobota] = entry.UbytovaniePiatokSobota ? (entry.TichaTriedaPiatokSobota ? 1 : 0) : 4;
             row[colSobotaRanajky] = entry.SobotaRanajky;
             row[colSobotaObed] = entry.SobotaObed;
             row[colSobotaVecera] = entry.SobotaVecera;
-            row[colSobotaVecera2] = entry.SobotaVecera2;
-            row[colTichaTriedaSobotaNedela] = entry.TichaTriedaSobotaNedela;
+            row[colSobotaVecera2] = entry.SobotaVecera2 ? 1 : 0;
+            row[colUbytovanieSobotaNedela] = entry.UbytovanieSobotaNedela ? (entry.TichaTriedaSobotaNedela ? 1 : 0) : 4;
             row[colNedelaRanajky] = entry.NedelaRanajky;
             row[colNedelaObed] = entry.NedelaObed;
             row[colSach] = entry.Sach;
             row[colPingPong] = entry.PingPong;
             row[colIdTricko] = entry.IdTricko > 0 ? entry.IdTricko : (object)DBNull.Value;
+            row[colIdFarbaTricka] = entry.IdTricko > 0 ? entry.IdFarbaTricka : (object)DBNull.Value;
+            row[colIdMikina] = entry.IdMikina > 0 ? entry.IdMikina : (object)DBNull.Value;
+            row[colIdFarbaMikiny] = entry.IdMikina > 0 ? entry.IdFarbaMikiny : (object)DBNull.Value;
             row[colPoznamka] = entry.Poznamka;
             row[colIdSluziaci] = entry.IdSluziaci > 0 ? entry.IdSluziaci : (object)DBNull.Value;
             row[colIdDobrovolnik] = entry.IdDobrovolnik > 0 ? entry.IdDobrovolnik : (object)DBNull.Value;

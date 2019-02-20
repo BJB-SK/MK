@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using AjaxControlToolkit;
-using System.Text.RegularExpressions;
 
 public partial class Register : Page
 {
@@ -13,6 +12,7 @@ public partial class Register : Page
     public const string KeyRegistrationData = "KeyRegistrationData";
     public const string KeyDropDownData = "KeyDropDownData";
     public const string KeyIndices = "KeyIndices";
+    public const string KeySuccess = "KeySuccess";
 
     public const string UrlKeySluziaci = "sluziaci";
 
@@ -23,6 +23,7 @@ public partial class Register : Page
     bool _registerClicked = false;
     private PageLoadInfo _dropDownData;
     private bool _sluziaci;
+    private bool _success;
 
     protected override void LoadViewState(object savedState)
     {
@@ -30,6 +31,7 @@ public partial class Register : Page
         _data = ViewState[KeyRegistrationData] as List<RegistrationEntry> ?? new List<RegistrationEntry>();
         _indices = ViewState[KeyIndices] as List<int> ?? new List<int>();
         _dropDownData = ViewState[KeyDropDownData] as PageLoadInfo ?? new PageLoadInfo();
+        _success = (bool)ViewState[KeySuccess];
         GenerateControls();
     }
 
@@ -38,6 +40,7 @@ public partial class Register : Page
         ViewState[KeyRegistrationData] = _data;
         ViewState[KeyIndices] = _indices;
         ViewState[KeyDropDownData] = _dropDownData;
+        ViewState[KeySuccess] = _success;
         return base.SaveViewState();
     }
 
@@ -254,6 +257,12 @@ public partial class Register : Page
         var amountToPay = sum + sponzorskyDar / currency.Rate;
         lblSuma.Text = currency.FormatMoney(amountToPay);
 
+        if (!chbGdprConsent.Checked)
+        {
+            valid = false;
+        }
+        lblGdprMissing.Visible = !chbGdprConsent.Checked;
+
         // check for duplicate emails
         var emailHash = new Dictionary<string, int>();
         foreach(var item in _data)
@@ -312,21 +321,22 @@ public partial class Register : Page
 
                 // write to database
                 var data = Database.WriteData(_data, emails, payerEmail, sponzorskyDar, currency);
-                if(data.Success)
+                if (data.Success)
                 {
-                    Response.Redirect("~/Success.aspx");
-                    return;
+                    _success = true;
                 }
-
-                // there are bad emails
-                valid = false;
-                foreach (var item in data.AlreadyRegisteredEmails)
+                else
                 {
-                    for (int i = 0; i < _data.Count; i++)
+                    // there are bad emails
+                    valid = false;
+                    foreach (var item in data.AlreadyRegisteredEmails)
                     {
-                        if (_data[i].Email.Trim().ToLower() == item.Trim().ToLower())
+                        for (int i = 0; i < _data.Count; i++)
                         {
-                            _data[i].Errors.Add(Common.ChybaEmailUzZaregistrovany);
+                            if (_data[i].Email.Trim().ToLower() == item.Trim().ToLower())
+                            {
+                                _data[i].Errors.Add(Common.ChybaEmailUzZaregistrovany);
+                            }
                         }
                     }
                 }
@@ -339,6 +349,9 @@ public partial class Register : Page
 
         gridSummary.DataSource = _data;
         gridSummary.DataBind();
+
+        pnlRegistration.Visible = !_success;
+        pnlSuccess.Visible = _success;
 
         base.OnPreRender(e);
     }

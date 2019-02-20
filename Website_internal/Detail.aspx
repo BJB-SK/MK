@@ -58,6 +58,10 @@
                             <td><asp:DropDownList runat="server" ID="ddlTricko" AutoPostBack="false"/></td>
                         </tr>
                         <tr>
+                            <td>Mikina</td>
+                            <td><asp:DropDownList runat="server" ID="ddlMikina" AutoPostBack="false"/></td>
+                        </tr>
+                        <tr>
                             <td>Slúžiaci</td>
                             <td><asp:DropDownList runat="server" ID="ddlSluziaci" AutoPostBack="true" /></td>
                         </tr>

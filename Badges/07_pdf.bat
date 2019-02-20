@@ -6,14 +6,13 @@ use warnings;
 # http://strawberryperl.com/ 
 # http://www.imagemagick.org/
 
-my $convert = qq|"C:\\Program Files\\ImageMagick-6.9.0-Q16\\convert.exe"|;
+my $magick = qq|"C:\\Program Files\\ImageMagick-7.0.8-Q16\\magick.exe"|;
 
 my @ids;
-open IN, '<', '02_export.csv' or die $!;
-while(<IN>)
+my $data = do './02_export.pl';
+foreach my $h (@$data)
 {
-    chomp;
-    my($id, $name, $church, $pv, $pv2, $sr, $so, $sv, $sv2, $nr, $no) = split /\s*;\s*/;
+	my $id = $h->{id};
     my $idName2 = sprintf("%04d", $id);
     push @ids, $idName2;
 }
@@ -38,7 +37,7 @@ while($i < @ids)
         push @front, sprintf("Result\\%s_front.png", get_id($i));
         $i++;
     }
-    print "montage " . join(' ', @front) . " -tile ${mx}x${my} -border 1x1 -geometry +0+0 Result\\set_${p2}_front.png\n"; # -rotate 90  -quality 80 
+    print "$magick montage " . join(' ', @front) . " -tile ${mx}x${my} -border 1x1 -geometry +0+0 Result\\set_${p2}_front.png\n"; # -rotate 90  -quality 80 
     # back
     my @back;
     for(my $y = 0; $y < $my; $y++)
@@ -50,7 +49,7 @@ while($i < @ids)
         }
     }
     #4961 x 7016 px
-    print "montage " . join(' ', @back) . " -tile ${mx}x${my} -border 1x1 -geometry +0+0 Result\\set_${p2}_back.png\n"; # -rotate -90  -quality 80  -geometry 1234x1742+4+4
+    print "$magick montage " . join(' ', @back) . " -tile ${mx}x${my} -border 1x1 -geometry +0+0 Result\\set_${p2}_back.png\n"; # -rotate -90  -quality 80  -geometry 1234x1742+4+4
     #-bordercolor white
     # 
     
@@ -58,11 +57,11 @@ while($i < @ids)
     $p++;
     if(($p % 1000) == 0)
     {
-        print "$convert -density 600 " . join(' ', @pages) . sprintf(" PDF\\output_%02d.pdf\n", $s++);
+        print "$magick convert -density 600 " . join(' ', @pages) . sprintf(" PDF\\output_%02d.pdf\n", $s++);
         @pages = ();
     }
 }
-print "$convert -density 600 " . join(' ', @pages) . sprintf(" PDF\\output_%02d.pdf\n", $s++);
+print "$magick convert -density 600 " . join(' ', @pages) . sprintf(" PDF\\output_%02d.pdf\n", $s++);
 
 sub get_id
 {

@@ -43,7 +43,8 @@ public partial class Detail : Page
             _dropDownData = Database.GetPageLoadInfo();
 
             Common.FillChurches(ddlZbor, _dropDownData.Zbory);
-            Common.FillTeeShirts(ddlTricko, _dropDownData.Tricka);
+            Common.FillTeeShirts(ddlTricko, _dropDownData.Tricka, false);
+            Common.FillTeeShirts(ddlMikina, _dropDownData.Tricka, true);
             Common.FillSluziaci(ddlSluziaci, _dropDownData.Sluziaci, true);
             Common.FillDobrovolnici(ddlDobrovolnik, _dropDownData.Dobrovolnici);
             Common.FillInternat(ddlUbytovaniePiatokSobota);

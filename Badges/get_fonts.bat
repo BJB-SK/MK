@@ -1,1 +1,2 @@
-convert -list font >fonts.txt
+magick -list font >fonts.txt
+pause

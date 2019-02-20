@@ -11,6 +11,7 @@ public struct SluziaciInfo : IIdNameToolTip
     public string ToolTip { get; set; }
     public bool FreeRegistration;
     public bool FreeTeeShirt;
+    public bool FreeMikina;
     public bool FreeFood;
     public bool FreeDorm;
     public bool Allowed;
