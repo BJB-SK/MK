@@ -17,6 +17,7 @@ public partial class List : Page
         public const string Priezvisko = "Priezvisko";
         public const string Zbor = "Zbor";
         public const string Tricko = "Tricko";
+        public const string Mikina = "Mikina";
         public const string Preplatok = "Preplatok";
         public const string Prisli = "Prisli";
     }

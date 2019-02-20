@@ -112,14 +112,4 @@ public class Common
         ddlDobrovolnici.Items.AddRange(data.ToListItems2());
         ddlDobrovolnici.SelectedValue = "0";
     }
-
-    public static void FillInternat(DropDownList ddlInternat)
-    {
-        ddlInternat.Items.Clear();
-        ddlInternat.Items.Add(new ListItem { Text = "V škole", Value = "0" });
-        ddlInternat.Items.Add(new ListItem { Text = "Tichá trieda", Value = "1" });
-        ddlInternat.Items.Add(new ListItem { Text = "Internát 1", Value = "2" });
-        ddlInternat.Items.Add(new ListItem { Text = "Internát 2", Value = "3" });
-        ddlInternat.SelectedValue = "0";
-    }
 }

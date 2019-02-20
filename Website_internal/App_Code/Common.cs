@@ -113,13 +113,10 @@ public class Common
         ddlDobrovolnici.SelectedValue = "0";
     }
 
-    public static void FillInternat(DropDownList ddlInternat)
+    public static void FillInternat(DropDownList ddlInternat, List<IdName> data)
     {
         ddlInternat.Items.Clear();
-        ddlInternat.Items.Add(new ListItem { Text = "V škole", Value = "0" });
-        ddlInternat.Items.Add(new ListItem { Text = "Tichá trieda", Value = "1" });
-        ddlInternat.Items.Add(new ListItem { Text = "Internát 1", Value = "2" });
-        ddlInternat.Items.Add(new ListItem { Text = "Internát 2", Value = "3" });
+        ddlInternat.Items.AddRange(data.ToListItems());
         ddlInternat.SelectedValue = "0";
     }
 }

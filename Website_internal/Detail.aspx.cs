@@ -47,8 +47,8 @@ public partial class Detail : Page
             Common.FillTeeShirts(ddlMikina, _dropDownData.Tricka, true);
             Common.FillSluziaci(ddlSluziaci, _dropDownData.Sluziaci, true);
             Common.FillDobrovolnici(ddlDobrovolnik, _dropDownData.Dobrovolnici);
-            Common.FillInternat(ddlUbytovaniePiatokSobota);
-            Common.FillInternat(ddlUbytovanieSobotaNedela);
+            Common.FillInternat(ddlUbytovaniePiatokSobota, _dropDownData.Ubytovanie);
+            Common.FillInternat(ddlUbytovanieSobotaNedela, _dropDownData.Ubytovanie);
         }
 
         if (!IsPostBack)
@@ -285,7 +285,7 @@ public partial class Detail : Page
         lblCenaObed.Text = Currency(Prices.Obed);
         lblCenaVecera.Text = Currency(Prices.Vecera);
         lblCenaVecera2.Text = Currency(Prices.Vecera2);
-        lblCenaUbytovanie.Text = string.Format("0/0/{0}/{1}", Prices.Internat1, Prices.Internat2);
+        lblCenaUbytovanie.Text = string.Format("1/1/{0}/{1}/0", Prices.Internat1, Prices.Internat2);
 
         int idSluziaci;
         if (int.TryParse(ddlSluziaci.SelectedValue, out idSluziaci))

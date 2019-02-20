@@ -97,6 +97,8 @@ public static class Database
                         });
                     }
                     reader.NextResult();
+
+                    data.Ubytovanie = reader.GetListOfIdNames();
                 }
             }
         }
@@ -468,7 +470,7 @@ public static class Database
                     command.AddParameterInt("@idSluziaci", data.IdSluziaci);
                     command.AddParameterInt("@idDobrovolnik", data.IdDobrovolnik);
                     command.AddParameterString("@poznamka", data.Poznamka);
-                    command.AddParameterFloat("@registracny", data.RegistracnyOverride);
+                    command.AddParameterFloat("@registracnyPoplatok", data.RegistracnyOverride);
 
                     command.ExecuteNonQuery();
                 }
@@ -524,8 +526,9 @@ public static class Database
                             Priezvisko = reader.GetStringNull(3),
                             Zbor = reader.GetStringNull(4),
                             Tricko = reader.GetStringNull(5),
-                            Preplatok = reader.GetFloatNull(6) ?? 0,
-                            Prisli = reader.GetDateTimeNull(7) != null
+                            Mikina = reader.GetStringNull(6),
+                            Preplatok = reader.GetFloatNull(7) ?? 0,
+                            Prisli = reader.GetDateTimeNull(8) != null
                         });
                     }
                 }
