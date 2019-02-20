@@ -1,17 +1,18 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageIndex.master.cs" Inherits="MasterPageIndex" %>
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head runat="server">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Mládežnícka konferencia 2019 (22.-24.02 2019, BB). Nadupaný víkend plný zaujímavých tém, seminárov, chvál, vzácnych hostí a ďalších skvelých vecí. Neváhaj a zaregistruj sa čím skôr. Tešíme sa na Teba!">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Mládežnícka konferencia 2019 (22.-24.02 2019, BB). Nadupaný víkend plný zaujímavých tém, seminárov, chvál, vzácnych hostí a ďalších skvelých vecí. Neváhaj a zaregistruj sa čím skôr. Tešíme sa na Teba!">
 
-    <meta property="og:image" content="https://res.cloudinary.com/m1n0/image/upload/v1543962047/mk-2019-banner_mdgnn5.png" />
-    <meta property="og:description" content="Mládežnícka konferencia 2019 (22.-24.02 2019, BB). Nadupaný víkend plný zaujímavých tém, seminárov, chvál, vzácnych hostí a ďalších skvelých vecí. Neváhaj a zaregistruj sa čím skôr. Tešíme sa na Teba!" />
+<meta property="og:image" content="https://res.cloudinary.com/m1n0/image/upload/v1543962047/mk-2019-banner_mdgnn5.png" />
+<meta property="og:description" content="Mládežnícka konferencia 2019 (22.-24.02 2019, BB). Nadupaný víkend plný zaujímavých tém, seminárov, chvál, vzácnych hostí a ďalších skvelých vecí. Neváhaj a zaregistruj sa čím skôr. Tešíme sa na Teba!" />
 
-    <meta name="author" content="BJB Slovensko">
-    <title>MK 019</title>
+<meta name="author" content="BJB Slovensko">
+<title>MK 019</title>
+
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -145,11 +146,11 @@
                     <i class="fa fa-4x fa-eur wow bounceIn text-primary" data-wow-delay=".2s"></i>
                     <h3>Cena</h3>
                     <p class="text-muted">
-                      <strong>6€</strong> do 25.12 <small>(vrátane)</small><br>
-                      <strong>9€</strong> do 20.01 <small>(vrátane)</small><br>
-                      <strong>12€</strong> do 14.02 <small>(vrátane)</small><br>
-                      <strong>5€</strong> na mieste <small>(piatok)</small><br/>
-                      <strong>10€</strong> na mieste <small>(sobota)</small><br/>
+                      <strong>6€</strong> do 25.12 <small>(vrátane)</small><br />
+                      <strong>9€</strong> do 20.01 <small>(vrátane)</small><br />
+                      <strong>12€</strong> do 14.02 <small>(vrátane)</small><br />
+                      <strong>5€</strong> na mieste <small>(piatok)</small><br />
+                      <strong>10€</strong> na mieste <small>(sobota)</small><br />
                     </p>
                 </div>
             </div>
@@ -214,7 +215,7 @@
 <br />
 1. V reči – Darina Malá
 <br />
-2. V správaní – Robert Nagypal
+2. V správaní – Peter Nagy
 <br />
 3. V láske – Miroslav Hrivnák
 <br />
@@ -437,37 +438,38 @@ A čo odmena za nasledovanie? Budem lepší človek? Pôjdem do neba? Budem mať
 </section>
 
   <section id="contact">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 text-center">
-                <h2 class="section-heading">Ozvi sa nám!</h2>
-                <hr class="primary">
-                <p>Potrebuješ vybaviť vekovú výnimku, pômocť s niečím alebo máš otázky? <br /> Neváhaj nám napísať alebo zavolať a pokúsime sa pomôcť!</p>
-                <br />
-                <br />
-            </div>
-            <div class="col-lg-4 text-center">
-                <i class="fa fa-phone fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                <br /><br />
-                Martin Tobák 0917 349 474 <br />
-                Zoli Kakaš 0907 731 428
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 text-center">
+        <h2 class="section-heading">Ozvi sa nám!</h2>
+        <hr class="primary">
+        <p>Potrebuješ vybaviť vekovú výnimku, pômocť s niečím alebo máš otázky? <br /> Neváhaj nám napísať alebo zavolať a pokúsime sa pomôcť!</p>
+        <br />
+        <br />
+      </div>
 
-            <div class="col-lg-4 text-center email">
-                <a href="mailto:mladeznicka.konfera@gmail.com">
-                    <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                    <p><br />mladeznicka.konfera@gmail.com</p>
-                </a>
-            </div>
+      <div class="col-lg-4 text-center">
+        <i class="fa fa-phone fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+        <br /><br />
+        Martin Tobák 0917 349 474 <br />
+        Zoli Kakaš 0907 731 428
+      </div>
 
-            <div class="col-lg-4 text-center facebook">
-                <a target="_blank" href="https://www.facebook.com/events/993799814144903">
-                    <i class="fa fa-facebook fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                    <p><br />https://www.facebook.com/events/993799814144903</p>
-                </a>
-            </div>
-        </div>
+      <div class="col-lg-4 text-center email">
+        <a href="mailto:mladeznicka.konfera@gmail.com">
+            <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+            <p><br />mladeznicka.konfera@gmail.com</p>
+        </a>
+      </div>
+
+      <div class="col-lg-4 text-center facebook">
+        <a target="_blank" href="https://www.facebook.com/events/993799814144903">
+          <i class="fa fa-facebook fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+          <p><br />https://www.facebook.com/events/993799814144903</p>
+        </a>
+      </div>
     </div>
+  </div>
 </section>
 
   <section class="no-padding" id="map">

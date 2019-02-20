@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
+    <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Mládežnícka konferencia 2019 (22.-24.02 2019, BB). Nadupaný víkend plný zaujímavých tém, seminárov, chvál, vzácnych hostí a ďalších skvelých vecí. Neváhaj a zaregistruj sa čím skôr. Tešíme sa na Teba!">
 
@@ -101,7 +101,7 @@ Veríš tomu? Máš sa na čo tešiť.
             <img src="img/program/pandrasko.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
             <div class="col-sm-9 col-xs-12">
               <p>
-                <span class="seminar-title">Evanjelizácia prirodzenosťou</span><br />
+                <span class="seminar-title">Prirodzená evanjelizácia</span><br />
                 Pavol Andraško<br />
               </p>
               <p>Je ti zdieľanie evanjelia prirodzené alebo ti prebehnú zimomriavky ak si predstavíš, že by si ho mal povedať spolužiakom, kamarátom, ...? Môže mi to vôbec byť prirodzené alebo je to len pre obdarovaných ako bol Billy Graham? V škole, v práci, v obchode stretávame mnoho ľudí, ktorí nepoznajú Boha. Božie slovo nám hovorí: „Choďte teda, čiňte mi učeníkmi všetky národy“, „Veď ja sa nehanbím za evanjelium“. Toto poslanie je veľkým požehnaním, ktoré prináša so sebou výzvy.
@@ -179,6 +179,20 @@ Dali Perašín, generálny sekretár YMCA na Slovensku
             </div>
           </div>
         
+          <div class="text-with-image pic-left col-xs-12">
+            <img src="img/program/dkraljik.jpg" class="img-responsive col-sm-3 col-xs-12" alt="" />
+            <div class="col-sm-9 col-xs-12">
+              <p>
+                <span class="seminar-title">Kauza Biblia</span><br />
+                Darko Kraljik<br />
+              </p>
+              <p>Je Biblia dôveryhodná? Je spoľahlivá a neomylná? A čo chyby v Biblii? Je dostatočnou autoritou pre spásu a život viery? Tieto otázky zamestnávajú mnohých ľudí. Na seminári "Kauza Biblia" budeme hľadať odpovede.
+</p>
+              
+            <!-- <p> -->
+            </div>
+          </div>
+        
 
         <p><br /><br /><br /></p>
 
@@ -190,37 +204,38 @@ Dali Perašín, generálny sekretár YMCA na Slovensku
 </section>
 
   <section id="contact">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 text-center">
-                <h2 class="section-heading">Ozvi sa nám!</h2>
-                <hr class="primary">
-                <p>Potrebuješ vybaviť vekovú výnimku, pômocť s niečím alebo máš otázky? <br /> Neváhaj nám napísať alebo zavolať a pokúsime sa pomôcť!</p>
-                <br />
-                <br />
-            </div>
-        <div class="col-lg-4 text-center">
-          <i class="fa fa-phone fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-          <br /><br />
-          Martin Tobák 0917 349 474 <br />
-          Zoli Kakaš 0907 731 428
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 text-center">
+        <h2 class="section-heading">Ozvi sa nám!</h2>
+        <hr class="primary">
+        <p>Potrebuješ vybaviť vekovú výnimku, pômocť s niečím alebo máš otázky? <br /> Neváhaj nám napísať alebo zavolať a pokúsime sa pomôcť!</p>
+        <br />
+        <br />
+      </div>
 
-        <div class="col-lg-4 text-center email">
-            <a href="mailto:mladeznicka.konfera@gmail.com">
+      <div class="col-lg-4 text-center">
+        <i class="fa fa-phone fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+        <br /><br />
+        Martin Tobák 0917 349 474 <br />
+        Zoli Kakaš 0907 731 428
+      </div>
+
+      <div class="col-lg-4 text-center email">
+        <a href="mailto:mladeznicka.konfera@gmail.com">
             <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                <p><br />mladeznicka.konfera@gmail.com</p>
-            </a>
-        </div>
+            <p><br />mladeznicka.konfera@gmail.com</p>
+        </a>
+      </div>
 
-        <div class="col-lg-4 text-center facebook">
-            <a target="_blank" href="https://www.facebook.com/events/993799814144903">
-            <i class="fa fa-facebook fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                <p><br />https://www.facebook.com/events/993799814144903</p>
-            </a>
-        </div>
-
+      <div class="col-lg-4 text-center facebook">
+        <a target="_blank" href="https://www.facebook.com/events/993799814144903">
+          <i class="fa fa-facebook fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+          <p><br />https://www.facebook.com/events/993799814144903</p>
+        </a>
+      </div>
     </div>
+  </div>
 </section>
 
   <section class="no-padding" id="map">
