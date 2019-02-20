@@ -12,4 +12,5 @@ public class PageLoadInfo
     public List<SluziaciInfo> Sluziaci;
     public List<CurrencyInfo> Currencies;
     public List<PoplatokInfo> Poplatky;
+    public List<IdName> Ubytovanie;
 }

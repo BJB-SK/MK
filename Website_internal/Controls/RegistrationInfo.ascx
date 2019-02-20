@@ -4,9 +4,11 @@
     <div class="box">
         <asp:TextBox runat="server" ID="txtMeno" Width="300px" AutoPostBack="false" /><br />
         <asp:TextBox runat="server" ID="txtPriezvisko" Width="300px" AutoPostBack="false" /><br />
+        <!--
         <asp:Panel runat="server" ID="pnlTelefon">
             <asp:TextBox runat="server" ID="txtTelefon" Width="300px" AutoPostBack="false" /><br />
         </asp:Panel>
+        -->
         <asp:TextBox runat="server" ID="txtEmail" Width="300px" AutoPostBack="false" /><br />
         <!--<asp:Button runat="server" ID="btnAddAtSign" Text="@" />
         <asp:Button runat="server" ID="btnAddGmail" Text="@gmail.com" /><br />-->

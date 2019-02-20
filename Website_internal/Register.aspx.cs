@@ -35,8 +35,8 @@ public partial class Register : Page
             Common.FillChurches(ddlZbor, _dropDownData.Zbory);
             Common.FillSluziaci(ddlSluziaci, _dropDownData.Sluziaci, true);
             Common.FillDobrovolnici(ddlDobrovolnik, _dropDownData.Dobrovolnici);
-            Common.FillInternat(ddlUbytovaniePiatokSobota);
-            Common.FillInternat(ddlUbytovanieSobotaNedela);
+            Common.FillInternat(ddlUbytovaniePiatokSobota, _dropDownData.Ubytovanie);
+            Common.FillInternat(ddlUbytovanieSobotaNedela, _dropDownData.Ubytovanie);
         }
         btnLenDnes.OnClientClick = string.Format("$('#{0}').val('{1}');return false;", txtRegistracnyOverride.ClientID, Prices.LenDnes);
     }

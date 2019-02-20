@@ -73,13 +73,14 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
             errors.Add(Common.ChybaEmail);
             txtEmail.CssClass = "errorBorder";
         }
-
+        /*
         txtTelefon.CssClass = "";
         if (pnlTelefon.Visible && !Common.ValidatePhoneNumber(txtTelefon.Text.Trim()))
         {
             errors.Add(Common.ChybaTelefon);
             txtTelefon.CssClass = "errorBorder";
         }
+        */
         /*
         lblZborError.Text = "";
         if (ddlZbor.SelectedValue == "0" ||
@@ -341,7 +342,7 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
         }
 
         ddlDobrovolnik.Visible = ddlSluziaci.SelectedValue == "1";  // hardcoded value for dobrovolnik
-        pnlTelefon.Visible = ddlSluziaci.SelectedValue != "0";
+        // pnlTelefon.Visible = ddlSluziaci.SelectedValue != "0";
 
         rblTricko.Visible = ddlTricko.SelectedValue != "0";
         rblMikina.Visible = ddlMikina.SelectedValue != "0";
