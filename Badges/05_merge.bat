@@ -9,10 +9,10 @@ use warnings;
 my $magick = qq|"C:\\Program Files\\ImageMagick-7.0.8-Q16\\magick.exe"|;
 
 # front
-my $x_name = 75;
-my $y_name = 240;
-my $x_church = 75;
-my $y_church = 900;
+my $x_name = 83;
+my $y_name = 156; # 399;
+my $x_church = 83;
+my $y_church = 925; # 1061;
 my $x_id_front = 1993;
 my $y_id_front = 3377;
 
@@ -32,7 +32,7 @@ open BACK, '>', "06_merge_back.bat" or die $!;
 
 my %churches;
 my $data = do './02_export.pl';
-# my $counter = 10;
+my $counter = 20;
 foreach my $h (@$data)
 {
 	# last if $counter-- == 0;
@@ -51,7 +51,7 @@ foreach my $h (@$data)
         "\( Names\\$idName2.png -geometry +$x_name+$y_name \) -composite " .    # +distort SRT -2.9
         "\( Churches\\$churchName2.png -geometry +$x_church+$y_church \) -composite " . #+distort SRT -2.9
         "\( Ids\\$idName2.png -geometry +$x_id_front+$y_id_front \) -composite " . # +distort SRT -90
-        "Result\\${idName2}_front.png\n";
+        "Front\\${idName2}.png\n";
 
     print BACK "$magick convert back.png " .
         ($h->{pv}  ? "check_yes.png" : "check_no.png") . " -geometry +$x_check1+374 -composite " .
@@ -65,5 +65,5 @@ foreach my $h (@$data)
         "Ids\\$idName2.png -geometry +$x_id_back+$y_id_back -composite " .
         ($hasTShirt ? "TShirts\\$tshirt.png -geometry +$x_tshirt+$y_tshirt -composite " : '') .
         "\( QR\\$idName2.png -resize 484x484 \) -geometry +$x_qr+$y_qr -composite " .
-        "Result\\${idName2}_back.png\n";
+        "Back\\${idName2}.png\n";
 }

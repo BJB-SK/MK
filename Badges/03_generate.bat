@@ -3,7 +3,6 @@
 use strict;
 use warnings;
 use Data::Dumper;
-use Imager::QRCode;
 
 # http://strawberryperl.com/ 
 # http://www.imagemagick.org/
@@ -11,8 +10,8 @@ use Imager::QRCode;
 
 my $magick = qq|"C:\\Program Files\\ImageMagick-7.0.8-Q16\\magick.exe"|;
 my $sizeId = '483x101';
-my $sizeName = '2330x650';
-my $sizeChurch = '2330x1040';
+my $sizeName = '1403x717'; # '1443x487';
+my $sizeChurch = '1163x913'; # '1093x755';
 my $sizeTeeShirt = '603x74';
 my $options = '-background black -transparent black -fill white -font font.otf';
 
@@ -23,7 +22,7 @@ open TSHIRTS, '>', "04_generate_tshirts.bat" or die $!;
 
 my %churches;
 my $data = do './02_export.pl';
-# my $counter = 10;
+my $counter = 20;
 foreach my $h (@$data)
 {
 	# last if $counter-- == 0;
@@ -34,27 +33,24 @@ foreach my $h (@$data)
     if($church eq '') { $church = ' '; }
     $churches{$church} = 1;
 	# id
-    print IDS "$magick convert -size $sizeId $options -gravity center caption:$idName2 Ids\\$idName2.png\n";
+    if (!-e "./Ids/$idName2.png") {
+        print IDS "$magick convert -size $sizeId $options -gravity center caption:$idName2 Ids\\$idName2.png\n";
+    }
 	# name
-    open OUT, '>', "Names\\$idName2.txt" or die $!;
-    print OUT "\n", $h->{name};
-    close OUT or die $!;
-    print NAMES "$magick convert -size $sizeName $options -gravity NorthWest caption:\@Names\\$idName2.txt Names\\$idName2.png\n";
-	
-	# QR codes
-    my $url = "http://mk.baptist.sk/seminare/?q=$qr";
- 
-	my $qrcode = Imager::QRCode->new(
-		size          => 2,
-		margin        => 2,
-		version       => 1,
-		level         => 'M',
-		casesensitive => 1,
-		lightcolor    => Imager::Color->new(255, 255, 255),
-		darkcolor     => Imager::Color->new(0, 0, 0),
-	);
-	my $img = $qrcode->plot($url);
-	$img->write(file => "QR\\$idName2.png") or die "Failed to write: " . $img->errstr;
+    if (!-e "./Names/$idName2.png") {
+        open OUT, '>', "Names\\$idName2.txt" or die $!;
+        print OUT "\n" . $h->{name};
+        close OUT or die $!;
+        print NAMES "$magick convert -size $sizeName $options -gravity SouthWest caption:\@Names\\$idName2.txt Names\\$idName2.png\n";
+    }
+}
+
+foreach my $id (500..600)
+{
+    my $idName2 = sprintf("%04d", $id);
+    if (!-e "./Ids/$idName2.png") {
+        print IDS "$magick convert -size $sizeId $options -gravity center caption:$idName2 Ids\\$idName2.png\n";
+    }
 }
 
 for my $name (keys %churches)
@@ -62,7 +58,7 @@ for my $name (keys %churches)
     my $name2 = $name;
     $name2 =~ s/([^A-Za-z])/sprintf('%2.2x', unpack('U0U*', $1))/ge;
     open OUT, '>', "Churches\\$name2.txt" or die $!;
-    print OUT "\n", $name;
+    print OUT "\n" . $name;
     close OUT or die $!;
     print CHURCHES "$magick convert -size $sizeChurch $options -gravity NorthWest caption:\@Churches\\$name2.txt Churches\\$name2.png\n";
 }

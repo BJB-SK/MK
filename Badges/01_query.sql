@@ -2,7 +2,7 @@
 select 
 	'{ ' +
 	'id => ' + cast(r.[Id] as nvarchar(max)) + ', ' +
-	'name => ''' + [Meno] + ' ' + [Priezvisko] + ''', ' +
+	'name => ''' + [Meno] + ''', ' +
 	'church => ''' + coalesce(z.[name], [InyZbor]) + ''', ' +
     'pv => ' + cast([PiatokVecera] as nvarchar(max)) + ', ' +
 	'pv2 => ' + cast([PiatokVecera2] as nvarchar(max)) + ', ' +
@@ -15,11 +15,8 @@ select
 	'idTShirt => ' + cast(coalesce([idTricko], 0) as nvarchar(max)) + ', ' +
 	'idTShirtColor => ' + cast(coalesce([idFarbaTricka], 0) as nvarchar(max)) + ', ' +
 	'idHoodie => ' + cast(coalesce([idMikina], 0) as nvarchar(max)) + ', ' +
-	'idHoodieColor => ' + cast(coalesce([idFarbaMikiny], 0) as nvarchar(max)) + ', ' +
-	'qr => ''' + q.[seminare] + '''' +
+	'idHoodieColor => ' + cast(coalesce([idFarbaMikiny], 0) as nvarchar(max)) + ' ' +
 	'},'
 from [dbo].[registracia] r
 left join [dbo].[zbor] z on z.[id] = r.[IdZbor]
-left join [dbo].[qr] q on q.[id] = r.[id]
---where [id] > 386
-order by r.[Priezvisko] asc, r.[Meno] asc
+order by r.[Priezvisko] asc, r.[Meno] asc;

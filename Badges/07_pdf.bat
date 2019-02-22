@@ -16,6 +16,11 @@ foreach my $h (@$data)
     my $idName2 = sprintf("%04d", $id);
     push @ids, $idName2;
 }
+foreach my $id (500..600)
+{
+    my $idName2 = sprintf("%04d", $id);
+    push @ids, $idName2;
+}
 
 my @result;
 my $mx = 2;
@@ -34,7 +39,7 @@ while($i < @ids)
     my @front;
     for(my $j = 0; $j < $page; $j++)
     {
-        push @front, sprintf("Result\\%s_front.png", get_id($i));
+        push @front, sprintf("Front\\%s.png", get_id($i));
         $i++;
     }
     print "$magick montage " . join(' ', @front) . " -tile ${mx}x${my} -border 1x1 -geometry +0+0 Result\\set_${p2}_front.png\n"; # -rotate 90  -quality 80 
@@ -45,11 +50,12 @@ while($i < @ids)
         for(my $x = 0; $x < $mx; $x++)
         {
             my $k = $start + $y * $mx + ($mx - $x - 1);
-            push @back, sprintf("Result\\%s_back.png", get_id($k));
+            push @back, sprintf("Back\\%s.png", get_id($k));
         }
     }
     #4961 x 7016 px
-    print "$magick montage " . join(' ', @back) . " -tile ${mx}x${my} -border 1x1 -geometry +0+0 Result\\set_${p2}_back.png\n"; # -rotate -90  -quality 80  -geometry 1234x1742+4+4
+    #TODO uncomment
+    #print "$magick montage " . join(' ', @back) . " -tile ${mx}x${my} -border 1x1 -geometry +0+0 Result\\set_${p2}_back.png\n"; # -rotate -90  -quality 80  -geometry 1234x1742+4+4
     #-bordercolor white
     # 
     
