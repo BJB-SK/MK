@@ -58,8 +58,12 @@ public class NewRegistration
         if (NedelaObed) strava += Prices.Obed;
 
         float ubytovanie =
+            ((IdUbytovaniePiatokSobota == (int)Ubytovanie.Skola ||
+             IdUbytovaniePiatokSobota == (int)Ubytovanie.TichaTrieda) ? Prices.Ubytovanie : 0) +
             (IdUbytovaniePiatokSobota == (int)Ubytovanie.Internat1 ? Prices.Internat1 : 0) +
             (IdUbytovaniePiatokSobota == (int)Ubytovanie.Internat2 ? Prices.Internat2 : 0) +
+            ((IdUbytovanieSobotaNedela == (int)Ubytovanie.Skola ||
+             IdUbytovanieSobotaNedela == (int)Ubytovanie.TichaTrieda) ? Prices.Ubytovanie : 0) +
             (IdUbytovanieSobotaNedela == (int)Ubytovanie.Internat1 ? Prices.Internat1 : 0) +
             (IdUbytovanieSobotaNedela == (int)Ubytovanie.Internat2 ? Prices.Internat2 : 0);
 

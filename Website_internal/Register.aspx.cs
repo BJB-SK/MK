@@ -65,7 +65,7 @@ public partial class Register : Page
         lblCenaObed.Text = Currency(Prices.Obed);
         lblCenaVecera.Text = Currency(Prices.Vecera);
         lblCenaVecera2.Text = Currency(Prices.Vecera2);
-        lblCenaUbytovanie.Text = string.Format("{0}/{1}", Prices.Internat1, Prices.Internat2);
+        lblCenaUbytovanie.Text = string.Format("{0}/{1}/{2}/{3}/{4}", Prices.Ubytovanie, Prices.Ubytovanie, Prices.Internat1, Prices.Internat2, 0);
 
         if (idSluziaci.HasValue)
         {
@@ -101,6 +101,35 @@ public partial class Register : Page
         {
             if (!float.TryParse(txtDar.Text, out sponzorskyDar)) errors.Add(Common.ChybaSponzorskyDar);
         }
+
+        var data = new NewRegistration
+        {
+            Meno = txtMeno.Text,
+            Priezvisko = txtPriezvisko.Text,
+            Email = txtEmail.Text,
+            Telefon = txtTelefon.Text,
+            IdZbor = idZbor,
+            InyZbor = txtInyZbor.Text,
+            Sach = chbSach.Checked,
+            PingPong = chbPingPong.Checked,
+            IdSluziaci = idSluziaci,
+            IdDobrovolnik = idDobrovolnik,
+            Poznamka = txtPoznamka.Text,
+            PiatokVecera = chbPiatokVecera.Checked,
+            PiatokVecera2 = chbPiatokVecera2.Checked,
+            IdUbytovaniePiatokSobota = idUbytovaniePiatokSobota ?? 0,
+            SobotaRanajky = chbSobotaRanajky.Checked,
+            SobotaObed = chbSobotaObed.Checked,
+            SobotaVecera = chbSobotaVecera.Checked,
+            SobotaVecera2 = chbSobotaVecera2.Checked,
+            IdUbytovanieSobotaNedela = idUbytovanieSobotaNedela ?? 0,
+            NedelaRanajky = chbNedelaRanajky.Checked,
+            NedelaObed = chbNedelaObed.Checked,
+            Dar = sponzorskyDar,
+            RegistrationOverride = registrationOverride
+        };
+        lblTotalCost.Text = Currency(data.GetCost(_dropDownData.Sluziaci, _dropDownData.Poplatky));
+
         lblError.Text = "";
         if (errors.Count > 0)
         {
@@ -108,34 +137,6 @@ public partial class Register : Page
         }
         else
         {
-            var data = new NewRegistration
-            {
-                Meno = txtMeno.Text,
-                Priezvisko = txtPriezvisko.Text,
-                Email = txtEmail.Text,
-                Telefon = txtTelefon.Text,
-                IdZbor = idZbor,
-                InyZbor = txtInyZbor.Text,
-                Sach = chbSach.Checked,
-                PingPong = chbPingPong.Checked,
-                IdSluziaci = idSluziaci,
-                IdDobrovolnik = idDobrovolnik,
-                Poznamka = txtPoznamka.Text,
-                PiatokVecera = chbPiatokVecera.Checked,
-                PiatokVecera2 = chbPiatokVecera2.Checked,
-                IdUbytovaniePiatokSobota = idUbytovaniePiatokSobota ?? 0,
-                SobotaRanajky = chbSobotaRanajky.Checked,
-                SobotaObed = chbSobotaObed.Checked,
-                SobotaVecera = chbSobotaVecera.Checked,
-                SobotaVecera2 = chbSobotaVecera2.Checked,
-                IdUbytovanieSobotaNedela = idUbytovanieSobotaNedela ?? 0,
-                NedelaRanajky = chbNedelaRanajky.Checked,
-                NedelaObed = chbNedelaObed.Checked,
-                Dar = sponzorskyDar,
-                RegistrationOverride = registrationOverride
-            };
-            lblTotalCost.Text = Currency(data.GetCost(_dropDownData.Sluziaci, _dropDownData.Poplatky));
-
             if (_saveClicked)
             {
                 int? newId;

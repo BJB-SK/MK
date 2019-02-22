@@ -24,7 +24,7 @@
                         </tr>
                         <tr>
                             <td>Email</td>
-                            <td><asp:TextBox runat="server" ID="txtEmail" Width="250px" AutoPostBack="false"/></td>
+                            <td><asp:TextBox runat="server" ID="txtEmail" Width="250px" AutoPostBack="true"/></td>
                         </tr>
                         <tr>
                             <td>Telefón</td>
