@@ -10,5 +10,24 @@ public class Prices
     public const float Ubytovanie = 1;
     public const float Internat1 = 12;
     public const float Internat2 = 12;
-    public const float LenDnes = 6;
+    public const float LenDnesPiatok = 5;
+    public const float LenDnesSobota = 10;
+    public const float LenDnesNedela = 3;
+
+    public static float? GetCenaLenDnes()
+    {
+        if (System.DateTime.Now.DayOfWeek == System.DayOfWeek.Friday)
+        {
+            return LenDnesPiatok;
+        }
+        if (System.DateTime.Now.DayOfWeek == System.DayOfWeek.Saturday)
+        {
+            return LenDnesSobota;
+        }
+        if (System.DateTime.Now.DayOfWeek == System.DayOfWeek.Sunday)
+        {
+            return LenDnesNedela;
+        }
+        return null;
+    }
 }

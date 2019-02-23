@@ -11,6 +11,12 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>Prišli:</td>
+                    <td>
+                        <asp:Label runat="server" ID="lblPeopleWhoShowedUp"/>
+                    </td>
+                </tr>
+                <tr>
                     <td>Očakávame:</td>
                     <td>
                         <asp:Label runat="server" ID="lblExpectingEur"/>

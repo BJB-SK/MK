@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 public class SummaryData
 {
     public int TotalPeople;
+    public int ShowedUp;
     public int PiatokVecera;
     public int PiatokVecera2;
     public int PiatokVeceraZaplatene;

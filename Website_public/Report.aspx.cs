@@ -22,6 +22,7 @@ public partial class Report : System.Web.UI.Page
         var data = Database.GetSummary();
 
         lblRegisteredPeople.Text = data.TotalPeople.ToString();
+        lblPeopleWhoShowedUp.Text = data.ShowedUp.ToString();
         lblPiatokVecera.Text = data.PiatokVecera.ToString();
         lblPiatokVeceraZaplatene.Text = data.PiatokVeceraZaplatene.ToString();
         lblPiatokVecera2.Text = data.PiatokVecera2.ToString();

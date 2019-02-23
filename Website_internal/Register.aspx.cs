@@ -38,7 +38,7 @@ public partial class Register : Page
             Common.FillInternat(ddlUbytovaniePiatokSobota, _dropDownData.Ubytovanie);
             Common.FillInternat(ddlUbytovanieSobotaNedela, _dropDownData.Ubytovanie);
         }
-        btnLenDnes.OnClientClick = string.Format("$('#{0}').val('{1}');return false;", txtRegistracnyOverride.ClientID, Prices.LenDnes);
+        btnLenDnes.OnClientClick = string.Format("$('#{0}').val('{1}');return false;", txtRegistracnyOverride.ClientID, Prices.GetCenaLenDnes());
     }
 
     protected void btnSave_Click(object sender, EventArgs e)

@@ -56,7 +56,7 @@ public partial class Detail : Page
             LoadData();
         }
         lblSuccess.Text = "";
-        btnLenDnes.OnClientClick = string.Format("$('#{0}').val('{1}');return false;", txtRegistracnyOverride.ClientID, Prices.LenDnes);
+        btnLenDnes.OnClientClick = string.Format("$('#{0}').val('{1}');return false;", txtRegistracnyOverride.ClientID, Prices.GetCenaLenDnes());
     }
 
     private void LoadData()
@@ -138,6 +138,8 @@ public partial class Detail : Page
         if (!string.IsNullOrWhiteSpace(txtEmail.Text) && !Common.ValidateEmail(txtEmail.Text.Trim())) errors.Add(Common.ChybaEmail);
         var idTricko = ddlTricko.SelectedValue.StringToInt();
         if (idTricko == 0) idTricko = null;
+        var idMikina = ddlMikina.SelectedValue.StringToInt();
+        if (idMikina == 0) idMikina = null;
         var idZbor = ddlZbor.SelectedValue.StringToInt();
         if (idZbor == 0 || idZbor == -1) idZbor = null;
         var idSluziaci = ddlSluziaci.SelectedValue.StringToInt();
@@ -172,6 +174,7 @@ public partial class Detail : Page
             Sach = chbSach.Checked,
             PingPong = chbPingPong.Checked,
             IdTricko = idTricko,
+            IdMikina = idMikina,
             IdSluziaci = idSluziaci,
             IdDobrovolnik = idDobrovolnik,
             Poznamka = txtPoznamka.Text,
@@ -211,6 +214,7 @@ public partial class Detail : Page
         chbSach.Checked = data.Sach;
         chbPingPong.Checked = data.PingPong;
         ddlTricko.SelectedValue = (data.IdTricko ?? 0).ToString();
+        ddlMikina.SelectedValue = (data.IdMikina ?? 0).ToString();
         ddlSluziaci.SelectedValue = (data.IdSluziaci ?? 0).ToString();
         ddlDobrovolnik.SelectedValue = (data.IdDobrovolnik ?? 0).ToString();
         txtPoznamka.Text = data.Poznamka;

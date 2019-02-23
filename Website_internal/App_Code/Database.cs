@@ -334,7 +334,7 @@ public static class Database
 
         using (var connection = CreateConnection())
         {
-            using (var command = CreateCommand(connection, "GetDetail"))
+            using (var command = CreateCommand(connection, "GetDetail2"))
             {
                 command.AddParameterInt("@idUser", idUser);
 
@@ -363,6 +363,7 @@ public static class Database
                         data.Sach = reader.GetBoolean(i++);
                         data.PingPong = reader.GetBoolean(i++);
                         data.IdTricko = reader.GetInt32Null(i++);
+                        data.IdMikina = reader.GetInt32Null(i++);
                         data.Poznamka = reader.GetString(i++);
                         data.DtRegistered = reader.GetDateTimeNull(i++);
                         data.DtPrisli = reader.GetDateTimeNull(i++);
@@ -441,7 +442,7 @@ public static class Database
         {
             using (var connection = CreateConnection())
             {
-                using (var command = CreateCommand(connection, "UpdateUser"))
+                using (var command = CreateCommand(connection, "UpdateUser2"))
                 {
                     command.AddParameterInt("@idUser", data.Id);
                     command.AddParameterString("@meno", data.Meno);
@@ -467,6 +468,7 @@ public static class Database
                     command.AddParameterBool("@sach", data.Sach);
                     command.AddParameterBool("@pingPong", data.PingPong);
                     command.AddParameterInt("@idTricko", data.IdTricko);
+                    command.AddParameterInt("@idMikina", data.IdMikina);
                     command.AddParameterInt("@idSluziaci", data.IdSluziaci);
                     command.AddParameterInt("@idDobrovolnik", data.IdDobrovolnik);
                     command.AddParameterString("@poznamka", data.Poznamka);
