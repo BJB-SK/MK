@@ -2,3 +2,6 @@
 /Scripts/
 /aspnet_client/
 *.gitignore
+/obj/
+/packages/
+/Properties/

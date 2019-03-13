@@ -10,8 +10,9 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
     //public List<SluziaciInfo> Sluziaci { get; set; }
 
     private List<CurrencyInfo> _currencies;
-    private List<SluziaciInfo> _sluziaci;
-    private List<PoplatokInfo> _poplatky;
+    private List<JobInfo> _sluziaci;
+    private List<FeeInfo> _poplatky;
+    private List<Product> _products;
     private bool _showPrivateSluziaci;
     
     protected override void OnLoad(EventArgs e)
@@ -19,12 +20,9 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
         txtMeno.SetPlaceHolder("Meno (na visačku)");
         txtPriezvisko.SetPlaceHolder("Priezvisko (na visačku)");
         txtEmail.SetPlaceHolder("Email (povinné)");
-        txtTelefon.SetPlaceHolder("Telefón (povinné)");
+        txtPhoneNumber.SetPlaceHolder("Telefón (povinné)");
         txtZbor.SetPlaceHolder("Zbor (ak nie je v zozname)");
         txtPoznamka.SetPlaceHolder("Poznámka pre organizátorov");
-
-        btnAddAtSign.OnClientClick = string.Format("$('#{0}').val($('#{0}').val() + '@');return false;", txtEmail.ClientID);
-        btnAddGmail.OnClientClick = string.Format("$('#{0}').val($('#{0}').val() + '@gmail.com');return false;", txtEmail.ClientID);
 
         chbSobotaRanajky.AutoPostBack = CheckBoxesPostBack;
         chbNedelaRanajky.AutoPostBack = CheckBoxesPostBack;
@@ -35,17 +33,6 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
         chbPiatokVecera2.AutoPostBack = CheckBoxesPostBack;
         chbSobotaVecera2.AutoPostBack = CheckBoxesPostBack;
 
-        if(CheckBoxesPostBack)
-        {
-            btnVsetkoPiatok.Click += btnVsetkoPiatok_Click;
-            btnNicPiatok.Click += btnNicPiatok_Click;
-            btnVsetkoSobota.Click += btnVsetkoSobota_Click;
-            btnNicSobota.Click += btnNicSobota_Click;
-            btnVsetkoNedela.Click += btnVsetkoNedela_Click;
-            btnNicNedela.Click += btnNicNedela_Click;
-            btnVsetko.Click += btnVsetko_Click;
-            btnNic.Click += btnNic_Click;
-        }
         base.OnLoad(e);
     }
 
@@ -74,11 +61,11 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
             txtEmail.CssClass = "errorBorder";
         }
 
-        txtTelefon.CssClass = "";
-        if (pnlTelefon.Visible && !Common.ValidatePhoneNumber(txtTelefon.Text.Trim()))
+        txtPhoneNumber.CssClass = "";
+        if (pnlTelefon.Visible && !Common.ValidatePhoneNumber(txtPhoneNumber.Text.Trim()))
         {
             errors.Add(Common.ChybaTelefon);
-            txtTelefon.CssClass = "errorBorder";
+            txtPhoneNumber.CssClass = "errorBorder";
         }
         /*
         lblZborError.Text = "";
@@ -92,12 +79,12 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
         return errors;
     }
 
-    public int IdZbor
+    public int? IdChurch
     {
         get
         {
-            int idZbor = 0;
-            return int.TryParse(ddlZbor.SelectedValue, out idZbor) ? idZbor : 0;
+            int idChurch;
+            return int.TryParse(ddlZbor.SelectedValue, out idChurch) ? idChurch : (int?)null;
         }
         set
         {
@@ -105,55 +92,61 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
         }
     }
 
-    public int IdTricko
+    public string TeeShirtCode
     {
         get
         {
-            int idTricko = 0;
-            return int.TryParse(ddlTricko.SelectedValue, out idTricko) ? idTricko : 0;
+            return ddlTricko.SelectedValue != "" ? "tr " + ddlTricko.SelectedValue + " " + rblTricko.SelectedValue : "";
         }
+        /*
         set
         {
             ddlTricko.SelectedValue = value.ToString();
+
         }
+        */
     }
 
-    public int IdMikina
+    public string HoodieCode
     {
         get
         {
-            int idMikina = 0;
-            return int.TryParse(ddlMikina.SelectedValue, out idMikina) ? idMikina : 0;
+            return ddlMikina.SelectedValue != "" ? "mi " + ddlMikina.SelectedValue + " " + rblMikina.SelectedValue : "";
         }
+        /*
         set
         {
             ddlMikina.SelectedValue = value.ToString();
         }
+        */
     }
 
-    public int IdSluziaci
+    public string RegistrationCode
     {
         get
         {
-            int idSluziaci = 0;
-            return int.TryParse(ddlSluziaci.SelectedValue, out idSluziaci) ? idSluziaci : 0;
-        }
-        set
-        {
-            ddlSluziaci.SelectedValue = value.ToString();
+            var now = DateTime.UtcNow;
+            foreach (var poplatok in _poplatky)
+            {
+                if ((poplatok.From == null || poplatok.From <= now) && now <= poplatok.To)
+                {
+                    return poplatok.Code;
+                }
+            }
+            return "";
         }
     }
 
-    public int IdDobrovolnik
+    public int? IdJob
     {
         get
         {
-            int idDobrovolnik = 0;
-            return int.TryParse(ddlDobrovolnik.SelectedValue, out idDobrovolnik) ? idDobrovolnik : 0;
+            int idJob;
+            return int.TryParse(ddlJob.SelectedValue, out idJob) ? idJob : (int?)null;
         }
         set
         {
-            ddlDobrovolnik.SelectedValue = value.ToString();
+            ddlJob.SelectedValue = value.ToString();
         }
     }
 
@@ -161,73 +154,88 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
     {
         get
         {
-            if (IdSluziaci != 1) IdDobrovolnik = 0; // hardcoded value for dobrovolnik
+            var codes = new List<string>();
+
+            if (chbPiatokVecera.Checked) codes.Add("pv");
+            if (chbPiatokVecera2.Checked) codes.Add("pv2");
+            if (chbUbytovaniePiatokSobota.Checked && !chbTichaTriedaPiatokSobota.Checked) codes.Add("pst");
+            if (chbTichaTriedaPiatokSobota.Checked) codes.Add("pstt");
+            if (chbSobotaRanajky.Checked) codes.Add("sr");
+            if (chbSobotaObed.Checked) codes.Add("so");
+            if (chbSobotaVecera.Checked) codes.Add("sv");
+            if (chbSobotaVecera2.Checked) codes.Add("sv2");
+            if (chbUbytovanieSobotaNedela.Checked && !chbTichaTriedaSobotaNedela.Checked) codes.Add("snt");
+            if (chbTichaTriedaSobotaNedela.Checked) codes.Add("sntt");
+            if (chbNedelaRanajky.Checked) codes.Add("nr");
+            if (chbNedelaObed.Checked) codes.Add("no");
+            if (chbSach.Checked) codes.Add("chess");
+            if (chbPingPong.Checked) codes.Add("pingPong");
+            if (TeeShirtCode != "") codes.Add(TeeShirtCode);
+            if (HoodieCode != "") codes.Add(HoodieCode);
+            if (RegistrationCode != "") codes.Add(RegistrationCode);
 
             return new RegistrationEntry
             {
-                Meno = txtMeno.Text.Trim(),
-                Priezvisko = txtPriezvisko.Text.Trim(),
+                FirstName = txtMeno.Text.Trim(),
+                LastName = txtPriezvisko.Text.Trim(),
                 Email = txtEmail.Text.Trim(),
-                Telefon = txtTelefon.Text.Trim(),
-                IdZbor = IdZbor,
-                InyZbor = txtZbor.Text.Trim(),
-                PiatokVecera = chbPiatokVecera.Checked,
-                PiatokVecera2 = chbPiatokVecera2.Checked,
-                UbytovaniePiatokSobota = chbUbytovaniePiatokSobota.Checked || chbTichaTriedaPiatokSobota.Checked,
-                TichaTriedaPiatokSobota = chbTichaTriedaPiatokSobota.Checked,
-                SobotaRanajky = chbSobotaRanajky.Checked,
-                SobotaObed = chbSobotaObed.Checked,
-                SobotaVecera = chbSobotaVecera.Checked,
-                SobotaVecera2 = chbSobotaVecera2.Checked,
-                UbytovanieSobotaNedela = chbUbytovanieSobotaNedela.Checked || chbTichaTriedaSobotaNedela.Checked,
-                TichaTriedaSobotaNedela = chbTichaTriedaSobotaNedela.Checked,
-                NedelaRanajky = chbNedelaRanajky.Checked,
-                NedelaObed = chbNedelaObed.Checked,
-                Sach = chbSach.Checked,
-                PingPong = chbPingPong.Checked,
-                IdTricko = IdTricko,
-                Tricko = ddlTricko.SelectedItem == null ? "" : ddlTricko.SelectedItem.Text,
-                IdFarbaTricka = rblTricko.SelectedIndex,
-                FarbaTricka = rblTricko.SelectedValue,
-                IdMikina = IdMikina,
-                Mikina = ddlMikina.SelectedItem == null ? "" : ddlMikina.SelectedItem.Text,
-                IdFarbaMikiny = rblMikina.SelectedIndex,
-                FarbaMikiny = rblMikina.SelectedValue,
-                IdSluziaci = IdSluziaci,
-                IdDobrovolnik = IdDobrovolnik,
-                Poznamka = txtPoznamka.Text.Trim(),
+                PhoneNumber = txtPhoneNumber.Text.Trim(),
+                IdChurch = IdChurch,
+                OtherChurch = txtZbor.Text.Trim(),
+                IdJob = IdJob,
+                Codes = codes,
+                Note = txtPoznamka.Text.Trim(),
                 Errors = Validate()
             };
         }
         set
         {
-            txtMeno.Text = value.Meno;
-            txtPriezvisko.Text = value.Priezvisko;
+            txtMeno.Text = value.FirstName;
+            txtPriezvisko.Text = value.LastName;
             txtEmail.Text = value.Email;
-            txtTelefon.Text = value.Telefon;
-            IdZbor = value.IdZbor;
-            txtZbor.Text = value.InyZbor;
-            chbPiatokVecera.Checked = value.PiatokVecera;
-            chbPiatokVecera2.Checked = value.PiatokVecera2;
-            chbUbytovaniePiatokSobota.Checked = value.UbytovaniePiatokSobota;
-            chbTichaTriedaPiatokSobota.Checked = value.TichaTriedaPiatokSobota;
-            chbSobotaRanajky.Checked = value.SobotaRanajky;
-            chbSobotaObed.Checked = value.SobotaObed;
-            chbSobotaVecera.Checked = value.SobotaVecera;
-            chbSobotaVecera2.Checked = value.SobotaVecera2;
-            chbUbytovanieSobotaNedela.Checked = value.UbytovanieSobotaNedela;
-            chbTichaTriedaSobotaNedela.Checked = value.TichaTriedaSobotaNedela;
-            chbNedelaRanajky.Checked = value.NedelaRanajky;
-            chbNedelaObed.Checked = value.NedelaObed;
-            chbSach.Checked = value.Sach;
-            chbPingPong.Checked = value.PingPong;
-            IdTricko = value.IdTricko;
-            rblTricko.SelectedIndex = value.IdFarbaTricka;
-            IdMikina = value.IdMikina;
-            rblMikina.SelectedIndex = value.IdFarbaMikiny;
-            IdSluziaci = value.IdSluziaci;
-            IdDobrovolnik = value.IdDobrovolnik;
-            txtPoznamka.Text = value.Poznamka;
+            txtPhoneNumber.Text = value.PhoneNumber;
+            IdChurch = value.IdChurch;
+            txtZbor.Text = value.OtherChurch;
+            chbPiatokVecera.Checked = value.Codes.Contains("pv");
+            chbPiatokVecera2.Checked = value.Codes.Contains("pv2");
+            chbUbytovaniePiatokSobota.Checked = value.Codes.Contains("pst");
+            chbTichaTriedaPiatokSobota.Checked = value.Codes.Contains("pstt");
+            chbSobotaRanajky.Checked = value.Codes.Contains("sr");
+            chbSobotaObed.Checked = value.Codes.Contains("so");
+            chbSobotaVecera.Checked = value.Codes.Contains("sv");
+            chbSobotaVecera2.Checked = value.Codes.Contains("sv2");
+            chbUbytovanieSobotaNedela.Checked = value.Codes.Contains("snt");
+            chbTichaTriedaSobotaNedela.Checked = value.Codes.Contains("sntt");
+            chbNedelaRanajky.Checked = value.Codes.Contains("nr");
+            chbNedelaObed.Checked = value.Codes.Contains("no");
+            chbSach.Checked = value.Codes.Contains("chess");
+            chbPingPong.Checked = value.Codes.Contains("pingPong");
+            IdJob = value.IdJob;
+            txtPoznamka.Text = value.Note;
+
+            var code = value.Codes.FirstOrDefault(x => x.StartsWith("tr"));
+            if (code != null)
+            {
+                var parts = code.Split(' ');
+                ddlTricko.SelectedValue = parts[1] + " " + parts[2];
+                rblTricko.SelectedValue = parts[3];
+            }
+            else
+            {
+                ddlTricko.SelectedValue = "";
+            }
+
+            code = value.Codes.FirstOrDefault(x => x.StartsWith("mi"));
+            if (code != null)
+            {
+                var parts = code.Split(' ');
+                ddlMikina.SelectedValue = parts[1] + " " + parts[2];
+                rblMikina.SelectedValue = parts[3];
+            }
+            else
+            {
+                ddlMikina.SelectedValue = "";
+            }
         }
     }
 
@@ -235,23 +243,64 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
     {
         get
         {
-            return IdZbor == -1 ? txtZbor.Text : ddlZbor.SelectedItem.Text;
+            return IdChurch == null ? txtZbor.Text : ddlZbor.SelectedItem.Text;
         }
     }
 
     public CurrencyInfo Currency { get; set; }
 
+    private ListItem[] GetSizes()
+    {
+        return new ListItem[]
+        {
+            new ListItem("Žiadne", ""),
+            new ListItem("Dámske S", "da s"),
+            new ListItem("Dámske M", "da m"),
+            new ListItem("Dámske L", "da l"),
+            new ListItem("Dámske XL", "da xl"),
+            new ListItem("Dámske XXL", "da xxl"),
+            new ListItem("Pánske S", "pa s"),
+            new ListItem("Pánske M", "pa m"),
+            new ListItem("Pánske L", "pa l"),
+            new ListItem("Pánske XL", "pa xl"),
+            new ListItem("Pánske XXL", "pa xxl"),
+        };
+    }
+
     public void Fill(PageLoadInfo data, bool sluziaci)
     {
         _currencies = data.Currencies;
-        _sluziaci = data.Sluziaci;
-        _poplatky = data.Poplatky;
+        _sluziaci = data.Jobs;
+        _poplatky = data.Fees;
+        _products = data.Products;
         _showPrivateSluziaci = sluziaci;
-        Common.FillSluziaci(ddlSluziaci, data.Sluziaci, sluziaci);
-        Common.FillTeeShirts(ddlTricko, data.Tricka, false);
-        Common.FillTeeShirts(ddlMikina, data.Tricka, true);
-        Common.FillChurches(ddlZbor, data.Zbory);
-        Common.FillDobrovolnici(ddlDobrovolnik, data.Dobrovolnici);
+        Common.FillJobs(ddlJob, data.Jobs, sluziaci);
+        Common.FillDropDown(ddlZbor, data.Churches, new ListItem(Common.ChybaZbor, "0"));
+        Common.FillDropDown(ddlTricko, GetSizes());
+        Common.FillDropDown(ddlMikina, GetSizes());
+    }
+
+    private float? GetCost(JobInfo job, string code, RegistrationEntry data = null)
+    {
+        if (data != null && !data.Codes.Contains(code))
+        {
+            return 0;
+        }
+        var foundProduct = _products.FirstOrDefault(x => x.Code == code);
+        if(foundProduct != null)
+        {
+            if (job.FreeCategories != null && job.FreeCategories.Contains(foundProduct.IdCategory))
+            {
+                return 0;
+            }
+            return foundProduct.Price;
+        }
+        return null;
+    }
+
+    public float GetCost(JobInfo job, List<string> codes)
+    {
+        return codes.Aggregate(0f, (sum, code) => sum + (GetCost(job, code) ?? 0f));
     }
 
     protected override void OnPreRender(EventArgs e)
@@ -259,10 +308,10 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
         trTricko.Visible = Config.CanOrderTeeShirtOrHoodie;
         trMikina.Visible = Config.CanOrderTeeShirtOrHoodie;
 
-        var sluziaci = new SluziaciInfo();
-        if (IdSluziaci != 0 && _sluziaci.Any(x => x.Id == IdSluziaci))
+        var sluziaci = new JobInfo();
+        if (IdJob != 0 && _sluziaci.Any(x => x.Id == IdJob))
         {
-            sluziaci = _sluziaci.First(x => x.Id == IdSluziaci);
+            sluziaci = _sluziaci.First(x => x.Id == IdJob);
         }
 
         var ranajky = "Raňajky";
@@ -272,49 +321,45 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
         var ubytovanie = "Ubytovanie";
         var tichaTrieda = "v tichej triede";
         var data = Data;
-        var toolTipRanajky = Currency.FormatMoney(sluziaci.FreeFood ? 0 : Prices.Ranajky);
-        var toolTipObed = Currency.FormatMoney(sluziaci.FreeFood ? 0 : Prices.Obed);
-        var toolTipVecera = Currency.FormatMoney(sluziaci.FreeFood ? 0 : Prices.Vecera);
-        var toolTipVecera2 = Currency.FormatMoney(sluziaci.FreeFood ? 0 : Prices.Vecera2);
-        var toolUbytovanie = Currency.FormatMoney(sluziaci.FreeDorm ? 0 : Prices.Ubytovanie);
-
+        
         chbSobotaRanajky.Text = ranajky;
         chbNedelaRanajky.Text = ranajky;
-        chbSobotaRanajky.ToolTip = toolTipRanajky;
-        chbNedelaRanajky.ToolTip = toolTipRanajky;
-        lblCenaRanajky.Text = Currency.FormatMoney(sluziaci.FreeFood ? 0 : data.Ranajky * Prices.Ranajky);
+        chbSobotaRanajky.ToolTip = Currency.FormatMoney(GetCost(sluziaci, "sr"));
+        chbNedelaRanajky.ToolTip = Currency.FormatMoney(GetCost(sluziaci, "nr"));
+        lblCenaRanajky.Text = Currency.FormatMoney(GetCost(sluziaci, "sr", data) + GetCost(sluziaci, "nr", data));
 
         chbSobotaObed.Text = obed;
         chbNedelaObed.Text = obed;
-        chbSobotaObed.ToolTip = toolTipObed;
-        chbNedelaObed.ToolTip = toolTipObed;
-        lblCenaObed.Text = Currency.FormatMoney(sluziaci.FreeFood ? 0 : data.Obedy * Prices.Obed);
+        chbSobotaObed.ToolTip = Currency.FormatMoney(GetCost(sluziaci, "so"));
+        chbNedelaObed.ToolTip = Currency.FormatMoney(GetCost(sluziaci, "no"));
+        lblCenaObed.Text = Currency.FormatMoney(GetCost(sluziaci, "so", data) + GetCost(sluziaci, "no", data));
 
         chbPiatokVecera.Text = vecera;
         chbSobotaVecera.Text = vecera;
-        chbPiatokVecera.ToolTip = toolTipVecera;
-        chbSobotaVecera.ToolTip = toolTipVecera;
-        lblCenaVecera.Text = Currency.FormatMoney(sluziaci.FreeFood ? 0 : data.Vecere * Prices.Vecera);
+        chbPiatokVecera.ToolTip = Currency.FormatMoney(GetCost(sluziaci, "pv"));
+        chbSobotaVecera.ToolTip = Currency.FormatMoney(GetCost(sluziaci, "sv"));
+        lblCenaVecera.Text = Currency.FormatMoney(GetCost(sluziaci, "pv", data) + GetCost(sluziaci, "sv", data));
 
         chbPiatokVecera2.Text = vecera2;
         chbSobotaVecera2.Text = vecera2;
-        chbPiatokVecera2.ToolTip = toolTipVecera2;
-        chbSobotaVecera2.ToolTip = toolTipVecera2;
-        lblCenaVecera2.Text = Currency.FormatMoney(sluziaci.FreeFood ? 0 : data.Vecere2 * Prices.Vecera2);
+        chbPiatokVecera2.ToolTip = Currency.FormatMoney(GetCost(sluziaci, "pv2"));
+        chbSobotaVecera2.ToolTip = Currency.FormatMoney(GetCost(sluziaci, "sv2"));
+        lblCenaVecera2.Text = Currency.FormatMoney(GetCost(sluziaci, "pv2", data) + GetCost(sluziaci, "sv2", data));
 
         chbUbytovaniePiatokSobota.Text = ubytovanie;
         chbUbytovanieSobotaNedela.Text = ubytovanie;
-        chbUbytovaniePiatokSobota.ToolTip = toolUbytovanie;
-        chbUbytovanieSobotaNedela.ToolTip = toolUbytovanie;
+        chbUbytovaniePiatokSobota.ToolTip = Currency.FormatMoney(GetCost(sluziaci, "pst", data));
+        chbUbytovanieSobotaNedela.ToolTip = Currency.FormatMoney(GetCost(sluziaci, "snt", data));
 
         chbTichaTriedaPiatokSobota.Text = tichaTrieda;
         chbTichaTriedaSobotaNedela.Text = tichaTrieda;
 
-        lblCenaTricko.Text = Currency.FormatMoney(sluziaci.FreeTeeShirt || IdTricko == 0 ? 0 : Prices.Tricko);
-        lblCenaMikina.Text = Currency.FormatMoney(sluziaci.FreeMikina || IdMikina == 0 ? 0 : Prices.Mikina);
-        lblRegistracnyPoplatok.Text = Currency.FormatMoney(sluziaci.FreeRegistration ? 0 : data.GetRegistrationFee(_poplatky));
-        lblCenaUbytovanie.Text = Currency.FormatMoney(sluziaci.FreeDorm ? 0 : data.GetLodgingFee());
-        lblTotalCost.Text = Currency.FormatMoney(data.GetCost(_sluziaci, _poplatky));
+        lblCenaTricko.Text = Currency.FormatMoney(GetCost(sluziaci, "tr da s zl"));
+        lblCenaMikina.Text = Currency.FormatMoney(GetCost(sluziaci, "mi da s ci"));
+        lblRegistracnyPoplatok.Text = Currency.FormatMoney(GetCost(sluziaci, RegistrationCode));
+        lblCenaUbytovanie.Text = Currency.FormatMoney(GetCost(sluziaci, "pst", data) + GetCost(sluziaci, "snt", data));
+        
+        lblTotalCost.Text = Currency.FormatMoney(GetCost(sluziaci, data.Codes));
 
         if (!CheckBoxesPostBack)
         {
@@ -326,25 +371,12 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
             vsetko.AddRange(piatok);
             vsetko.AddRange(sobota);
             vsetko.AddRange(nedela);
-
-            btnVsetkoPiatok.OnClientClick = CheckEm(piatok, true);
-            btnNicPiatok.OnClientClick = CheckEm(piatok, false);
-
-            btnVsetkoSobota.OnClientClick = CheckEm(sobota, true);
-            btnNicSobota.OnClientClick = CheckEm(sobota, false);
-
-            btnVsetkoNedela.OnClientClick = CheckEm(nedela, true);
-            btnNicNedela.OnClientClick = CheckEm(nedela, false);
-
-            btnVsetko.OnClientClick = CheckEm(vsetko, true);
-            btnNic.OnClientClick = CheckEm(vsetko, false);
         }
 
-        ddlDobrovolnik.Visible = ddlSluziaci.SelectedValue == "1";  // hardcoded value for dobrovolnik
-        pnlTelefon.Visible = ddlSluziaci.SelectedValue != "0";
+        pnlTelefon.Visible = ddlJob.SelectedValue != "0";
 
-        rblTricko.Visible = ddlTricko.SelectedValue != "0";
-        rblMikina.Visible = ddlMikina.SelectedValue != "0";
+        rblTricko.Visible = ddlTricko.SelectedValue != "";
+        rblMikina.Visible = ddlMikina.SelectedValue != "";
 
         base.OnPreRender(e);
     }
@@ -357,80 +389,5 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
                     x.ClientID, 
                     value ? "true" : "false"))) + 
             "return false;";
-    }
-
-    private bool Friday
-    {
-        set
-        {
-            chbPiatokVecera.Checked = value;
-            chbPiatokVecera2.Checked = value;
-            chbUbytovaniePiatokSobota.Checked = value;
-        }
-    }
-
-    private bool Saturday
-    {
-        set
-        {
-            chbSobotaRanajky.Checked = value;
-            chbSobotaObed.Checked = value;
-            chbSobotaVecera.Checked = value;
-            chbSobotaVecera2.Checked = value;
-            chbUbytovanieSobotaNedela.Checked = value;
-        }
-    }
-
-    private bool Sunday
-    {
-        set
-        {
-            chbNedelaRanajky.Checked = value;
-            chbNedelaObed.Checked = value;
-        }
-    }
-
-    protected void btnVsetkoPiatok_Click(object sender, EventArgs e)
-    {
-        Friday = true;
-    }
-
-    protected void btnNicPiatok_Click(object sender, EventArgs e)
-    {
-        Friday = false;
-    }
-
-    protected void btnVsetkoSobota_Click(object sender, EventArgs e)
-    {
-        Saturday = true;
-    }
-
-    protected void btnNicSobota_Click(object sender, EventArgs e)
-    {
-        Saturday = false;
-    }
-
-    protected void btnVsetkoNedela_Click(object sender, EventArgs e)
-    {
-        Sunday = true;
-    }
-
-    protected void btnNicNedela_Click(object sender, EventArgs e)
-    {
-        Sunday = false;
-    }
-
-    protected void btnVsetko_Click(object sender, EventArgs e)
-    {
-        Friday = true;
-        Saturday = true;
-        Sunday = true;
-    }
-
-    protected void btnNic_Click(object sender, EventArgs e)
-    {
-        Friday = false;
-        Saturday = false;
-        Sunday = false;
     }
 }

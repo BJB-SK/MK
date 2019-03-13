@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Sports.aspx.cs" Inherits="Sports" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" Inherits="Sports" Codebehind="Sports.aspx.cs" %>
 
 <asp:Content ID="Content" ContentPlaceHolderID="Body" Runat="Server">
     <asp:UpdatePanel runat="server" ID="upRegistration">

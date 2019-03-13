@@ -46,9 +46,6 @@ h2 {
 .positive {
     color:green;
 }
-.popupHover {
-
-}
 .whiteText {
     color: #ffffff;
 }
@@ -117,4 +114,8 @@ input[type=radio]:checked + label {
     font-family: Merriweather, purista;
     font-size: 16px;
     color: #000;
+}
+.inlineBlock {
+    display: inline-block;
+    vertical-align: top;
 }

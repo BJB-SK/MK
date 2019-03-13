@@ -4,59 +4,78 @@ using System.Linq;
 using System.Web.UI;
 using System.Data;
 using System.Globalization;
+using System.Web.UI.WebControls;
 
 public partial class Detail : Page
 {
-    public const string KeyId = "KeyId";
     public const string KeyDropDownData = "KeyDropDownData";
+    public const string KeyData = "KeyData";
 
     private bool _reload;
-    private int _id;
+    private int? _id;
     private PageLoadInfo _dropDownData;
+    private DetailData _data;
     private bool _saveClicked;
+
+    protected override void OnInit(EventArgs e)
+    {
+        base.OnInit(e);
+
+        var idString = Request.QueryString["id"];
+        int idValue;
+        _id = null;
+        if (!string.IsNullOrEmpty(idString) && int.TryParse(idString, out idValue))
+        {
+            _id = idValue;
+        }
+    }
 
     protected override void LoadViewState(object savedState)
     {
         base.LoadViewState(savedState);
-        _id = ViewState[KeyId] as int? ?? 0;
         _dropDownData = ViewState[KeyDropDownData] as PageLoadInfo ?? new PageLoadInfo();
+        _data = ViewState[KeyData] as DetailData ?? new DetailData();
     }
 
     protected override object SaveViewState()
     {
-        ViewState[KeyId] = _id;
         ViewState[KeyDropDownData] = _dropDownData;
         return base.SaveViewState();
     }
 
+    private void GenerateControls(List<Product> data)
+    {
+        lbProductsAvailable.Items.Clear();
+        foreach (var item in data.Where(x => !x.IsOrdered && (x.Available == null || x.NotOrdered > 0)))
+        {
+            var text = item.Name + ", €" + item.Price;
+            if (item.Available != null) text += ", ostáva " + item.NotOrdered;
+            lbProductsAvailable.Items.Add(new ListItem(text, item.Id.ToString()));
+        }
+        lbProductsAvailable.Rows = Math.Max(1, Math.Min(20, lbProductsAvailable.Items.Count));
+
+        lbProductsOrdered.Items.Clear();
+        foreach (var item in data.Where(x => x.IsOrdered))
+        {
+            var text = item.Name + ", €" + item.Price;
+            lbProductsOrdered.Items.Add(new ListItem(text, item.Id.ToString()));
+        }
+        lbProductsOrdered.Rows = Math.Max(1, lbProductsOrdered.Items.Count);
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        var idString = Request.QueryString["id"];
-        if (string.IsNullOrEmpty(idString) || !int.TryParse(idString, out _id))
-        {
-            Response.Redirect(string.Format("/Register.aspx"));
-            return;
-        }
-
         if (!IsPostBack)
         {
             _dropDownData = Database.GetPageLoadInfo();
+            GenerateControls(_dropDownData.Products);
 
-            Common.FillChurches(ddlZbor, _dropDownData.Zbory);
-            Common.FillTeeShirts(ddlTricko, _dropDownData.Tricka, false);
-            Common.FillTeeShirts(ddlMikina, _dropDownData.Tricka, true);
-            Common.FillSluziaci(ddlSluziaci, _dropDownData.Sluziaci, true);
-            Common.FillDobrovolnici(ddlDobrovolnik, _dropDownData.Dobrovolnici);
-            Common.FillInternat(ddlUbytovaniePiatokSobota, _dropDownData.Ubytovanie);
-            Common.FillInternat(ddlUbytovanieSobotaNedela, _dropDownData.Ubytovanie);
-        }
+            Common.FillDropDown(ddlChurch, _dropDownData.Churches, new ListItem(Common.ChybaZbor, "0"));
+            Common.FillJobs(ddlJob, _dropDownData.Jobs, true);
 
-        if (!IsPostBack)
-        {
             LoadData();
         }
         lblSuccess.Text = "";
-        btnLenDnes.OnClientClick = string.Format("$('#{0}').val('{1}');return false;", txtRegistracnyOverride.ClientID, Prices.GetCenaLenDnes());
     }
 
     private void LoadData()
@@ -83,7 +102,7 @@ public partial class Detail : Page
                     {
                         if (paymentToUs != 0)
                         {
-                            Database.AddPayment(_id, paymentToUs * amount,
+                            Database.AddPayment(_id.Value, paymentToUs * amount,
                                 (paymentToUs > 0 ? "Platba na mieste" : "Vratenie preplatku") +
                                 ", IP = " + Common.GetIpAddress());
                             LoadData();
@@ -91,7 +110,7 @@ public partial class Detail : Page
 
                         if (donationToUs != 0)
                         {
-                            Database.AddDonation(_id, donationToUs * amount);
+                            Database.AddDonation(_id.Value, donationToUs * amount);
                             LoadData();
                         }
                     }
@@ -104,146 +123,161 @@ public partial class Detail : Page
         }
     }
 
-    protected void btnDarovaliNam_Click(object sender, EventArgs e)
+    protected void btnTheyDonatedToUs_Click(object sender, EventArgs e)
     {
         Transaction(0, 1);
     }
 
-    protected void btnZaplatiliNam_Click(object sender, EventArgs e)
+    protected void btnTheyPaidUs_Click(object sender, EventArgs e)
     {
         Transaction(1, 0);
     }
 
-    protected void btnZaplatiliSme_Click(object sender, EventArgs e)
+    protected void btnWePaidThem_Click(object sender, EventArgs e)
     {
         Transaction(-1, 0);
     }
 
-    protected void btnDarovaliSme_Click(object sender, EventArgs e)
+    protected void btnWeDonatedToThem_Click(object sender, EventArgs e)
     {
         Transaction(0, -1);
     }
 
-    protected void btnPrisli_Click(object sender, EventArgs e)
+    protected void btnShowedUp_Click(object sender, EventArgs e)
     {
-        Database.ShowedUp(_id);
+        Database.ShowedUp(_id.Value);
         LoadData();
+    }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        foreach (ListItem item in lbProductsAvailable.Items)
+        {
+            if (item.Selected)
+            {
+                var foundProduct = _dropDownData.Products.FirstOrDefault(x => x.Id.ToString() == item.Value);
+                if (foundProduct != null)
+                {
+                    foundProduct.IsOrdered = true;
+                }
+            }
+        }
+        GenerateControls(_dropDownData.Products);
+    }
+
+    protected void btnRemove_Click(object sender, EventArgs e)
+    {
+        foreach (ListItem item in lbProductsOrdered.Items)
+        {
+            if (item.Selected)
+            {
+                var foundProduct = _dropDownData.Products.FirstOrDefault(x => x.Id.ToString() == item.Value);
+                if (foundProduct != null)
+                {
+                    foundProduct.IsOrdered = false;
+                }
+            }
+        }
+        GenerateControls(_dropDownData.Products);
+    }
+
+    private List<int> GetOrderedProducts()
+    {
+        var result = new List<int>();
+        foreach (ListItem item in lbProductsOrdered.Items)
+        {
+            int idProduct;
+            if (int.TryParse(item.Value, out idProduct))
+            {
+                result.Add(idProduct);
+            }
+        }
+        return result;
     }
 
     private DetailData GetDataFromPage()
     {
         var errors = new List<string>();
-        if (string.IsNullOrWhiteSpace(txtMeno.Text)) errors.Add(Common.ChybaMeno);
-        if (string.IsNullOrWhiteSpace(txtPriezvisko.Text)) errors.Add(Common.ChybaPriezvisko);
+        if (string.IsNullOrWhiteSpace(txtFirstName.Text)) errors.Add(Common.ChybaMeno);
+        if (string.IsNullOrWhiteSpace(txtLastName.Text)) errors.Add(Common.ChybaPriezvisko);
         if (!string.IsNullOrWhiteSpace(txtEmail.Text) && !Common.ValidateEmail(txtEmail.Text.Trim())) errors.Add(Common.ChybaEmail);
-        var idTricko = ddlTricko.SelectedValue.StringToInt();
-        if (idTricko == 0) idTricko = null;
-        var idMikina = ddlMikina.SelectedValue.StringToInt();
-        if (idMikina == 0) idMikina = null;
-        var idZbor = ddlZbor.SelectedValue.StringToInt();
-        if (idZbor == 0 || idZbor == -1) idZbor = null;
-        var idSluziaci = ddlSluziaci.SelectedValue.StringToInt();
-        if (idSluziaci == 0) idSluziaci = null;
-        var idDobrovolnik = ddlDobrovolnik.SelectedValue.StringToInt();
-        if (idDobrovolnik == 0) idDobrovolnik = null;
-        var idUbytovaniePiatokSobota = ddlUbytovaniePiatokSobota.SelectedValue.StringToInt();
-        if (idUbytovaniePiatokSobota == 0) idUbytovaniePiatokSobota = null;
-        var idUbytovanieSobotaNedela = ddlUbytovanieSobotaNedela.SelectedValue.StringToInt();
-        if (idUbytovanieSobotaNedela == 0) idUbytovanieSobotaNedela = null;
+        var idChurch = ddlChurch.SelectedValue.StringToInt();
+        if (idChurch == 0 || idChurch == -1) idChurch = null;
+        var idJob = ddlJob.SelectedValue.StringToInt();
+        if (idJob == 0) idJob = null;
         lblError.Text = "";
         if (errors.Count > 0)
         {
             lblError.Text = string.Join("<br/>", errors);
             return null;
         }
-        float? registrationOverride = null;
+        float? extraFee = null;
         float tmp;
-        if (!string.IsNullOrWhiteSpace(txtRegistracnyOverride.Text) &&
-            float.TryParse(txtRegistracnyOverride.Text, out tmp))
-            registrationOverride = tmp;
+        if (!string.IsNullOrWhiteSpace(txtExtraFee.Text) &&
+            float.TryParse(txtExtraFee.Text, out tmp))
+            extraFee = tmp;
+        float donation = 0;
+        if (!string.IsNullOrWhiteSpace(txtDonation.Text))
+        {
+            if (!float.TryParse(txtDonation.Text, out donation)) errors.Add(Common.ChybaSponzorskyDar);
+        }
 
-        return new DetailData
+        var data = new DetailData()
         {
             Id = _id,
-            Meno = txtMeno.Text,
-            Priezvisko = txtPriezvisko.Text,
+            FirstName = txtFirstName.Text,
+            LastName = txtLastName.Text,
             Email = txtEmail.Text,
-            Telefon = txtTelefon.Text,
-            IdZbor = idZbor,
-            InyZbor = txtInyZbor.Text,
-            Sach = chbSach.Checked,
-            PingPong = chbPingPong.Checked,
-            IdTricko = idTricko,
-            IdMikina = idMikina,
-            IdSluziaci = idSluziaci,
-            IdDobrovolnik = idDobrovolnik,
-            Poznamka = txtPoznamka.Text,
-            PiatokVecera = chbPiatokVecera.Checked,
-            PiatokVecera2 = chbPiatokVecera2.Checked,
-            IdUbytovaniePiatokSobota = idUbytovaniePiatokSobota ?? 0,
-            SobotaRanajky = chbSobotaRanajky.Checked,
-            SobotaObed = chbSobotaObed.Checked,
-            SobotaVecera = chbSobotaVecera.Checked,
-            SobotaVecera2 = chbSobotaVecera2.Checked,
-            IdUbytovanieSobotaNedela = idUbytovanieSobotaNedela ?? 0,
-            NedelaRanajky = chbNedelaRanajky.Checked,
-            NedelaObed = chbNedelaObed.Checked,
-            RegistracnyOverride = registrationOverride
+            PhoneNumber = txtPhoneNumber.Text,
+            IdChurch = idChurch,
+            OtherChurch = txtOtherChurch.Text,
+            IdJob = idJob,
+            Note = txtNote.Text,
+            Donation = donation,
+            ExtraFee = extraFee,
+            OrderedProducts = GetOrderedProducts(),
         };
+        return data;
     }
 
     private void UpdatePageFromData(DetailData data)
     {
         lblId.Text = data.Id.ToString();
-        txtMeno.Text = data.Meno;
-        txtPriezvisko.Text = data.Priezvisko;
+        txtFirstName.Text = data.FirstName;
+        txtLastName.Text = data.LastName;
         txtEmail.Text = data.Email;
-        txtTelefon.Text = data.Telefon;
-        ddlZbor.SelectedValue = (data.IdZbor ?? 0).ToString();
-        txtInyZbor.Text = data.InyZbor;
-        chbPiatokVecera.Checked = data.PiatokVecera;
-        chbPiatokVecera2.Checked = data.PiatokVecera2;
-        ddlUbytovaniePiatokSobota.SelectedValue = data.IdUbytovaniePiatokSobota.ToString();
-        chbSobotaRanajky.Checked = data.SobotaRanajky;
-        chbSobotaObed.Checked = data.SobotaObed;
-        chbSobotaVecera.Checked = data.SobotaVecera;
-        chbSobotaVecera2.Checked = data.SobotaVecera2;
-        ddlUbytovanieSobotaNedela.SelectedValue = data.IdUbytovanieSobotaNedela.ToString();
-        chbNedelaRanajky.Checked = data.NedelaRanajky;
-        chbNedelaObed.Checked = data.NedelaObed;
-        chbSach.Checked = data.Sach;
-        chbPingPong.Checked = data.PingPong;
-        ddlTricko.SelectedValue = (data.IdTricko ?? 0).ToString();
-        ddlMikina.SelectedValue = (data.IdMikina ?? 0).ToString();
-        ddlSluziaci.SelectedValue = (data.IdSluziaci ?? 0).ToString();
-        ddlDobrovolnik.SelectedValue = (data.IdDobrovolnik ?? 0).ToString();
-        txtPoznamka.Text = data.Poznamka;
+        txtPhoneNumber.Text = data.PhoneNumber;
+        ddlChurch.SelectedValue = (data.IdChurch ?? 0).ToString();
+        txtOtherChurch.Text = data.OtherChurch;
+        ddlJob.SelectedValue = (data.IdJob ?? 0).ToString();
+        txtNote.Text = data.Note;
         lblRegistrationDate.Text = data.DtRegistered.HasValue ? data.DtRegistered.Value.ToString(new CultureInfo("sk-SK")) : "";
         lblPaymentDate.Text = data.DtPlatba.HasValue ? data.DtPlatba.Value.Date.ToString("d.M.yyyy") : "";
-        lblArrivalDate.Text = data.DtPrisli.HasValue ? data.DtPrisli.Value.ToString(new CultureInfo("sk-SK")) : "";
-        lblZaplatili.Text = Currency(data.Zaplatili);
-        lblCosts.Text = Currency(data.Naklady);
-        lblDonation.Text = Currency(data.Dar);
-        lblPreplatok.Text = Currency(data.Preplatok);
-        var surplus = data.Preplatok >= 0.01;
-        var debt = data.Preplatok <= -0.01;
-        lblPreplatok.CssClass = debt ? "negative" : "positive";
+        lblArrivalDate.Text = data.DtShowedUp.HasValue ? data.DtShowedUp.Value.ToString(new CultureInfo("sk-SK")) : "";
+        lblPaid.Text = Currency(data.Paid);
+
+        lblCosts.Text = Currency(data.Costs);
+        lblDonation.Text = Currency(data.Donation);
+        lblSurplus.Text = Currency(data.Surplus);
+        var surplus = data.Surplus >= 0.01;
+        var debt = data.Surplus <= -0.01;
+        lblSurplus.CssClass = debt ? "negative" : "positive";
         //btnDarovaliNam.Visible = surplus;
         //btnDarovaliSme.Visible = debt;
-        btnZaplatiliNam.Visible = debt;
-        btnZaplatiliSme.Visible = surplus;
-        btnPrisli.Visible = !data.DtPrisli.HasValue;
-        txtAmount.Text = Currency(Math.Abs(data.Preplatok));
-        lblRegistracnyPoplatok.Text = data.RegistraciaZadarmo ? "Zadarmo" : Currency(data.RegistracnyPoplatok);
-        txtRegistracnyOverride.Text = data.RegistracnyOverride == null ? "" : string.Format("{0:0.00}", data.RegistracnyOverride);
-
-        lblTitle.Text = data.Meno + " " + data.Priezvisko;
+        btnTheyPaidUs.Visible = debt;
+        btnWePaidThem.Visible = surplus;
+        btnShowedUp.Visible = !data.DtShowedUp.HasValue;
+        txtAmount.Text = Currency(Math.Abs(data.Surplus));
+        // lblRegistracnyPoplatok.Text = data.RegistraciaZadarmo ? "Zadarmo" : Currency(data.ExtraFee);
+        // txtRegistrationOverride.Text = data.RegistrationOverride == null ? "" : string.Format("{0:0.00}", data.RegistrationOverride);
 
         if (data.Group.Count > 0)
         {
-            trGroup.Visible = true;
             lblGroup.Text = string.Join("<br/>", data.Group.Select(x => string.Format("<a href=\"/Detail.aspx?id={0}\" target=\"new\">{1}</a>", x.Id, x.Name)));
         }
+
+        _dropDownData.Products = data.Products;
+        GenerateControls(data.Products);
     }
 
     protected override void OnPreRender(EventArgs e)
@@ -255,11 +289,27 @@ public partial class Detail : Page
             {
                 try
                 {
-                    Database.UpdateUser(data);
+                    if (!_id.HasValue)
+                    {
+                        _id = Database.RegisterNewUser(data);
+                        if (_id.HasValue)
+                        {
+                            // just created a user
+                            Response.Redirect(string.Format("/Detail.aspx?id={0}", _id.Value));
+                        }
+                        else
+                        {
+                            lblError.Text = "Niečo sa pokazilo. Kontaktujte administrátora.";
+                        }
+                    }
+                    else
+                    {
+                        Database.UpdateUser(data);
 
-                    // updated a user
-                    _reload = true;
-                    lblSuccess.Text = "Zmeny boli úspešne uložené";
+                        // updated a user
+                        _reload = true;
+                        lblSuccess.Text = "Zmeny boli úspešne uložené";
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -268,14 +318,12 @@ public partial class Detail : Page
             }
         }
 
-        if (_reload)
+        if (_reload && _id.HasValue)
         {
-            trGroup.Visible = false;
-
-            var data = Database.GetDetail(_id);
-            if (data.Id.HasValue)
+            _data = Database.GetDetail(_id.Value);
+            if (_data.Id.HasValue)
             {
-                UpdatePageFromData(data);
+                UpdatePageFromData(_data);
             }
             else
             {
@@ -283,30 +331,45 @@ public partial class Detail : Page
             }
         }
 
-        trDobrovolnik.Visible = ddlSluziaci.SelectedValue == "1";
-
-        lblCenaRanajky.Text = Currency(Prices.Ranajky);
-        lblCenaObed.Text = Currency(Prices.Obed);
-        lblCenaVecera.Text = Currency(Prices.Vecera);
-        lblCenaVecera2.Text = Currency(Prices.Vecera2);
-        lblCenaUbytovanie.Text = string.Format("1/1/{0}/{1}/0", Prices.Internat1, Prices.Internat2);
-
-        int idSluziaci;
-        if (int.TryParse(ddlSluziaci.SelectedValue, out idSluziaci))
-        {
-            var sluziaci = _dropDownData.Sluziaci.FirstOrDefault(x => x.Id == idSluziaci);
-            if (sluziaci.FreeFood)
+        if (!_id.HasValue) {
+            int idJob;
+            if (int.TryParse(ddlJob.SelectedValue, out idJob))
             {
-                lblCenaRanajky.Text = "0";
-                lblCenaObed.Text = "0";
-                lblCenaVecera.Text = "0";
-                lblCenaVecera2.Text = "0";
+                var foundJob = _dropDownData.Jobs.FirstOrDefault(x => x.Id == idJob);
+                // foundJob.
+
+
+
             }
-            if (sluziaci.FreeDorm)
-            {
-                lblCenaUbytovanie.Text = "0";
-            }
+
+            lblTotalCost.Text = Currency(
+                GetOrderedProducts()
+                .Select(x => _dropDownData.Products.FirstOrDefault(y => y.Id == x))
+                .Aggregate(0f, (sum, product) => sum + (product != null ? product.Price : 0))
+            );
         }
+
+        trId.Visible = _id.HasValue;
+        trGroup.Visible = _id.HasValue && _data.Group.Count > 0;
+        trRegistrationDate.Visible = _id.HasValue;
+        trPaymentDate.Visible = _id.HasValue;
+        trArrivalDate.Visible = _id.HasValue;
+        trPaid.Visible = _id.HasValue;
+        trCosts.Visible = _id.HasValue;
+        trDonation.Visible = _id.HasValue;
+        trSurplus.Visible = _id.HasValue;
+        txtAmount.Visible = _id.HasValue;
+        btnTheyPaidUs.Visible = _id.HasValue;
+        btnWePaidThem.Visible = _id.HasValue;
+        btnTheyDonatedToUs.Visible = _id.HasValue;
+        btnWeDonatedToThem.Visible = _id.HasValue;
+        btnShowedUp.Visible = _id.HasValue;
+
+        trTotalCost.Visible = !_id.HasValue;
+
+        lblTitle.Text = _id.HasValue ? _data.FirstName + " " + _data.LastName : "Nový účastník / účastníčka";
+        btnSave.Text = _id.HasValue ? "Uložiť zmeny" : "Registrovať nového účastníka";
+
         base.OnPreRender(e);
     }
 

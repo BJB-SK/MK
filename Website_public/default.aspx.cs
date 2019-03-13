@@ -48,8 +48,7 @@ public partial class Register : Page
     {
         _sluziaci = Request.QueryString[UrlKeySluziaci] == "true";
 
-        var endOfRegistration = new DateTime(2019, 2, 15, 0, 0, 0);  //TODO: update
-        pnlRegistrationDone.Visible = (DateTime.Now > endOfRegistration) && !_sluziaci;
+        pnlRegistrationDone.Visible = (DateTime.Now > Config.EndOfRegistration) && !_sluziaci;
 
         if (!IsPostBack)
         {
@@ -199,15 +198,15 @@ public partial class Register : Page
         lblMena.Text = currency.Name;
 
         var now = DateTime.UtcNow;
-        foreach (var item in _dropDownData.Poplatky)
+        foreach (var item in _dropDownData.Fees)
         {
             item.CostString = currency.FormatMoney(item.Amount);
             item.CssClass = (item.From ?? now) <= now && now <= (item.To ?? now) ? "currentFee" : "";
         }
-        gridPoplatky.DataSource = _dropDownData.Poplatky.Where(x => x.Online);
+        gridPoplatky.DataSource = _dropDownData.Fees.Where(x => x.Online);
         gridPoplatky.DataBind();
 
-        gridPoplatkyNaMieste.DataSource = _dropDownData.Poplatky.Where(x => !x.Online);
+        gridPoplatkyNaMieste.DataSource = _dropDownData.Fees.Where(x => !x.Online);
         gridPoplatkyNaMieste.DataBind();
 
         float sum = 0;
@@ -221,7 +220,7 @@ public partial class Register : Page
             _data[i].Currency = currency;
             _data[i].Single = _data.Count == 1;
             _controls[i].Single = _data.Count == 1;
-            var cost = _data[i].GetCost(_dropDownData.Sluziaci, _dropDownData.Poplatky);
+            var cost = _data[i].GetCost(_dropDownData);
             sum += cost;
             _data[i].CostString = currency.FormatMoney(cost);
             valid = valid && _data[i].Valid;
@@ -298,7 +297,7 @@ public partial class Register : Page
 
                 if(_data.Count == 1)
                 {
-                    emails.Add(new Email(payerEmail, Emails.RegistrationSubject, Emails.GetSingle(_data[0], amountToPay, currency)));
+                    emails.Add(new Email(payerEmail, Emails.RegistrationSubject, Emails.GetSingle(_data[0], amountToPay, currency, _dropDownData)));
                 }
                 else
                 {
@@ -309,11 +308,11 @@ public partial class Register : Page
                         if(payerEmail == _data[i].Email)
                         {
                             payerIsRegistered = true;
-                            emails.Add(new Email(payerEmail, Emails.RegistrationSubject, Emails.GetMultiplePayerRegistered(_data, i, amountToPay, currency)));
+                            emails.Add(new Email(payerEmail, Emails.RegistrationSubject, Emails.GetMultiplePayerRegistered(_data, i, amountToPay, currency, _dropDownData)));
                         }
                         else
                         {
-                            emails.Add(new Email(_data[i].Email, Emails.RegistrationSubject, Emails.GetMultiple(_data[i], payerEmail)));
+                            emails.Add(new Email(_data[i].Email, Emails.RegistrationSubject, Emails.GetMultiple(_data[i], payerEmail, _dropDownData)));
                         }
                     }
                     if(!payerIsRegistered)

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPageIndex.master" AutoEventWireup="true" CodeFile="default.aspx.cs" Inherits="Register" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPageIndex.master" AutoEventWireup="true" Inherits="Register" Codebehind="default.aspx.cs" %>
 <%@ Reference Control="~/Controls/RegistrationInfo.ascx" %>
 
 <asp:Content runat="server" ID="ContentRegistrationHead" ContentPlaceHolderID="RegistrationHead">
@@ -35,7 +35,7 @@
                         <ajax:TabPanel runat="server" ID="tabPanelPoplatky" HeaderText="Poplatky" CssClass="normalText">
                             <ContentTemplate>
                                 Registračný poplatok závisí od <b>dátumu zaplatenia (dátum odoslania peňazí z účtu), nie od dátumu registrácie</b>.<br />
-                                Registrácia, za ktorú platba nedorazí na náš účet do 14.2.2019, bude zrušená.
+                                Registrácia, za ktorú platba nedorazí na náš účet do 14.2.2020, bude zrušená.
                                 <br />
                                 <asp:GridView ID="gridPoplatky" runat="server" AutoGenerateColumns="false">
                                     <Columns>

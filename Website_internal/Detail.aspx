@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Detail.aspx.cs" Inherits="Detail" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" Inherits="Detail" Codebehind="Detail.aspx.cs" %>
 
 <asp:Content ID="Content" ContentPlaceHolderID="Body" Runat="Server">
     <asp:UpdatePanel runat="server" ID="upRegistration">
@@ -11,24 +11,24 @@
                 </ProgressTemplate>
             </asp:UpdateProgress>
             <h2><asp:Label runat="server" ID="lblTitle" /></h2>
-            <div class="multiColumnContainer">
-                <div class="multiColumnBlock">
+            <div>
+                <div class="inlineBlock">
                     <table>
                         <tr runat="server" id="trGroup">
                             <td>V skupine s</td>
                             <td><asp:Literal runat="server" ID="lblGroup" /></td>
                         </tr>
-                        <tr>
+                        <tr runat="server" id="trId">
                             <td>Visačka</td>
                             <td><asp:Label runat="server" ID="lblId" /></td>
                         </tr>
                         <tr>
                             <td>Meno</td>
-                            <td><asp:TextBox runat="server" ID="txtMeno" Width="250px" AutoPostBack="false"/></td>
+                            <td><asp:TextBox runat="server" ID="txtFirstName" Width="250px" AutoPostBack="false"/></td>
                         </tr>
                         <tr>
                             <td>Priezvisko</td>
-                            <td><asp:TextBox runat="server" ID="txtPriezvisko" Width="250px" AutoPostBack="false"/></td>
+                            <td><asp:TextBox runat="server" ID="txtLastName" Width="250px" AutoPostBack="false"/></td>
                         </tr>
                         <tr>
                             <td>Email</td>
@@ -36,137 +36,96 @@
                         </tr>
                         <tr>
                             <td>Telefón</td>
-                            <td><asp:TextBox runat="server" ID="txtTelefon" Width="250px" AutoPostBack="false"/></td>
+                            <td><asp:TextBox runat="server" ID="txtPhoneNumber" Width="250px" AutoPostBack="false"/></td>
                         </tr>
                         <tr>
                             <td>Zbor</td>
-                            <td><asp:DropDownList runat="server" ID="ddlZbor" AutoPostBack="false"/></td>
+                            <td><asp:DropDownList runat="server" ID="ddlChurch" AutoPostBack="false"/></td>
                         </tr>
                         <tr>
                             <td>Iný zbor</td>
-                            <td><asp:TextBox runat="server" ID="txtInyZbor" Width="250px" AutoPostBack="false"/></td>
-                        </tr>
-                        <tr>
-                            <td>Športy</td>
-                            <td>
-                                <asp:CheckBox runat="server" ID="chbSach" Text="Šach"/>
-                                <asp:CheckBox runat="server" ID="chbPingPong" Text="Ping pong"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Tričko</td>
-                            <td><asp:DropDownList runat="server" ID="ddlTricko" AutoPostBack="false"/></td>
-                        </tr>
-                        <tr>
-                            <td>Mikina</td>
-                            <td><asp:DropDownList runat="server" ID="ddlMikina" AutoPostBack="false"/></td>
+                            <td><asp:TextBox runat="server" ID="txtOtherChurch" Width="250px" AutoPostBack="false"/></td>
                         </tr>
                         <tr>
                             <td>Slúžiaci</td>
-                            <td><asp:DropDownList runat="server" ID="ddlSluziaci" AutoPostBack="true" /></td>
-                        </tr>
-                        <tr runat="server" id="trDobrovolnik">
-                            <td>Dobrovoľník</td>
-                            <td><asp:DropDownList runat="server" ID="ddlDobrovolnik" AutoPostBack="false" /></td>
+                            <td><asp:DropDownList runat="server" ID="ddlJob" AutoPostBack="true" /></td>
                         </tr>
                         <tr>
                             <td>Poznámka</td>
-                            <td><asp:TextBox runat="server" ID="txtPoznamka" TextMode="MultiLine" Rows="5" Width="250px"/></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="multiColumnBlock">
-                    <table>
-                        <tr>
-                            <td>Piatok</td>
-                            <td>Sobota</td>
-                            <td>Nedeľa</td>
-                            <td>Cena</td>
+                            <td><asp:TextBox runat="server" ID="txtNote" TextMode="MultiLine" Rows="5" Width="250px"/></td>
                         </tr>
                         <tr>
-                            <td>&nbsp;</td>
-                            <td><asp:CheckBox runat="server" ID="chbSobotaRanajky" Text="Raňajky" AutoPostBack="true" /></td>
-                            <td><asp:CheckBox runat="server" ID="chbNedelaRanajky" Text="Raňajky" AutoPostBack="true" /></td>
-                            <td><asp:Label runat="server" ID="lblCenaRanajky" /></td>
+                            <td>Extra poplatok</td>
+                            <td><asp:TextBox runat="server" ID="txtExtraFee" Width="50px" AutoPostBack="false"/></td>
                         </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td><asp:CheckBox runat="server" ID="chbSobotaObed" Text="Obed" AutoPostBack="true" /></td>
-                            <td><asp:CheckBox runat="server" ID="chbNedelaObed" Text="Obed" AutoPostBack="true" /></td>
-                            <td><asp:Label runat="server" ID="lblCenaObed" /></td>
+                        <tr runat="server" id="trTotalCost">
+                            <td>Spolu</td>
+                            <td><asp:Label runat="server" ID="lblTotalCost" CssClass="negative bigFont" /></td>
                         </tr>
-                        <tr>
-                            <td><asp:CheckBox runat="server" ID="chbPiatokVecera" Text="Večera" AutoPostBack="true" /></td>
-                            <td><asp:CheckBox runat="server" ID="chbSobotaVecera" Text="Večera" AutoPostBack="true" /></td>
-                            <td>&nbsp;</td>
-                            <td><asp:Label runat="server" ID="lblCenaVecera" /></td>
-                        </tr>
-                        <tr>
-                            <td><asp:CheckBox runat="server" ID="chbPiatokVecera2" Text="Bageta" AutoPostBack="true" /></td>
-                            <td><asp:CheckBox runat="server" ID="chbSobotaVecera2" Text="Bageta" AutoPostBack="true" /></td>
-                            <td>&nbsp;</td>
-                            <td><asp:Label runat="server" ID="lblCenaVecera2" /></td>
-                        </tr>
-                        <tr>
-                            <td><asp:DropDownList runat="server" ID="ddlUbytovaniePiatokSobota" AutoPostBack="true"/></td>
-                            <td><asp:DropDownList runat="server" ID="ddlUbytovanieSobotaNedela" AutoPostBack="true"/></td>
-                            <td>&nbsp;</td>
-                            <td><asp:Label runat="server" ID="lblCenaUbytovanie" /></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="multiColumnBlock">
-                    <table>
-                        <tr>
+                        <tr runat="server" id="trRegistrationDate">
                             <td>Registrovali sa</td>
                             <td><asp:Label runat="server" ID="lblRegistrationDate" /></td>
                         </tr>
-                        <tr>
-                            <td>Registračný</td>
-                            <td><asp:Label runat="server" ID="lblRegistracnyPoplatok" /></td>
-                        </tr>
-                        <tr>
-                            <td>Override</td>
-                            <td>
-                                <asp:TextBox runat="server" ID="txtRegistracnyOverride" Width="50px" AutoPostBack="false"/>
-                                <asp:Button runat="server" ID="btnLenDnes" Text="Len dnes" />
-                            </td>
-                        </tr>
-                        <tr>
+                        <tr runat="server" id="trPaymentDate">
                             <td>Platba prišla</td>
                             <td><asp:Label runat="server" ID="lblPaymentDate" /></td>
                         </tr>
-                        <tr>
+                        <tr runat="server" id="trArrivalDate">
                             <td>Prišli</td>
                             <td><asp:Label runat="server" ID="lblArrivalDate" /></td>
                         </tr>
-                        <tr>
+                        <tr runat="server" id="trPaid">
                             <td>Zaplatili</td>
-                            <td><asp:Label runat="server" ID="lblZaplatili" /></td>
+                            <td><asp:Label runat="server" ID="lblPaid" /></td>
                         </tr>
-                        <tr>
+                        <tr runat="server" id="trCosts">
                             <td>Náklady</td>
                             <td><asp:Label runat="server" ID="lblCosts" /></td>
                         </tr>
-                        <tr>
+                        <tr runat="server" id="trDonation">
                             <td>Darovali</td>
-                            <td><asp:Label runat="server" ID="lblDonation" /></td>
+                            <td>
+                                <asp:Label runat="server" ID="lblDonation" />
+                                <asp:TextBox runat="server" ID="txtDonation" Width="100px" AutoPostBack="true" CssClass="negative" />
+                            </td>
                         </tr>
-                        <tr>
+                        <tr runat="server" id="trSurplus">
                             <td>Preplatok</td>
-                            <td><asp:Label runat="server" ID="lblPreplatok" /></td>
+                            <td><asp:Label runat="server" ID="lblSurplus" /></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="inlineBlock">
+                    <table>
+                        <tr>
+                            <td style="vertical-align:top">
+                                Ešte sa dá objednať:<br />
+                                <asp:ListBox runat="server" ID="lbProductsAvailable" SelectionMode="Multiple">
+                                </asp:ListBox>
+                            </td>
+                            <td style="vertical-align:top">
+                                <br />
+                                <asp:Button runat="server" ID="btnAdd" Text=">>" OnClick="btnAdd_Click" />
+                                <br /><br /><br />
+                                <asp:Button runat="server" ID="btnRemove" Text="<<" OnClick="btnRemove_Click" />
+                            </td>
+                            <td style="vertical-align:top">
+                                Má objednané:<br />
+                                <asp:ListBox runat="server" ID="lbProductsOrdered" SelectionMode="Multiple">
+                                </asp:ListBox>
+                            </td>
                         </tr>
                     </table>
                 </div>
             </div>
             <br />
-            <asp:Button runat="server" ID="btnSave" Text="Uložiť zmeny" OnClick="btnSave_Click" CssClass="bigFont"/>
+            <asp:Button runat="server" ID="btnSave" OnClick="btnSave_Click" CssClass="bigFont"/>
             <asp:TextBox runat="server" ID="txtAmount" Width="100px" CssClass="bigFont" />
-            <asp:Button runat="server" ID="btnZaplatiliNam" Text="Zaplatili nám" OnClick="btnZaplatiliNam_Click" CssClass="bigFont" />
-            <asp:Button runat="server" ID="btnZaplatiliSme" Text="Zaplatili sme im" OnClick="btnZaplatiliSme_Click" CssClass="bigFont" />
-            <asp:Button runat="server" ID="btnDarovaliNam" Text="Darovali nám" OnClick="btnDarovaliNam_Click" CssClass="bigFont" />
-            <asp:Button runat="server" ID="btnDarovaliSme" Text="Darovali sme im" OnClick="btnDarovaliSme_Click" CssClass="bigFont" />
-            <asp:Button runat="server" ID="btnPrisli" Text="Prišli" OnClick="btnPrisli_Click" CssClass="bigFont" />
+            <asp:Button runat="server" ID="btnTheyPaidUs" Text="Zaplatili nám" OnClick="btnTheyPaidUs_Click" CssClass="bigFont" />
+            <asp:Button runat="server" ID="btnWePaidThem" Text="Zaplatili sme im" OnClick="btnWePaidThem_Click" CssClass="bigFont" />
+            <asp:Button runat="server" ID="btnTheyDonatedToUs" Text="Darovali nám" OnClick="btnTheyDonatedToUs_Click" CssClass="bigFont" />
+            <asp:Button runat="server" ID="btnWeDonatedToThem" Text="Darovali sme im" OnClick="btnWeDonatedToThem_Click" CssClass="bigFont" />
+            <asp:Button runat="server" ID="btnShowedUp" Text="Prišli" OnClick="btnShowedUp_Click" CssClass="bigFont" />
             <br /><br />
             <asp:Label ID="lblError" runat="server" Text="" CssClass="error"/>
             <asp:Label ID="lblSuccess" runat="server" Text="" CssClass="valid"/>

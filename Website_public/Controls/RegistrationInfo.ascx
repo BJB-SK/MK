@@ -1,15 +1,13 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="RegistrationInfo.ascx.cs" Inherits="RegistrationInfo" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="RegistrationInfo" Codebehind="RegistrationInfo.ascx.cs" %>
 
 <div class="normalText">
     <div class="box">
         <asp:TextBox runat="server" ID="txtMeno" Width="300px" AutoPostBack="false" /><br />
         <asp:TextBox runat="server" ID="txtPriezvisko" Width="300px" AutoPostBack="false" /><br />
         <asp:Panel runat="server" ID="pnlTelefon">
-            <asp:TextBox runat="server" ID="txtTelefon" Width="300px" AutoPostBack="false" /><br />
+            <asp:TextBox runat="server" ID="txtPhoneNumber" Width="300px" AutoPostBack="false" /><br />
         </asp:Panel>
         <asp:TextBox runat="server" ID="txtEmail" Width="300px" AutoPostBack="false" /><br />
-        <!--<asp:Button runat="server" ID="btnAddAtSign" Text="@" />
-        <asp:Button runat="server" ID="btnAddGmail" Text="@gmail.com" /><br />-->
         Zbor: <asp:DropDownList runat="server" ID="ddlZbor" AutoPostBack="false" /><br />
         <asp:TextBox runat="server" ID="txtZbor" Width="300px" AutoPostBack="false" /><br />
         <asp:TextBox runat="server" ID="txtPoznamka" TextMode="MultiLine" Rows="5" Width="300px" />
@@ -29,23 +27,14 @@
                 <td>&nbsp;</td>
                 <td>
                     <span>Piatok</span>
-                    <!--<asp:Button runat="server" ID="btnVsetkoPiatok" Text="Piatok" />
-                    <asp:Button runat="server" ID="btnNicPiatok" Text="x" />-->
                 </td>
                 <td>
                     <span>Sobota</span>
-                    <!--<asp:Button runat="server" ID="btnVsetkoSobota" Text="Sobota" />
-                    <asp:Button runat="server" ID="btnNicSobota" Text="x" />-->
                 </td>
                 <td>
                     <span>Nedeľa</span>
-                    <!--<asp:Button runat="server" ID="btnVsetkoNedela" Text="Nedeľa" />
-                    <asp:Button runat="server" ID="btnNicNedela" Text="x" />-->
                 </td>
-                <td>
-                    <!--<asp:Button runat="server" ID="btnVsetko" Text="VŠETKO!" />
-                    <asp:Button runat="server" ID="btnNic" Text="x" />-->
-                </td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
@@ -144,10 +133,10 @@
                         RepeatDirection="Horizontal"
                         RepeatLayout="Flow"
                         RepeatColumns="2">
-                        <asp:ListItem Value="žlté" Selected="True">
+                        <asp:ListItem Value="zl" Selected="True">
                             <img src='img/TRICKO_zlte.png' alt='Žlté' title='Žlté tričko' width="150"/>
                         </asp:ListItem>
-                        <asp:ListItem Value="ružové">
+                        <asp:ListItem Value="ru">
                             <img src='img/TRICKO_ruzove.png' alt='Ružové' title='Ružové tričko' width="150"/>
                         </asp:ListItem>
                     </asp:RadioButtonList>
@@ -167,10 +156,10 @@
                         RepeatDirection="Horizontal"
                         RepeatLayout="Flow"
                         RepeatColumns="2">
-                        <asp:ListItem Value="čierna" Selected="True">
+                        <asp:ListItem Value="ci" Selected="True">
                             <img src='img/MIKINA_cierna.png' alt='Čierna' title='Čierna mikina' width="150"/>
                         </asp:ListItem>
-                        <asp:ListItem Value="žltá">
+                        <asp:ListItem Value="zl">
                             <img src='img/MIKINA_zlta.png' alt='Žltá' title='Žltá mikina' width="150"/>
                         </asp:ListItem>
                     </asp:RadioButtonList>
@@ -180,12 +169,11 @@
                 </td>
             </tr>
             <tr>
-              <td>Slúžiaci</td>
+                <td>Slúžiaci</td>
                 <td colspan="3">
-                    <asp:DropDownList runat="server" ID="ddlSluziaci" AutoPostBack="true" /><br />
-                    <asp:DropDownList runat="server" ID="ddlDobrovolnik" AutoPostBack="false" />
+                    <asp:DropDownList runat="server" ID="ddlJob" AutoPostBack="true" />
                 </td>
-            </tr>  
+            </tr>
             <tr>
                 <td>Spolu</td>
                 <td colspan="3">

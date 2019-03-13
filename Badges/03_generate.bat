@@ -20,18 +20,31 @@ open NAMES, '>', "04_generate_names.bat" or die $!;
 open CHURCHES, '>', "04_generate_churches.bat" or die $!;
 open TSHIRTS, '>', "04_generate_tshirts.bat" or die $!;
 
+my %tshirts;
 my %churches;
-my $data = do './02_export.pl';
+my $inputFile = './02_export.pl';
+my $data = do $inputFile;
+if (!$data) {
+    die "Couldn't parse $inputFile: $@" if $@;
+    die "Couldn't do $inputFile: $!" unless defined $data;
+    die "Couldn't run $inputFile" unless $data;
+}
 my $counter = 20;
 foreach my $h (@$data)
 {
-	# last if $counter-- == 0;
+	last if $counter-- == 0;
 	my $id = $h->{id};
     my $church = $h->{church};
 	my $qr = $h->{qr};
+    my $products = $h->{products};
     my $idName2 = sprintf("%04d", $id);
     if($church eq '') { $church = ' '; }
     $churches{$church} = 1;
+    foreach my $item (keys %{$products}) {
+        if($item =~ /^(tr|mi)/) {
+            $tshirts{$item} = 1;
+        }
+    }
 	# id
     if (!-e "./Ids/$idName2.png") {
         print IDS "$magick convert -size $sizeId $options -gravity center caption:$idName2 Ids\\$idName2.png\n";
@@ -63,29 +76,12 @@ for my $name (keys %churches)
     print CHURCHES "$magick convert -size $sizeChurch $options -gravity NorthWest caption:\@Churches\\$name2.txt Churches\\$name2.png\n";
 }
 
-my @size = ('', 'D-S', 'D-M', 'D-L', 'D-XL', 'D-XXL', 'P-S', 'P-M', 'P-L', 'P-XL', 'P-XXL');
-my @colorTShirt = ('ZL', 'RU');
-my @colorHoodie = ('CI', 'ZL');
-for my $idTShirt (0..@size-1) {
-    for my $idTShirtColor (0..@colorTShirt-1) {
-        for my $idHoodie (0..@size-1) {
-            for my $idHoodieColor (0..@colorHoodie-1) {
-                my $fileName = "${idTShirt}_${idTShirtColor}_${idHoodie}_${idHoodieColor}";
-                my $text = '';
-                if ($idTShirt > 0) {
-                    $text .= 'Tr ' . $size[$idTShirt] . ' ' . $colorTShirt[$idTShirtColor];
-                }
-                if ($idHoodie > 0) {
-                    if ($text ne '') { $text .= ', '; }
-                    $text .= 'Mi ' . $size[$idHoodie] . ' ' . $colorHoodie[$idHoodieColor];
-                }
-                if ($idTShirt > 0 || $idHoodie > 0) {
-                    open OUT, '>', "TShirts\\$fileName.txt" or die $!;
-                    print OUT $text;
-                    close OUT or die $!;
-                    print TSHIRTS "$magick convert -size $sizeTeeShirt $options -gravity center caption:\@TShirts\\$fileName.txt TShirts\\$fileName.png\n";
-                }
-            }
-        }
-    }
+for my $name (keys %tshirts)
+{
+    my $fileName = $name;
+    $fileName =~ s/\s+/_/g;
+    open OUT, '>', "TShirts\\$fileName.txt" or die $!;
+    print OUT $name;
+    close OUT or die $!;
+    print TSHIRTS "$magick convert -size $sizeTeeShirt $options -gravity center caption:\@TShirts\\$fileName.txt TShirts\\$fileName.png\n";
 }

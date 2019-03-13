@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="MasterPage" Codebehind="MasterPage.master.cs" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -13,9 +13,8 @@
         <asp:ScriptManager runat="server" ID="ScriptManager1"/>
         <div id="navigationMenuWrapper" style="text-align: center">    
             <div id="yourdiv" style="display: inline-block;">
-                <asp:HyperLink runat="server" ID="lnkList" Text="Zoznam" NavigateUrl="~/List.aspx" />&nbsp;
-                <asp:HyperLink runat="server" ID="lnkRegisterGroup" Text="Skupinová registrácia" NavigateUrl="~/default.aspx" />&nbsp;
-                <asp:HyperLink runat="server" ID="lnkRegisterSingle" Text="Registrácia 1 účastníka" NavigateUrl="~/Register.aspx" />&nbsp;
+                <asp:HyperLink runat="server" ID="lnkList" Text="Zoznam" NavigateUrl="~/default.aspx" />&nbsp;
+                <asp:HyperLink runat="server" ID="lnkRegisterSingle" Text="Registrácia 1 účastníka" NavigateUrl="~/Detail.aspx" />&nbsp;
                 <asp:HyperLink runat="server" ID="lnkReport" Text="Súhrny" NavigateUrl="~/Report.aspx" />&nbsp;
             </div>
         </div>

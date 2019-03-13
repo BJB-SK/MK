@@ -1,178 +1,124 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="default.aspx.cs" Inherits="Register" %>
-
-<%@ Register TagPrefix="uc" TagName="RegistrationInfo" Src="~/Controls/RegistrationInfo.ascx" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" Inherits="List" Codebehind="default.aspx.cs" %>
 
 <asp:Content ID="Content" ContentPlaceHolderID="Body" Runat="Server">
-    <asp:UpdatePanel runat="server" ID="upRegistration">
-        <ContentTemplate>
-            <asp:UpdateProgress runat="server" ID="UpdateProgress1" AssociatedUpdatePanelID="upRegistration" DisplayAfter="0">
-                <ProgressTemplate>
-                    <div class="centeredOverlay">
-                        <asp:Label runat="server" ID="lblPleaseWait" Text="Prosím čakajte" />
-                    </div>
-                </ProgressTemplate>
-            </asp:UpdateProgress>
-            <asp:Panel runat="server" ID="pnlSuccess" CssClass="text-center">
-                <p>Registrácia prebehla úspešne! Počkajte prosím na emaily ktoré vám pošleme.</p>
-            </asp:Panel>
-            <asp:Panel runat="server" ID="pnlRegistration">
-                <asp:RadioButtonList runat="server" ID="rblMena" AutoPostBack="true" RepeatDirection="Horizontal" RepeatLayout="Table" />
-                <ajax:TabContainer runat="server" ID="tabContainer" UseVerticalStripPlacement="false">
-                    <ajax:TabPanel runat="server" ID="tabPanelPoplatky" HeaderText="Poplatky" CssClass="normalText">
-                        <ContentTemplate>
-                            Registračný poplatok závisí od <b>dátumu zaplatenia (datum odoslania penazí z účtu), nie od dátumu registrácie</b>.<br />
-                            Registácia, ktorá nebude zaplatená do 15.2.2017 bude zrušená.
-                            <br />
-                            <asp:GridView ID="gridPoplatky" runat="server" AutoGenerateColumns="false">
-                                <Columns>
-                                    <asp:TemplateField HeaderText="Platba dorazí do">
-                                        <ItemTemplate>
-                                            <asp:Label runat="server" ID="lblTo" 
-                                                Text='<%# ((DateTime)Eval("To")).ToString("dd.MM.yyyy") %>'
-                                                CssClass='<%# Eval("CssClass") %>' />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Poplatok">
-                                        <ItemTemplate>
-                                            <asp:Label runat="server" ID="lblAmount" 
-                                                Text='<%# Eval("CostString") %>' 
-                                                CssClass='<%# Eval("CssClass") %>' />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                </Columns>
-                            </asp:GridView>
-                            <br />
-                            Pri registrácii na mieste platia takéto poplatky:
-                            <asp:GridView ID="gridPoplatkyNaMieste" runat="server" AutoGenerateColumns="false">
-                                <Columns>
-                                    <asp:TemplateField HeaderText="Typ">
-                                        <ItemTemplate>
-                                            <asp:Label runat="server" ID="lblComment" Text='<%# Eval("Comment") %>' />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Poplatok">
-                                        <ItemTemplate>
-                                            <asp:Label runat="server" ID="Label1" Text='<%# Eval("CostString") %>' />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                </Columns>
-                            </asp:GridView>
-                        </ContentTemplate>
-                    </ajax:TabPanel>
-                    <ajax:TabPanel runat="server" ID="tabPanelSummary" HeaderText="Zhrnutie" CssClass="normalText">
-                        <ContentTemplate>
-                            <asp:GridView ID="gridSummary" runat="server" AutoGenerateColumns="false" OnRowCommand="gridView_RowCommand">
-                                <Columns>
-                                    <asp:TemplateField HeaderText="Meno">
-                                        <ItemTemplate>
-                                            <asp:Label runat="server" ID="lblTitle" Text='<%# Eval("Title") %>' />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Chyby">
-                                        <ItemTemplate>
-                                            <asp:Label runat="server" ID="lblErrors" Text='<%# Eval("ErrorString") %>' CssClass='<%# Eval("CssClass") %> '/>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Suma">
-                                        <ItemTemplate>
-                                            <asp:Label runat="server" ID="lblSuma" Text='<%# Eval("CostString") %>' />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Akcia">
-                                        <ItemTemplate>
-                                            <asp:Button runat="server" ID="btnDeleteUser"
-                                                Text="Zmazať"
-                                                CommandName="Vymazat" 
-                                                CommandArgument='<%# Eval("Id") %>' 
-                                                Visible='<%# !(bool)Eval("Single") %>'/>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                </Columns>
-                            </asp:GridView>
-                            <br />
-                            <table>
-                                <tr>
-                                    <td>
-                                        Sponzorský dar
-                                    </td>
-                                    <td>
-                                        <asp:TextBox runat="server" ID="txtDar" Width="50px" AutoPostBack="true" />
-                                        <asp:Label runat="server" ID="lblMena" />
-                                        <asp:Label runat="server" ID="lblSponzorskyDar" CssClass="error"/>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        Celková suma ktorú<br />bude treba uhradiť
-                                    </td>
-                                    <td>
-                                        <b><asp:Label ID="lblSuma" runat="server" /></b>
-                                    </td>
-                                </tr>
-
-                                <tr runat="server" id="trPayerEmail">
-                                    <td>
-                                        Email o platbe poslať na
-                                    </td>
-                                    <td>
-                                        <asp:TextBox runat="server" ID="txtEmail" Width="300px" AutoPostBack="true"/><br />
-                                        <asp:Button runat="server" ID="btnAddAtSign" Text="@" AutoPostBack="false" />
-                                        <asp:Button runat="server" ID="btnAddGmail" Text="@gmail.com" AutoPostBack="false" />
-                                    </td>
-                                </tr>
-
-                                <tr style="display:none">
-                                    <td>
-                                        Kontrolná otázka
-                                    </td>
-                                    <td>
-                                        <asp:TextBox runat="server" ID="txtCaptcha" Width="400px" AutoPostBack="true"/>
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td colspan="2">
-                                        <h3>GDPR</h3>
-                                        <ul>
-<li>
-    Vaše osobné údaje (ktoré ste zadali v tomto formulári + údaje o platbe) potrebujeme uložiť až po dobu konania konferencie.
-</li>
-<li>
-    Po ukončení konferencie Vám pošleme mail s odkazom na dotazník kde nám môžete dať spätnú väzbu.
-</li>
-<li>
-    Potom všetky údaje čo najrýchlejšie zmažeme.
-</li>
-<li>
-    Nemusíte uviesť svoje skutočné meno / priezvisko (potrebujeme Vás len nejako identifikovať na registrácii),
-    ale mail musí sedieť (pošleme Vám tam informácie o platbe).
-</li>
-<li>
-    Telefónne číslo potrebujeme len u dobrovoľníkov, aby sme ich vedeli kontaktovať.
-    Telefónne čísla dobrovoľníkov dostanú vedúci služieb na ktoré sa prihlásili.
-</li>
-<li>
-    Ak chcete vedieť aké údaje o Vás máme alebo požiadať o ich zmazanie, 
-    prosím napíšte mail na <a href="mailto:mladeznickakonfera@gmail.com">mladeznickakonfera@gmail.com</a>
-</li>
-                                        </ul>
-                                        <br />
-                                        <asp:CheckBox runat="server" ID="chbGdprConsent" Text="Súhlasím" CssClass="gdpr" />
-                                        <asp:Label runat="server" ID="lblGdprMissing" CssClass="error" Text="<< Prosím prečítajte si GDPR info a zaškrtnite súhlas" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </ContentTemplate>
-                    </ajax:TabPanel>
-                </ajax:TabContainer>
-                <asp:Button runat="server" ID="btnPrevious" Text="<< Naspäť" OnClick="btnPrevious_Click" />
-                <asp:Button runat="server" ID="btnRemove" Text="Zmazať" OnClick="btnRemove_Click"/>
-                <asp:Button runat="server" ID="btnAddUser" Text="Pridať účastníka" OnClick="btnAddUser_Click" />
-                <asp:Button runat="server" ID="btnNext" Text="Ďalej >>" OnClick="btnNext_Click" />
-                <br />
-                <asp:Label ID="lblResult" runat="server" CssClass="error"/>
-            </asp:Panel>
-        </ContentTemplate>
-    </asp:UpdatePanel>
+    <table>
+        <tr>
+            <td>Rozsah</td>
+            <td>
+                <asp:TextBox runat="server" ID="txtFrom" AutoPostBack="true" Width="20px"/>
+                &nbsp;-&nbsp;
+                <asp:TextBox runat="server" ID="txtTo" AutoPostBack="true" Width="20px"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Meno</td>
+            <td>
+                <asp:TextBox runat="server" ID="txtName" AutoPostBack="true" Width="300px"/>
+            </td>
+            <td>
+                <asp:Button runat="server" ID="btnClearName" Text="Všetky" OnClick="btnClearName_Click" />
+            </td>
+        </tr>
+        <tr>
+            <td>Zo zboru</td>
+            <td>
+                <asp:DropDownList runat="server" ID="ddlChurch" AutoPostBack="true"/>
+            </td>
+            <td>
+                <asp:Button runat="server" ID="btnClearChurch" Text="Všetky" OnClick="btnClearChurch_Click" />
+            </td>
+        </tr>
+        <tr>
+            <td>Má objednané</td>
+            <td>
+                <asp:DropDownList runat="server" ID="ddlProduct" AutoPostBack="true"/>
+            </td>
+            <td>
+                <asp:Button runat="server" ID="btnClearProduct" Text="Všetky" OnClick="btnClearProduct_Click" />
+            </td>
+        </tr>
+        <tr>
+            <td>Je v službe</td>
+            <td>
+                <asp:DropDownList runat="server" ID="ddlJob" AutoPostBack="true"/>
+            </td>
+            <td>
+                <asp:Button runat="server" ID="btnClearJob" Text="Všetky" OnClick="btnClearJob_Click" />
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <asp:CheckBox runat="server" ID="chbArrived" AutoPostBack="true" Text="Prišli" />
+                <asp:CheckBox runat="server" ID="chbNotArrived" AutoPostBack="true" Text="Neprišli" />
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Nájdených</td>
+            <td><asp:Label runat="server" ID="lblCount" /></td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+    <asp:GridView runat="server" ID="gridResults"  
+        AllowPaging="False"
+        AllowSorting="False" 
+        PageSize="20"
+        AutoGenerateColumns="false" 
+        OnRowCommand="gridResults_RowCommand">
+        <Columns>
+            <asp:TemplateField HeaderText="Meno" SortExpression="FirstName">
+                <ItemTemplate>
+                    <a href='<%# String.Format("/Detail.aspx?id={0}", Eval(TableColumns.Id)) %>'>
+                        <%# Eval(TableColumns.FirstName) %>
+                    </a>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Priezvisko" SortExpression="LastName">
+                <ItemTemplate>
+                    <a href='<%# String.Format("/Detail.aspx?id={0}", Eval(TableColumns.Id)) %>'>
+                        <%# Eval(TableColumns.LastName) %>
+                    </a>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Zbor" SortExpression="Church">
+                <ItemTemplate>
+                    <%# Eval(TableColumns.Church) %>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Preplatok" SortExpression="Surplus">
+                <ItemTemplate>
+                    <asp:Label ID="lblSuma" runat="server" 
+                        Text='<%# CashBackFormat(Eval(TableColumns.Surplus)) %>' 
+                        CssClass='<%# CashBackClass(Eval(TableColumns.Surplus)) %>'/>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Akcia">
+                <ItemTemplate>
+                    <asp:HiddenField runat="server" ID="hdnIdUser" Value='<%# Eval(TableColumns.Id) %>'/>
+                    <asp:HiddenField runat="server" ID="hdnAmount" Value='<%# Eval(TableColumns.Surplus) %>'/>
+                    <asp:Button runat="server" ID="btnDoplatil"  
+                        Visible='<%# (float)Eval(TableColumns.Surplus) < 0 %>' 
+                        Text='<%# string.Format("Doplatili {0:0.00} euro", -(float)Eval(TableColumns.Surplus)) %>'
+                        CommandName="Doplatili" 
+                        CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                    <asp:Button runat="server" ID="btnVratili" 
+                        Visible='<%# (float)Eval(TableColumns.Surplus) > 0 %>' 
+                        Text='<%# string.Format("Vrátili sme {0:0.00} euro", Eval(TableColumns.Surplus)) %>' 
+                        CommandName="Vratili" 
+                        CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                    <asp:Button runat="server" ID="btnDaroval"
+                        Visible='<%# (float)Eval(TableColumns.Surplus) > 0 %>' 
+                        Text='<%# string.Format("Darovali nám {0:0.00} euro", Eval(TableColumns.Surplus)) %>' 
+                        CommandName='Darovali' 
+                        CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                    <asp:Button runat="server" ID="btnPrisli"
+                        Visible='<%# !(bool)Eval(TableColumns.ShowedUp) %>' 
+                        Text='Prišli'
+                        CommandName='Prisli' 
+                        CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                </ItemTemplate>
+            </asp:TemplateField>
+        </Columns>
+    </asp:GridView>
 </asp:Content>
