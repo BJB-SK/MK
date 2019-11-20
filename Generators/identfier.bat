@@ -5,12 +5,12 @@ use warnings;
 #use Text::Levenshtein qw(distance);
 use Text::Levenshtein::Damerau::XS qw/xs_edistance/;
 
-open SQL, '>', 'variabilny.sql' or die $!;
+open SQL, '>', 'identifier.sql' or die $!;
 
 print SQL <<END;
-DELETE FROM [dbo].[variabilny];
-DBCC CHECKIDENT ('dbo.variabilny', RESEED, 1);
-SET IDENTITY_INSERT dbo.variabilny ON;
+DELETE FROM [dbo].[identifier];
+DBCC CHECKIDENT ('dbo.identifier', RESEED, 1);
+SET IDENTITY_INSERT dbo.identifier ON;
 END
 
 my @a;
@@ -30,10 +30,10 @@ while($i < $n)
     for(@a) { if(xs_edistance($x, $_) < 4) { $good = 0; last; } }
     next unless $good;
     push @a, $x;
-    print SQL "INSERT INTO [dbo].[variabilny] ([id], [vs]) VALUES ($i, $x);\n";
+    print SQL "INSERT INTO [dbo].[identifier] ([id], [identifier]) VALUES ($i, $x);\n";
     $i++;
     print "$i -> $x\n";
 }
 print SQL <<END;
-SET IDENTITY_INSERT dbo.variabilny OFF;
+SET IDENTITY_INSERT dbo.identifier OFF;
 END
