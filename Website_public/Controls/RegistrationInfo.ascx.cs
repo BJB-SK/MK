@@ -158,14 +158,22 @@ public partial class RegistrationInfo : System.Web.UI.UserControl
 
             if (chbPiatokVecera.Checked) codes.Add("pv");
             if (chbPiatokVecera2.Checked) codes.Add("pv2");
-            if (chbUbytovaniePiatokSobota.Checked && !chbTichaTriedaPiatokSobota.Checked) codes.Add("pst");
-            if (chbTichaTriedaPiatokSobota.Checked) codes.Add("pstt");
+            if (chbUbytovaniePiatokSobota.Checked) codes.Add("pst");
+            if (chbTichaTriedaPiatokSobota.Checked)
+            {
+                codes.Add("pstt");
+                if (!chbUbytovaniePiatokSobota.Checked) codes.Add("pst");
+            }
             if (chbSobotaRanajky.Checked) codes.Add("sr");
             if (chbSobotaObed.Checked) codes.Add("so");
             if (chbSobotaVecera.Checked) codes.Add("sv");
             if (chbSobotaVecera2.Checked) codes.Add("sv2");
-            if (chbUbytovanieSobotaNedela.Checked && !chbTichaTriedaSobotaNedela.Checked) codes.Add("snt");
-            if (chbTichaTriedaSobotaNedela.Checked) codes.Add("sntt");
+            if (chbUbytovanieSobotaNedela.Checked) codes.Add("snt");
+            if (chbTichaTriedaSobotaNedela.Checked)
+            {
+                codes.Add("sntt");
+                if (!chbUbytovanieSobotaNedela.Checked) codes.Add("snt");
+            }
             if (chbNedelaRanajky.Checked) codes.Add("nr");
             if (chbNedelaObed.Checked) codes.Add("no");
             if (chbSach.Checked) codes.Add("chess");
