@@ -88,8 +88,8 @@ input[type=checkbox] {
 }
 
 #registration input[type=checkbox]:checked + label {
-    background: rgb(254, 211, 0);
-    color: #555;
+    background: rgb(229, 93, 45);
+    color: white;
 }
 
 input[type=radio] {
@@ -103,7 +103,8 @@ input[type=radio] + label {
     margin: 4px;
 }
 input[type=radio]:checked + label {
-    background: rgb(254, 211, 0);
+    background: rgb(229, 93, 45);
+    color: white;
     border-radius: 2px;
     padding: 8px 10px;
 }
