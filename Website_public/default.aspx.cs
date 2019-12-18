@@ -107,7 +107,7 @@ public partial class Register : Page
         var control = (RegistrationInfo)LoadControl("~/Controls/RegistrationInfo.ascx");
         control.ID = "ucRegistrationInfo" + id;
         control.Fill(_dropDownData, _sluziaci);
-        control.CheckBoxesPostBack = false;
+        control.CheckBoxesPostBack = true;
         if (data != null) control.Data = data;
         _controls.Insert(position, control);
 
@@ -256,7 +256,8 @@ public partial class Register : Page
             if (sponzorskyDar < 0) sponzorskyDar = 0;
         }
 
-        var amountToPay = sum + sponzorskyDar / currency.Rate;
+        
+        var amountToPay = (sum + sponzorskyDar);
         lblSuma.Text = currency.FormatMoney(amountToPay);
 
         if (!chbGdprConsent.Checked)
